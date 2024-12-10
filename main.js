@@ -1,15 +1,22 @@
-import './style.css';
-import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { TextGeometry } from 'three/src/geometries/TextGeometry.js';
+import "./style.css";
+import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { TextGeometry } from "three/src/geometries/TextGeometry.js";
+import { FontLoader } from 'three/src/loaders/FontLoader.js';
+
 // Setup
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
 
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector('#bg'),
+  canvas: document.querySelector("#bg"),
 });
 
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -60,20 +67,22 @@ Array(200).fill().forEach(addStar);
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('space.jpg');
+const spaceTexture = new THREE.TextureLoader().load("space.jpg");
 scene.background = spaceTexture;
 
 //Text
-const loader = new THREE.FontLoader()
-         // promisify font loading
-         function loadFont(url) {
-            return new Promise((resolve, reject) => {
-               loader.load(url, resolve, undefined, reject)
-            })
-         }
-const font = await loadFont('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json')
+const loader = new FontLoader();
+// promisify font loading
+function loadFont(url) {
+  return new Promise((resolve, reject) => {
+    loader.load(url, resolve, undefined, reject);
+  });
+}
+const font = await loadFont(
+  "https://threejs.org/examples/fonts/helvetiker_regular.typeface.json"
+);
 
-const geometryText = new TextGeometry( 'Hello three.js!', {
+const geometryText = new TextGeometry("Hello three.js!", {
   font: font,
   size: 80,
   depth: 5,
@@ -82,33 +91,36 @@ const geometryText = new TextGeometry( 'Hello three.js!', {
   bevelThickness: 10,
   bevelSize: 8,
   bevelOffset: 0,
-  bevelSegments: 5
-} );
+  bevelSegments: 5,
+});
 
 const materialText = new THREE.MeshFaceMaterial([
   new THREE.MeshPhongMaterial({
-     color: 0xff22cc,
-     flatShading: true,
+    color: 0xff22cc,
+    flatShading: true,
   }), // front
   new THREE.MeshPhongMaterial({
-     color: 0xffcc22
+    color: 0xffcc22,
   }), // side
-])
+]);
 const text = new THREE.Mesh(geometryText, materialText);
 scene.add(text);
 
 // Avatar
 
-const jeffTexture = new THREE.TextureLoader().load('jeff.png');
+const jeffTexture = new THREE.TextureLoader().load("jeff.png");
 
-const jeff = new THREE.Mesh(new THREE.BoxGeometry(3, 3, 3), new THREE.MeshBasicMaterial({ map: jeffTexture }));
+const jeff = new THREE.Mesh(
+  new THREE.BoxGeometry(3, 3, 3),
+  new THREE.MeshBasicMaterial({ map: jeffTexture })
+);
 
 scene.add(jeff);
 
 // Moon
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-const normalTexture = new THREE.TextureLoader().load('normal.jpg');
+const moonTexture = new THREE.TextureLoader().load("moon.jpg");
+const normalTexture = new THREE.TextureLoader().load("normal.jpg");
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -146,8 +158,11 @@ function moveCamera() {
 //Rezize
 
 function rezize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
+
 document.body.onscroll = moveCamera;
 document.body.onresize = rezize;
 moveCamera();
