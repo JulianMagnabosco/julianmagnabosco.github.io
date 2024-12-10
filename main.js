@@ -1,7 +1,7 @@
 import './style.css';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
+import { TextGeometry } from 'three/src/geometries/TextGeometry.js';
 // Setup
 
 const scene = new THREE.Scene();
@@ -15,7 +15,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
-camera.position.setX(-3);
+// camera.position.setX(-3);
 
 renderer.render(scene, camera);
 
@@ -25,7 +25,7 @@ const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
 const torus = new THREE.Mesh(geometry, material);
 
-scene.add(torus);
+// scene.add(torus);
 
 // Lights
 
@@ -63,6 +63,40 @@ Array(200).fill().forEach(addStar);
 const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceTexture;
 
+//Text
+const loader = new THREE.FontLoader()
+         // promisify font loading
+         function loadFont(url) {
+            return new Promise((resolve, reject) => {
+               loader.load(url, resolve, undefined, reject)
+            })
+         }
+const font = await loadFont('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json')
+
+const geometryText = new TextGeometry( 'Hello three.js!', {
+  font: font,
+  size: 80,
+  depth: 5,
+  curveSegments: 12,
+  bevelEnabled: true,
+  bevelThickness: 10,
+  bevelSize: 8,
+  bevelOffset: 0,
+  bevelSegments: 5
+} );
+
+const materialText = new THREE.MeshFaceMaterial([
+  new THREE.MeshPhongMaterial({
+     color: 0xff22cc,
+     flatShading: true,
+  }), // front
+  new THREE.MeshPhongMaterial({
+     color: 0xffcc22
+  }), // side
+])
+const text = new THREE.Mesh(geometryText, materialText);
+scene.add(text);
+
 // Avatar
 
 const jeffTexture = new THREE.TextureLoader().load('jeff.png');
@@ -86,8 +120,10 @@ const moon = new THREE.Mesh(
 
 scene.add(moon);
 
-moon.position.z = 30;
-moon.position.setX(-10);
+moon.position.z = 0;
+moon.position.x = 0;
+text.position.z = 30;
+text.position.x = -10;
 
 jeff.position.z = -5;
 jeff.position.x = 2;
@@ -107,8 +143,13 @@ function moveCamera() {
   camera.position.x = t * -0.0002;
   camera.rotation.y = t * -0.0002;
 }
+//Rezize
 
+function rezize() {
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
 document.body.onscroll = moveCamera;
+document.body.onresize = rezize;
 moveCamera();
 
 // Animation Loop
