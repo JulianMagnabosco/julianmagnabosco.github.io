@@ -21,10 +21,10 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+camera.position.setZ(20);
 // camera.position.setX(-3);
-
 renderer.render(scene, camera);
+const canvas = renderer.domElement;
 
 // Background
 
@@ -61,11 +61,11 @@ function addStar() {
   const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
   const star = new THREE.Mesh(geometry, material);
 
-  let [x, y, z] = [0,0,0];
+  let [x, y, z] = [0, 0, 0];
 
-  x=THREE.MathUtils.randFloatSpread(100)
-  y=THREE.MathUtils.randFloatSpread(200)
-  z=THREE.MathUtils.randFloatSpread(100)
+  x = THREE.MathUtils.randFloatSpread(100);
+  y = THREE.MathUtils.randFloatSpread(200);
+  z = THREE.MathUtils.randFloatSpread(100);
 
   star.position.set(x, y, z);
   scene.add(star);
@@ -100,59 +100,89 @@ const moon = new THREE.Mesh(
 // scene.add(moon);
 
 //Text
-
 const loader = new THREE.FontLoader();
 
-loader.load("Unitblock_Regular.json", function (font) {
-  const geometryText = new THREE.TextGeometry("three.js", {
-    font: font,
-    size: 5,
-    height: 1,
-    curveSegments: 10,
-    bevelEnabled: false,
-    bevelOffset: 0,
-    bevelSegments: 1,
-    bevelSize: 0.3,
-    bevelThickness: 1,
+async function writeText(text) {
+  loader.load("Unitblock_Regular.json", function (font) {
+    const geometryText = new THREE.TextGeometry(text, {
+      font: font,
+      size: 1,
+      height: 1,
+      curveSegments: 10,
+      bevelEnabled: false,
+      bevelOffset: 0,
+      bevelSegments: 1,
+      bevelSize: 0.3,
+      bevelThickness: 1,
+    });
+    geometryText.center();
+    const materialsText = [
+      new THREE.MeshPhongMaterial({ color: 0xffffff }), // front
+      new THREE.MeshPhongMaterial({ color: 0x000000 }), // side
+    ];
+    const textMesh = new THREE.Mesh(geometryText, materialsText);
+
+    const boundingBox = new THREE.Box3().setFromObject(textMesh);
+    const size = boundingBox.getSize();
+
+    const extraSize = 2;
+    const geometryPlane = new THREE.PlaneGeometry(
+      size.x + extraSize,
+      size.y + extraSize
+    );
+    const materialPlane = new THREE.MeshBasicMaterial({
+      color: 0x000000,
+      side: THREE.DoubleSide,
+    });
+    const plane = new THREE.Mesh(geometryPlane, materialPlane);
+    // const group = new THREE.Group();
+
+    scene.add(plane);
+    scene.add(textMesh);
+    plane.position.z = 0;
+    textMesh.position.z = 0;
+
+    let textPosition = new THREE.Vector3();
+    textPosition = textPosition.copy(plane.position).project(camera);
+    textPosition.x = ((textPosition.x + 1) * canvas.width) / 2;
+    textPosition.y = (-(textPosition.y - 1) * canvas.height) / 2;
+    // textPosition.x = Math.round((0.5 + textPosition.x / 2) * (canvas.width / window.devicePixelRatio));
+    // textPosition.y = Math.round((0.5 - textPosition.y / 2) * (canvas.height / window.devicePixelRatio));
+    console.log(textPosition);
+
+    const name = document.getElementById("name");
+    name.style.top = `${textPosition.y}px`;
+    name.style.left = `${textPosition.x}px`;
+    // scene.add( group );
+    return plane;
   });
-  geometryText.center()
-  const materialsText = [
-    new THREE.MeshPhongMaterial({ color: 0xffffff }), // front
-    new THREE.MeshPhongMaterial({ color: 0x000000 }), // side
-  ];
-  const textMesh1 = new THREE.Mesh(geometryText, materialsText);
-  textMesh1.position.x = 0;
-
-  const boundingBox = new THREE.Box3().setFromObject(textMesh1);
-  const size = boundingBox.getSize();
-  console.log(size);
-
-  scene.add(textMesh1);
-});
+}
 
 //Forma
-const heartShape = new THREE.Shape();
+// const heartShape = new THREE.Shape();
 
-heartShape.moveTo(25, 25);
-heartShape.bezierCurveTo(25, 25, 20, 0, 0, 0);
-heartShape.bezierCurveTo(-30, 0, -30, 35, -30, 35);
-heartShape.bezierCurveTo(-30, 55, -10, 77, 25, 95);
-heartShape.bezierCurveTo(60, 77, 80, 55, 80, 35);
-heartShape.bezierCurveTo(80, 35, 80, 0, 50, 0);
-heartShape.bezierCurveTo(35, 0, 25, 25, 25, 25);
+// heartShape.moveTo(0, 0);
+// heartShape.bezierCurveTo(2, 2, 1, 0, 0, 0);
+// heartShape.bezierCurveTo(-1, 0, -1, 2, -1, 2);
+// heartShape.bezierCurveTo(-1, 2, -1, 2, 1, 2);
+// heartShape.bezierCurveTo(2, 2, 2, 1, 2, 1);
+// heartShape.bezierCurveTo(4, 2, 1, 0, 1, 0);
+// heartShape.bezierCurveTo(2, 0, 1, 1, 1, 1);
 
-const extrudeSettings = {
-  depth: 8,
-  bevelEnabled: true,
-  bevelSegments: 2,
-  steps: 2,
-  bevelSize: 1,
-  bevelThickness: 1,
-};
+// const extrudeSettings = {
+//   depth: 1,
+//   bevelEnabled: true,
+//   bevelSegments: 2,
+//   steps: 2,
+//   bevelSize: 1,
+//   bevelThickness: 1,
+// };
 
-const geometryShape = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
-const meshShape = new THREE.Mesh(geometryShape, new THREE.MeshPhongMaterial());
+// const geometryShape = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
+// const meshShape = new THREE.Mesh(geometryShape, material);
 // scene.add(meshShape);
+
+const text = await writeText("Hola chavales");
 
 //Positios
 
@@ -174,6 +204,18 @@ function moveCamera() {
   jeff.rotation.z += 0.01;
 
   camera.position.y = t * 0.01;
+  let textPosition = new THREE.Vector3();
+  textPosition = textPosition.copy(text.position).project(camera);
+  // textPosition.x = ((textPosition.x + 1) * canvas.width) / 2;
+  // textPosition.y = (-(textPosition.y - 1) * canvas.height) / 2;
+  textPosition.x = Math.round((0.5 + textPosition.x / 2) * (canvas.width / window.devicePixelRatio));
+  textPosition.y = Math.round((0.5 - textPosition.y / 2) * (canvas.height / window.devicePixelRatio));
+  console.log(t);
+
+  const name = document.getElementById("name");
+  name.innerText=textPosition.y+" - "+textPosition.x
+  name.style.top = `${textPosition.y-t}px`;
+  name.style.left = `${textPosition.x}px`;
 }
 //Rezize
 

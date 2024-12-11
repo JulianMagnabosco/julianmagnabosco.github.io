@@ -15,6 +15,10 @@ canvas {
   font-style: normal;
 }
 
+body{
+  margin: 0;
+}
+
 main {
   width: 100vw;
   color: white;
@@ -24,6 +28,12 @@ main {
 
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+}
+
+#name {
+  position: absolute;
+  /* transform-origin: center;
+  transform: translate(-50%, -50%); */
 }
 
 h1,
