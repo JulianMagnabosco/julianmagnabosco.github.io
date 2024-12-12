@@ -103,58 +103,61 @@ const moon = new THREE.Mesh(
 const loader = new THREE.FontLoader();
 
 async function writeText(text) {
-  loader.load("Unitblock_Regular.json", function (font) {
-    const geometryText = new THREE.TextGeometry(text, {
-      font: font,
-      size: 1,
-      height: 1,
-      curveSegments: 10,
-      bevelEnabled: false,
-      bevelOffset: 0,
-      bevelSegments: 1,
-      bevelSize: 0.3,
-      bevelThickness: 1,
+  return new Promise((resolve) => {
+    loader.load("Unitblock_Regular.json", function (font) {
+      const geometryText = new THREE.TextGeometry(text, {
+        font: font,
+        size: 1,
+        height: 1,
+        curveSegments: 10,
+        bevelEnabled: false,
+        bevelOffset: 0,
+        bevelSegments: 1,
+        bevelSize: 0.3,
+        bevelThickness: 1,
+      });
+      geometryText.center();
+      const materialsText = [
+        new THREE.MeshPhongMaterial({ color: 0xffffff }), // front
+        new THREE.MeshPhongMaterial({ color: 0x000000 }), // side
+      ];
+      const textMesh = new THREE.Mesh(geometryText, materialsText);
+
+      const boundingBox = new THREE.Box3().setFromObject(textMesh);
+      const size = boundingBox.getSize();
+
+      const extraSize = 2;
+      const geometryPlane = new THREE.PlaneGeometry(
+        size.x + extraSize,
+        size.y + extraSize
+      );
+      const materialPlane = new THREE.MeshBasicMaterial({
+        color: 0x000000,
+        side: THREE.DoubleSide,
+      });
+      const plane = new THREE.Mesh(geometryPlane, materialPlane);
+      // const group = new THREE.Group();
+
+      scene.add(plane);
+      scene.add(textMesh);
+      plane.position.z = 0;
+      textMesh.position.z = 0;
+
+      let textPosition = new THREE.Vector3();
+      textPosition = textPosition.copy(plane.position).project(camera);
+      textPosition.x = ((textPosition.x + 1) * canvas.width) / 2;
+      textPosition.y = (-(textPosition.y - 1) * canvas.height) / 2;
+      // textPosition.x = Math.round((0.5 + textPosition.x / 2) * (canvas.width / window.devicePixelRatio));
+      // textPosition.y = Math.round((0.5 - textPosition.y / 2) * (canvas.height / window.devicePixelRatio));
+
+      const name = document.getElementById("name");
+      name.style.top = `${textPosition.y}px`;
+      name.style.left = `${textPosition.x}px`;
+      // scene.add( group );
+      console.log("execute");
+      resolve(plane)
+      
     });
-    geometryText.center();
-    const materialsText = [
-      new THREE.MeshPhongMaterial({ color: 0xffffff }), // front
-      new THREE.MeshPhongMaterial({ color: 0x000000 }), // side
-    ];
-    const textMesh = new THREE.Mesh(geometryText, materialsText);
-
-    const boundingBox = new THREE.Box3().setFromObject(textMesh);
-    const size = boundingBox.getSize();
-
-    const extraSize = 2;
-    const geometryPlane = new THREE.PlaneGeometry(
-      size.x + extraSize,
-      size.y + extraSize
-    );
-    const materialPlane = new THREE.MeshBasicMaterial({
-      color: 0x000000,
-      side: THREE.DoubleSide,
-    });
-    const plane = new THREE.Mesh(geometryPlane, materialPlane);
-    // const group = new THREE.Group();
-
-    scene.add(plane);
-    scene.add(textMesh);
-    plane.position.z = 0;
-    textMesh.position.z = 0;
-
-    let textPosition = new THREE.Vector3();
-    textPosition = textPosition.copy(plane.position).project(camera);
-    textPosition.x = ((textPosition.x + 1) * canvas.width) / 2;
-    textPosition.y = (-(textPosition.y - 1) * canvas.height) / 2;
-    // textPosition.x = Math.round((0.5 + textPosition.x / 2) * (canvas.width / window.devicePixelRatio));
-    // textPosition.y = Math.round((0.5 - textPosition.y / 2) * (canvas.height / window.devicePixelRatio));
-    console.log(textPosition);
-
-    const name = document.getElementById("name");
-    name.style.top = `${textPosition.y}px`;
-    name.style.left = `${textPosition.x}px`;
-    // scene.add( group );
-    return plane;
   });
 }
 
@@ -182,7 +185,8 @@ async function writeText(text) {
 // const meshShape = new THREE.Mesh(geometryShape, material);
 // scene.add(meshShape);
 
-const text = await writeText("Hola chavales");
+let text;
+writeText("Hola chavales").then((result)=>text=result)
 
 //Positios
 
@@ -204,17 +208,23 @@ function moveCamera() {
   jeff.rotation.z += 0.01;
 
   camera.position.y = t * 0.01;
+
+  if(!text) return
   let textPosition = new THREE.Vector3();
   textPosition = textPosition.copy(text.position).project(camera);
   // textPosition.x = ((textPosition.x + 1) * canvas.width) / 2;
   // textPosition.y = (-(textPosition.y - 1) * canvas.height) / 2;
-  textPosition.x = Math.round((0.5 + textPosition.x / 2) * (canvas.width / window.devicePixelRatio));
-  textPosition.y = Math.round((0.5 - textPosition.y / 2) * (canvas.height / window.devicePixelRatio));
+  textPosition.x = Math.round(
+    (0.5 + textPosition.x / 2) * (canvas.width / window.devicePixelRatio)
+  );
+  textPosition.y = Math.round(
+    (0.5 - textPosition.y / 2) * (canvas.height / window.devicePixelRatio)
+  );
   console.log(t);
 
   const name = document.getElementById("name");
-  name.innerText=textPosition.y+" - "+textPosition.x
-  name.style.top = `${textPosition.y-t}px`;
+  name.innerText = textPosition.y + " - " + textPosition.x;
+  name.style.top = `${textPosition.y - t}px`;
   name.style.left = `${textPosition.x}px`;
 }
 //Rezize
