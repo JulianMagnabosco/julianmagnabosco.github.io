@@ -142,19 +142,6 @@ async function writeText(text) {
       scene.add(textMesh);
       plane.position.z = 0;
       textMesh.position.z = 0;
-
-      let textPosition = new THREE.Vector3();
-      textPosition = textPosition.copy(plane.position).project(camera);
-      textPosition.x = ((textPosition.x + 1) * canvas.width) / 2;
-      textPosition.y = (-(textPosition.y - 1) * canvas.height) / 2;
-      // textPosition.x = Math.round((0.5 + textPosition.x / 2) * (canvas.width / window.devicePixelRatio));
-      // textPosition.y = Math.round((0.5 - textPosition.y / 2) * (canvas.height / window.devicePixelRatio));
-
-      const name = document.getElementById("name");
-      name.style.top = `${textPosition.y}px`;
-      name.style.left = `${textPosition.x}px`;
-      // scene.add( group );
-      console.log("execute");
       resolve(plane)
       
     });
