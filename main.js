@@ -65,62 +65,10 @@ function addStar() {
 
 Array(200).fill().forEach(addStar);
 
-//Text
-// const loader = new THREE.FontLoader();
+const extraSize = 5;
+function drawTextPlane(top, bottom, left, right) {
 
-// async function writeText(text) {
-//   return new Promise((resolve) => {
-//     loader.load("Unitblock_Regular.json", function (font) {
-//       const geometryText = new THREE.TextGeometry(text, {
-//         font: font,
-//         size: 1,
-//         height: 1,
-//         curveSegments: 10,
-//         bevelEnabled: false,
-//         bevelOffset: 0,
-//         bevelSegments: 1,
-//         bevelSize: 0.3,
-//         bevelThickness: 1,
-//       });
-//       geometryText.center();
-//       const materialsText = [
-//         new THREE.MeshPhongMaterial({ color: 0xffffff }), // front
-//         new THREE.MeshPhongMaterial({ color: 0x000000 }), // side
-//       ];
-//       const textMesh = new THREE.Mesh(geometryText, materialsText);
-
-//       const boundingBox = new THREE.Box3().setFromObject(textMesh);
-//       const size = boundingBox.getSize();
-
-//       const extraSize = 2;
-//       const geometryPlane = new THREE.PlaneGeometry(
-//         size.x + extraSize,
-//         size.y + extraSize
-//       );
-//       const materialPlane = new THREE.MeshBasicMaterial({
-//         color: 0x000000,
-//         side: THREE.DoubleSide,
-//       });
-//       const plane = new THREE.Mesh(geometryPlane, materialPlane);
-//       // const group = new THREE.Group();
-
-//       scene.add(plane);
-//       scene.add(textMesh);
-//       plane.position.z = 0;
-//       textMesh.position.z = 0;
-//       resolve(plane)
-      
-//     });
-//   });
-// }
-
-
-function drawTextPlane(position) {
-
-  const geometryPlane = new THREE.PlaneGeometry(
-    size.x + extraSize,
-    size.y + extraSize
-  );
+  const geometryPlane = new THREE.PlaneGeometry((right - left )*extraSize, (bottom - top)*extraSize);
   const materialPlane = new THREE.MeshBasicMaterial({
     color: 0x000000,
     side: THREE.DoubleSide,
@@ -128,76 +76,80 @@ function drawTextPlane(position) {
   const plane = new THREE.Mesh(geometryPlane, materialPlane);
 
   scene.add(plane);
-  plane.position.z = 0;
-  return plane
+  return plane;
 }
 
-
-//Forma
-// const heartShape = new THREE.Shape();
-
-// heartShape.moveTo(0, 0);
-// heartShape.bezierCurveTo(2, 2, 1, 0, 0, 0);
-// heartShape.bezierCurveTo(-1, 0, -1, 2, -1, 2);
-// heartShape.bezierCurveTo(-1, 2, -1, 2, 1, 2);
-// heartShape.bezierCurveTo(2, 2, 2, 1, 2, 1);
-// heartShape.bezierCurveTo(4, 2, 1, 0, 1, 0);
-// heartShape.bezierCurveTo(2, 0, 1, 1, 1, 1);
-
-// const extrudeSettings = {
-//   depth: 1,
-//   bevelEnabled: true,
-//   bevelSegments: 2,
-//   steps: 2,
-//   bevelSize: 1,
-//   bevelThickness: 1,
-// };
-
-// const geometryShape = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
-// const meshShape = new THREE.Mesh(geometryShape, material);
-// scene.add(meshShape);
-function drawAllPlanes(){
-  const sections = document.getElementsByClassName("section")
+function drawAllPlanes() {
+  const sections = document.getElementsByClassName("section");
+  let list = [];
+  for (let i = 0; i < sections.length; i++) {
+    var rect = sections[i].getBoundingClientRect();
+    // const plane = drawTextPlane(
+    //   rect.top / canvas.height,
+    //   rect.bottom / canvas.height,
+    //   rect.left / canvas.width,
+    //   rect.right / canvas.width
+    // );
+    const plane = drawTextPlane(
+      rect.top / window.innerHeight,
+      rect.bottom / window.innerHeight,
+      rect.left / window.innerWidth,
+      rect.right / window.innerWidth
+    );
+    list.push(plane);
+  }
+  return list;
 }
-let plane = drawTextPlane("Hola chavales");
 
-
-//Positios
-
-moon.position.y = 0;
-moon.position.x = 0;
-
+function positionAllPlanes() {
+  const sections = document.getElementsByClassName("section");
+  let list = [];
+  for (let i = 0; i < sections.length; i++) {
+    var rect = sections[i].getBoundingClientRect();
+    planes[i].position.y = (rect.top / window.innerHeight) * extraSize *-5;
+    planes[i].position.x = (rect.left / window.innerWidth) * extraSize * 5;
+    planes[i].position.z = 10;
+  }
+  return list;
+}
+const planes = drawAllPlanes();
 
 // Scroll Animation
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top;
-  moon.rotation.x += 0.05;
-  moon.rotation.y += 0.075;
-  moon.rotation.z += 0.05;
 
-  jeff.rotation.y += 0.01;
-  jeff.rotation.z += 0.01;
+  // camera.position.y = t * 0.01;
 
-  camera.position.y = t * 0.01;
-
-  if(!text) return
-  let textPosition = new THREE.Vector3();
-  textPosition = textPosition.copy(text.position).project(camera);
+  // if(!text) return
+  // let textPosition = new THREE.Vector3();
+  // textPosition = textPosition.copy(text.position).project(camera);
   // textPosition.x = ((textPosition.x + 1) * canvas.width) / 2;
   // textPosition.y = (-(textPosition.y - 1) * canvas.height) / 2;
-  textPosition.x = Math.round(
-    (0.5 + textPosition.x / 2) * (canvas.width / window.devicePixelRatio)
-  );
-  textPosition.y = Math.round(
-    (0.5 - textPosition.y / 2) * (canvas.height / window.devicePixelRatio)
-  );
-  console.log(t);
+  // textPosition.x = Math.round(
+  //   (0.5 + textPosition.x / 2) * (canvas.width / window.devicePixelRatio)
+  // );
+  // textPosition.y = Math.round(
+  //   (0.5 - textPosition.y / 2) * (canvas.height / window.devicePixelRatio)
+  // );
+  // console.log(t);
 
-  const name = document.getElementById("name");
-  name.innerText = textPosition.y + " - " + textPosition.x;
-  name.style.top = `${textPosition.y - t}px`;
-  name.style.left = `${textPosition.x}px`;
+  // const name = document.getElementById("name");
+  // name.innerText = textPosition.y + " - " + textPosition.x;
+  // name.style.top = `${textPosition.y - t}px`;
+  // name.style.left = `${textPosition.x}px`;
+
+  console.log("pos testing");
+  const sections = document.getElementsByClassName("section");
+  for (let i = 0; i < sections.length; i++) {
+    var rect = sections[i].getBoundingClientRect();
+    // console.log("pos",rect.top,rect.bottom,rect.left,rect.right)
+    // console.log("real",rect.bottom-rect.top,rect.right-rect.left)
+    // console.log("traslate",rect.top/canvas.width ,rect.left/canvas.height )
+    // console.log("scale",(rect.bottom-rect.top)/canvas.width ,(rect.right-rect.left)/canvas.height )
+    console.log("plane", planes[i].position.x, planes[i].position.y);
+  }
+  positionAllPlanes();
 }
 //Rezize
 
@@ -215,14 +167,6 @@ moveCamera();
 
 function animate() {
   requestAnimationFrame(animate);
-
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += 0.01;
-
-  moon.rotation.x += 0.005;
-
-  // controls.update();
 
   renderer.render(scene, camera);
 }
