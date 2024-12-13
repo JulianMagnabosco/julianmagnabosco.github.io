@@ -20,10 +20,14 @@ body{
 }
 
 main {
-  padding: 3rem;
   color: white;
   z-index: 99;
   position: absolute;
+  width: 100%;
+  /* max-width: 700px; */
+}
+.container{ 
+  padding: 3rem;
 }
 
 #name {
@@ -34,6 +38,7 @@ main {
 
 [class*="section-"] {
   max-width: 40rem;
+  text-align: justify;
   padding: 1rem 2rem;
 }
 .section-left{

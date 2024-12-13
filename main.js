@@ -47,14 +47,6 @@ scene.add(pointLight, ambientLight);
 
 // const controls = new OrbitControls(camera, renderer.domElement);
 
-// Torus
-
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
-const torus = new THREE.Mesh(geometry, material);
-
-// scene.add(torus);
-
 //Stars
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -73,80 +65,73 @@ function addStar() {
 
 Array(200).fill().forEach(addStar);
 
-// Avatar
-
-const jeffTexture = new THREE.TextureLoader().load("jeff.png");
-
-const jeff = new THREE.Mesh(
-  new THREE.BoxGeometry(3, 3, 3),
-  new THREE.MeshBasicMaterial({ map: jeffTexture })
-);
-
-scene.add(jeff);
-
-// Moon
-
-const moonTexture = new THREE.TextureLoader().load("moon.jpg");
-const normalTexture = new THREE.TextureLoader().load("normal.jpg");
-
-const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
-  new THREE.MeshStandardMaterial({
-    map: moonTexture,
-    normalMap: normalTexture,
-  })
-);
-
-// scene.add(moon);
-
 //Text
-const loader = new THREE.FontLoader();
+// const loader = new THREE.FontLoader();
 
-async function writeText(text) {
-  return new Promise((resolve) => {
-    loader.load("Unitblock_Regular.json", function (font) {
-      const geometryText = new THREE.TextGeometry(text, {
-        font: font,
-        size: 1,
-        height: 1,
-        curveSegments: 10,
-        bevelEnabled: false,
-        bevelOffset: 0,
-        bevelSegments: 1,
-        bevelSize: 0.3,
-        bevelThickness: 1,
-      });
-      geometryText.center();
-      const materialsText = [
-        new THREE.MeshPhongMaterial({ color: 0xffffff }), // front
-        new THREE.MeshPhongMaterial({ color: 0x000000 }), // side
-      ];
-      const textMesh = new THREE.Mesh(geometryText, materialsText);
+// async function writeText(text) {
+//   return new Promise((resolve) => {
+//     loader.load("Unitblock_Regular.json", function (font) {
+//       const geometryText = new THREE.TextGeometry(text, {
+//         font: font,
+//         size: 1,
+//         height: 1,
+//         curveSegments: 10,
+//         bevelEnabled: false,
+//         bevelOffset: 0,
+//         bevelSegments: 1,
+//         bevelSize: 0.3,
+//         bevelThickness: 1,
+//       });
+//       geometryText.center();
+//       const materialsText = [
+//         new THREE.MeshPhongMaterial({ color: 0xffffff }), // front
+//         new THREE.MeshPhongMaterial({ color: 0x000000 }), // side
+//       ];
+//       const textMesh = new THREE.Mesh(geometryText, materialsText);
 
-      const boundingBox = new THREE.Box3().setFromObject(textMesh);
-      const size = boundingBox.getSize();
+//       const boundingBox = new THREE.Box3().setFromObject(textMesh);
+//       const size = boundingBox.getSize();
 
-      const extraSize = 2;
-      const geometryPlane = new THREE.PlaneGeometry(
-        size.x + extraSize,
-        size.y + extraSize
-      );
-      const materialPlane = new THREE.MeshBasicMaterial({
-        color: 0x000000,
-        side: THREE.DoubleSide,
-      });
-      const plane = new THREE.Mesh(geometryPlane, materialPlane);
-      // const group = new THREE.Group();
+//       const extraSize = 2;
+//       const geometryPlane = new THREE.PlaneGeometry(
+//         size.x + extraSize,
+//         size.y + extraSize
+//       );
+//       const materialPlane = new THREE.MeshBasicMaterial({
+//         color: 0x000000,
+//         side: THREE.DoubleSide,
+//       });
+//       const plane = new THREE.Mesh(geometryPlane, materialPlane);
+//       // const group = new THREE.Group();
 
-      scene.add(plane);
-      scene.add(textMesh);
-      plane.position.z = 0;
-      textMesh.position.z = 0;
-      resolve(plane)
+//       scene.add(plane);
+//       scene.add(textMesh);
+//       plane.position.z = 0;
+//       textMesh.position.z = 0;
+//       resolve(plane)
       
-    });
+//     });
+//   });
+// }
+
+
+function drawTextPlane(position) {
+
+  const geometryPlane = new THREE.PlaneGeometry(
+    size.x + extraSize,
+    size.y + extraSize
+  );
+  const materialPlane = new THREE.MeshBasicMaterial({
+    color: 0x000000,
+    side: THREE.DoubleSide,
   });
+  const plane = new THREE.Mesh(geometryPlane, materialPlane);
+
+  scene.add(plane);
+  plane.position.z = 0;
+  return plane
 }
+
 
 //Forma
 // const heartShape = new THREE.Shape();
@@ -171,17 +156,17 @@ async function writeText(text) {
 // const geometryShape = new THREE.ExtrudeGeometry(heartShape, extrudeSettings);
 // const meshShape = new THREE.Mesh(geometryShape, material);
 // scene.add(meshShape);
+function drawAllPlanes(){
+  const sections = document.getElementsByClassName("section")
+}
+let plane = drawTextPlane("Hola chavales");
 
-let text;
-writeText("Hola chavales").then((result)=>text=result)
 
 //Positios
 
 moon.position.y = 0;
 moon.position.x = 0;
 
-jeff.position.y = -10;
-jeff.position.x = 0;
 
 // Scroll Animation
 
