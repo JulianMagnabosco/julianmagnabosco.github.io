@@ -26,36 +26,3 @@ main {
   width: 100%;
   /* max-width: 700px; */
 }
-.container{ 
-  padding: 3rem;
-}
-
-#name {
-  position: absolute;
-  /* transform-origin: center;
-  transform: translate(-50%, -50%); */
-}
-
-[class*="section-"] {
-  max-width: 40rem;
-  text-align: justify;
-  padding: 1rem 2rem;
-}
-.section-left{
-  margin-right: auto;
-  margin-left: 0;
-}
-.section-right{
-  margin-right: 0;
-  margin-left: auto;
-}
-@media only screen and (min-width: 1200px) {
-  [class*="section-"] {
-    max-width: 50rem;
-  }
-}
-@media only screen and (min-width: 1500px) {
-  [class*="section-"] {
-    max-width: 60rem;
-  }
-}
