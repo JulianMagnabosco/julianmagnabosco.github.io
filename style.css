@@ -1,9 +1,9 @@
-@import url("https://use.typekit.net/jmk3xov.css");
 
 canvas {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -1;
 }
 
 :root {
@@ -19,10 +19,3 @@ body{
   margin: 0;
 }
 
-main {
-  color: white;
-  z-index: 99;
-  position: absolute;
-  width: 100%;
-  /* max-width: 700px; */
-}
