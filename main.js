@@ -2,7 +2,10 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { TextGeometry } from "three/src/geometries/TextGeometry.js";
 import { FontLoader } from "three/src/loaders/FontLoader.js";
-import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import {
+  CSS3DRenderer,
+  CSS3DObject,
+} from "three/examples/jsm/renderers/CSS3DRenderer.js";
 
 // Setup
 
@@ -24,7 +27,6 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.render(scene, camera);
 const canvas = renderer.domElement;
-
 
 // Background
 
@@ -65,6 +67,33 @@ function addStar() {
 
 Array(200).fill().forEach(addStar);
 
+//asdasd
+const options = {
+  rootMargin: "0px",
+  threshold: 0.01,
+};
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach((entry) => {
+    if(entry.intersectionRatio > 0){
+      writeText(entry.target)
+    };
+  });
+}, options);
+const listSections = document.getElementsByTagName("section");
+for (let i = 0; i < listSections.length; i++) {
+  listSections[i].appendChild(document.createElement("div"))
+  observer.observe(listSections[i]);
+}
+
+//Write
+function writeText(e){
+  e.getElementsByTagName("div")[0].innerHTML+=e.innerHTML[0]
+  let stringText = e.innerHTML
+  stringText = stringText.slice(1)
+  e.innerHTML=stringText
+  console.log(e.getElementsByTagName("div")[0])
+  setTimeout(()=>{writeText(e);}, 500);
+}
 
 //Rezize
 
@@ -80,8 +109,9 @@ document.body.onresize = rezize;
 
 function animate() {
   requestAnimationFrame(animate);
-
   renderer.render(scene, camera);
+
+
 }
 
 animate();

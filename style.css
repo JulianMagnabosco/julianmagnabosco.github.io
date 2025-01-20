@@ -18,6 +18,9 @@ canvas {
 body{
   margin: 0;
   color: white;
+}
+
+.container{
   padding: 1.5rem;
 }
 
