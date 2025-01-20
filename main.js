@@ -28,8 +28,8 @@ const canvas = renderer.domElement;
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load("space.jpg");
-scene.background = spaceTexture;
+// const spaceTexture = new THREE.TextureLoader().load("space.jpg");
+// scene.background = spaceTexture;
 
 // Lights
 
@@ -72,7 +72,6 @@ function rezize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
-  console.log("a")
 }
 
 document.body.onresize = rezize;
