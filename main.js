@@ -74,25 +74,46 @@ const options = {
 };
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
-    if(entry.intersectionRatio > 0){
-      writeText(entry.target)
-    };
+    if (entry.intersectionRatio > 0) {
+      writeText(entry.target,"&&&");
+    }
   });
 }, options);
 const listSections = document.getElementsByTagName("section");
 for (let i = 0; i < listSections.length; i++) {
-  listSections[i].appendChild(document.createElement("div"))
-  observer.observe(listSections[i]);
+  for (let j = 0; j < listSections[i].children.length; j++) {
+    const newDiv = document.createElement("div")
+    newDiv.setAttribute("class","newtext")
+  
+    const oldDiv = document.createElement("div")
+    oldDiv.setAttribute("class","oldtext")
+    oldDiv.innerHTML=listSections[i].children[j].innerHTML
+  
+    listSections[i].children[j].innerHTML=""
+    listSections[i].children[j].appendChild(oldDiv);
+    listSections[i].children[j].appendChild(newDiv);
+    observer.observe(listSections[i].children[j]);
+  }
 }
 
 //Write
-function writeText(e){
-  e.getElementsByTagName("div")[0].innerHTML+=e.innerHTML[0]
-  let stringText = e.innerHTML
-  stringText = stringText.slice(1)
-  e.innerHTML=stringText
-  console.log(e.getElementsByTagName("div")[0])
-  setTimeout(()=>{writeText(e);}, 500);
+function writeText(e,textReplace) {
+  let oldTextString=String(textReplace)
+  if(oldTextString.includes("&&&")){
+    console.log(oldTextString);
+    oldTextString = e.getElementsByClassName("oldtext")[0].innerHTML;
+    console.log(oldTextString);
+  }
+  e.getElementsByClassName("newtext")[0].innerHTML += oldTextString.charAt(0);
+  // e.getElementsByClassName("newtext")[0].innerText = e.getElementsByClassName("newtext")[0].innerText.replace("&",">");
+  
+  oldTextString = oldTextString.slice(1);
+  e.getElementsByClassName("oldtext")[0].innerHTML = oldTextString
+  // if(oldTextString.includes("unbr")) console.log(oldTextString);
+  if(oldTextString=="") return;
+  setTimeout(() => {
+    writeText(e);
+  }, 100);
 }
 
 //Rezize
@@ -110,8 +131,6 @@ document.body.onresize = rezize;
 function animate() {
   requestAnimationFrame(animate);
   renderer.render(scene, camera);
-
-
 }
 
 animate();

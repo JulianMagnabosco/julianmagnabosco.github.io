@@ -24,3 +24,10 @@ body{
   padding: 1.5rem;
 }
 
+.newtext{
+  color: yellowgreen;
+}
+
+.oldtext{
+  /* visibility:hidden; */
+}
