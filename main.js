@@ -67,7 +67,8 @@ function addStar() {
 
 Array(200).fill().forEach(addStar);
 
-//asdasd
+//Typing
+let listStrings = [];
 const options = {
   rootMargin: "0px",
   threshold: 0.01,
@@ -75,45 +76,52 @@ const options = {
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
     if (entry.intersectionRatio > 0) {
-      writeText(entry.target,"&&&");
+      writeText(entry.target);
     }
   });
 }, options);
+
 const listSections = document.getElementsByTagName("section");
+let index = 0;
 for (let i = 0; i < listSections.length; i++) {
   for (let j = 0; j < listSections[i].children.length; j++) {
-    const newDiv = document.createElement("div")
-    newDiv.setAttribute("class","newtext")
-  
-    const oldDiv = document.createElement("div")
-    oldDiv.setAttribute("class","oldtext")
-    oldDiv.innerHTML=listSections[i].children[j].innerHTML
-  
-    listSections[i].children[j].innerHTML=""
-    listSections[i].children[j].appendChild(oldDiv);
-    listSections[i].children[j].appendChild(newDiv);
+    listStrings.push(listSections[i].children[j].innerHTML);
+
+    listSections[i].children[j].innerHTML = "";
+    listSections[i].children[j].setAttribute("data-id", index);
     observer.observe(listSections[i].children[j]);
+    index++;
   }
 }
 
 //Write
-function writeText(e,textReplace) {
-  let oldTextString=String(textReplace)
-  if(oldTextString.includes("&&&")){
-    console.log(oldTextString);
-    oldTextString = e.getElementsByClassName("oldtext")[0].innerHTML;
-    console.log(oldTextString);
-  }
-  e.getElementsByClassName("newtext")[0].innerHTML += oldTextString.charAt(0);
-  // e.getElementsByClassName("newtext")[0].innerText = e.getElementsByClassName("newtext")[0].innerText.replace("&",">");
+const regexString = /&lt;([^&gt;]*)&gt;/g;
+function writeText(e) {
+  let oldTextString = listStrings[e.getAttribute("data-id")];
   
-  oldTextString = oldTextString.slice(1);
-  e.getElementsByClassName("oldtext")[0].innerHTML = oldTextString
+  if (oldTextString == "") {
+    console.log(
+      e.getAttribute("data-id")+ " " + regexString.test(e.innerHTML)
+    );
+    // oldTextString.replace('<br>','&lt;br&gt;')
+    e.innerHTML = e.innerHTML.replace(regexString, "<$1>");
+    return;
+  }
+  // if(oldTextString.charAt(0)==">") console.log(">")
+  e.innerHTML += oldTextString[0];
+
+  listStrings[e.getAttribute("data-id")] = oldTextString.slice(1);
+
+  // if(e.innerHTML.includes("&gt;")){
+
+  // e.innerHTML = e.innerHTML.replace(regexString,"<$1>")
+  // e.innerHTML = e.innerHTML.replace('&lt;','<')
+  // }
   // if(oldTextString.includes("unbr")) console.log(oldTextString);
-  if(oldTextString=="") return;
+  
   setTimeout(() => {
     writeText(e);
-  }, 100);
+  }, 5);
 }
 
 //Rezize
