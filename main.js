@@ -95,7 +95,7 @@ for (let i = 0; i < listSections.length; i++) {
 }
 
 //Write
-const regexString = /&lt;([^&gt;]*)&gt;/g;
+const regexString = /&lt;([^&]*)&gt;([^&]*)&lt;([^&]*)&gt;/g;
 function writeText(e) {
   let oldTextString = listStrings[e.getAttribute("data-id")];
   
@@ -104,7 +104,7 @@ function writeText(e) {
       e.getAttribute("data-id")+ " " + regexString.test(e.innerHTML)
     );
     // oldTextString.replace('<br>','&lt;br&gt;')
-    e.innerHTML = e.innerHTML.replace(regexString, "<$1>");
+    e.innerHTML = e.innerHTML.replace(regexString, "<$1>$2<$3>");
     return;
   }
   // if(oldTextString.charAt(0)==">") console.log(">")
@@ -118,6 +118,7 @@ function writeText(e) {
   // e.innerHTML = e.innerHTML.replace('&lt;','<')
   // }
   // if(oldTextString.includes("unbr")) console.log(oldTextString);
+    e.innerHTML = e.innerHTML.replace(regexString, "<$1>$2<$3>");
   
   setTimeout(() => {
     writeText(e);
