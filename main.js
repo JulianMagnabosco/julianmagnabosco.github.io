@@ -69,6 +69,7 @@ Array(200).fill().forEach(addStar);
 
 //Typing
 let listStrings = [];
+const timing = 2
 const options = {
   rootMargin: "0px",
   threshold: 0.01,
@@ -85,7 +86,11 @@ const listSections = document.getElementsByTagName("section");
 let index = 0;
 for (let i = 0; i < listSections.length; i++) {
   for (let j = 0; j < listSections[i].children.length; j++) {
-    listStrings.push(listSections[i].children[j].innerHTML);
+    listStrings.push({
+      text:listSections[i].children[j].innerHTML,
+      timing:timing/listSections[i].children[j].innerHTML.length,
+      index:0
+    });
 
     listSections[i].children[j].innerHTML = "";
     listSections[i].children[j].setAttribute("data-id", index);
@@ -96,27 +101,23 @@ for (let i = 0; i < listSections.length; i++) {
 
 //Write
 const regexString = /&lt;([^&]*)&gt;([^&]*)&lt;([^&]*)&gt;/g;
-function writeText(e, waitTime=0) {
-  let oldTextString = listStrings[e.getAttribute("data-id")];
-  
-  waitTime=waitTime==0?(10/oldTextString.length):waitTime
+function writeText(e) {
+  let oldTextString = listStrings[e.getAttribute("data-id")].text;
 
-  if (oldTextString == "") {
-    console.log(
-      e.getAttribute("data-id")+ " " + waitTime
-    );
+  if (oldTextString.length <= listStrings[e.getAttribute("data-id")].index) {
     e.innerHTML = e.innerHTML.replace(regexString, "<$1>$2<$3>");
+    console.log(e.getAttribute("data-id")+ " - " +oldTextString.length + " - " +listStrings[e.getAttribute("data-id")].timing);
     return;
   }
 
-  e.innerHTML += oldTextString[0];
-  listStrings[e.getAttribute("data-id")] = oldTextString.slice(1);
+  e.innerHTML += oldTextString[listStrings[e.getAttribute("data-id")].index];
+  listStrings[e.getAttribute("data-id")].index++;
 
   e.innerHTML = e.innerHTML.replace(regexString, "<$1>$2<$3>");
 
   setTimeout(() => {
-    writeText(e,waitTime);
-  }, 5);
+    writeText(e);
+  }, listStrings[e.getAttribute("data-id")].timing*1000);
 }
 
 //Rezize
