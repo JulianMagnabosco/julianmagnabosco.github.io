@@ -101,19 +101,37 @@ for (let i = 0; i < listSections.length; i++) {
 
 //Write
 const regexString = /&lt;([^&]*)&gt;([^&]*)&lt;([^&]*)&gt;/g;
+const replaceString = "<$1>$2<$3>";
+// const charEnds = ["@#$€/(!?)¿","!?¿@#/()$€","¿)€#/!?@($"];
+const charEnds = ["8UnIMToHNt",
+"OSLQ8q1zet",
+"HQApSh98yi",
+"KhWufqY8JH",
+"OjZGrrzpwT",
+"rIxpGRGaLt",
+"yJpbJjvWM4",
+"yJWwi2Ov6w",
+"9gF4wMgiIN",
+"JN5HURC8Cl"
+];
+const charEndSize = 10;
 function writeText(e) {
   let oldTextString = listStrings[e.getAttribute("data-id")].text;
 
-  if (oldTextString.length <= listStrings[e.getAttribute("data-id")].index) {
-    e.innerHTML = e.innerHTML.replace(regexString, "<$1>$2<$3>");
+  if (oldTextString.length+charEndSize <= listStrings[e.getAttribute("data-id")].index) {
+    e.innerHTML = e.innerHTML.replace(regexString, replaceString);
     console.log(e.getAttribute("data-id")+ " - " +oldTextString.length + " - " +listStrings[e.getAttribute("data-id")].timing);
     return;
   }
+  
 
-  e.innerHTML += oldTextString[listStrings[e.getAttribute("data-id")].index];
+  e.innerHTML = oldTextString.substring(0,listStrings[e.getAttribute("data-id")].index);
+  if (oldTextString.length > listStrings[e.getAttribute("data-id")].index) {
+    e.innerHTML += "<span class='green-text'>"+ charEnds[Math.floor(Math.random() * charEnds.length)] +"</span>";
+  }
   listStrings[e.getAttribute("data-id")].index++;
 
-  e.innerHTML = e.innerHTML.replace(regexString, "<$1>$2<$3>");
+  e.innerHTML = e.innerHTML.replace(regexString, replaceString);
 
   setTimeout(() => {
     writeText(e);
