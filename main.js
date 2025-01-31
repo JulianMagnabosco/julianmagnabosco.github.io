@@ -104,14 +104,14 @@ const regexString = /&lt;([^&]*)&gt;([^&]*)&lt;([^&]*)&gt;/g;
 const replaceString = "<$1>$2<$3>";
 // const charEnds = ["@#$€/(!?)¿","!?¿@#/()$€","¿)€#/!?@($"];
 const charEnds = ["8UnIMToHNt",
-"OSLQ8q1zet",
-"HQApSh98yi",
+"O         ",
+"HQAp      ",
 "KhWufqY8JH",
-"OjZGrrzpwT",
+"OjZG      ",
 "rIxpGRGaLt",
-"yJpbJjvWM4",
+"yJpbJjv   ",
 "yJWwi2Ov6w",
-"9gF4wMgiIN",
+"9gF4wMgiI ",
 "JN5HURC8Cl"
 ];
 const charEndSize = 10;
@@ -127,7 +127,7 @@ function writeText(e) {
 
   e.innerHTML = oldTextString.substring(0,listStrings[e.getAttribute("data-id")].index);
   if (oldTextString.length > listStrings[e.getAttribute("data-id")].index) {
-    e.innerHTML += "<span class='green-text'>"+ charEnds[Math.floor(Math.random() * charEnds.length)] +"</span>";
+    e.innerHTML += "<span class='green-text'>"+ charEnds[Math.floor(Math.random() * charEnds.length)].substring(0,4) +"</span>";
   }
   listStrings[e.getAttribute("data-id")].index++;
 
