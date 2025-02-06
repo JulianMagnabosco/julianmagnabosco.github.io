@@ -127,7 +127,7 @@ function writeText(e) {
 
   e.innerHTML = oldTextString.substring(0,listStrings[e.getAttribute("data-id")].index);
   if (oldTextString.length > listStrings[e.getAttribute("data-id")].index) {
-    e.innerHTML += "<span class='green-text'>"+ charEnds[Math.floor(Math.random() * charEnds.length)].substring(0,4) +"</span>";
+    e.innerHTML += "<span>"+ charEnds[Math.floor(Math.random() * charEnds.length)].substring(0,4) +"</span>";
   }
   listStrings[e.getAttribute("data-id")].index++;
 
