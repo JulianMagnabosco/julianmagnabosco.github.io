@@ -7,8 +7,9 @@ canvas {
 }
 
 :root {
-  --dark-bg: rgba(15, 15, 15, 0.95);
-  --spacing: 350px;
+  --blue-mine: rgb(36, 78, 217);
+  --dark-blue-mine: rgba(16, 40, 118, 0.266);
+  --yell-mine: rgb(222, 232, 29);
 
   font-family: consolas;
   font-weight: 400;
@@ -25,13 +26,51 @@ h1,h2,h3,h4,h5,h6{
   margin: 0;
 }
 
-/* Principal */
+section{
+  background: linear-gradient(to top,var(--blue-mine),var(--dark-blue-mine));
+  border-radius: 15px;
+}
+
+nav{
+  width: 100%;
+  position: fixed;
+  top: 0; 
+  left: 0;
+  background: linear-gradient(to bottom,var(--blue-mine),var(--dark-blue-mine));
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #00000048; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #254c82; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2c62ad; 
+}
+
+/*------------------- Principal----------------------- */
 .container{
   padding: 1.5rem;
 }
 
 .m-1{
   margin-bottom: 1rem; 
+}
+.m-5{
+  margin-bottom: 5rem; 
+}
+.p-1{
+  padding: 1rem;
 }
 .px-1{
   padding-left: 1rem;
@@ -61,21 +100,10 @@ h1,h2,h3,h4,h5,h6{
   width: 100%;
 }
 
-.row{
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-}
 
-@media (min-width: 1024px) {
+@media (min-width: 578px) {
   #photo{
     width: 40%;
-  }
-
-  .container{
-    width: 700px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .row{
@@ -83,4 +111,14 @@ h1,h2,h3,h4,h5,h6{
     align-items: center; 
     justify-content: center;
   }
+}
+
+@media (min-width: 1024px) {
+
+  .container{
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 }
