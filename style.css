@@ -7,8 +7,9 @@ canvas {
 }
 
 :root {
+  --lite-blue-mine: rgb(73, 137, 233);
   --blue-mine: rgb(36, 78, 217);
-  --dark-blue-mine: rgba(16, 40, 118, 0.266);
+  --dark-blue-mine: rgb(16, 40, 118);
   --yell-mine: rgb(222, 232, 29);
 
   font-family: consolas;
@@ -28,7 +29,18 @@ h1,h2,h3,h4,h5,h6{
 
 section{
   background: linear-gradient(to top,var(--blue-mine),var(--dark-blue-mine));
-  border-radius: 15px;
+  border: 5px solid var(--lite-blue-mine);
+  position: relative;
+}
+section::before{
+  content: "| ? | - | X |";
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  text-align: right;
+  background-color: var(--lite-blue-mine);
+  outline: 5px solid var(--lite-blue-mine);
 }
 
 nav{
@@ -36,8 +48,12 @@ nav{
   position: fixed;
   top: 0; 
   left: 0;
-  background: linear-gradient(to bottom,var(--blue-mine),var(--dark-blue-mine));
+  z-index: 10;
 }
+nav div{
+  background: linear-gradient(to bottom,var(--lite-blue-mine),var(--dark-blue-mine));
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -97,9 +113,14 @@ nav{
 }
 
 #photo{
-  width: 100%;
+  width: 80%;
 }
-
+.row{
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  flex-direction: column;
+}
 
 @media (min-width: 578px) {
   #photo{
@@ -107,13 +128,11 @@ nav{
   }
 
   .row{
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
+    flex-direction: row;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 824px) {
 
   .container{
     width: 700px;
@@ -121,4 +140,26 @@ nav{
     margin-right: auto;
   }
 
+  nav div{
+    margin: auto;
+    width: 700px;
+    
+    transform: perspective(10px) rotateX(-0.5deg);
+  }
+}
+
+@media (min-width: 1424px) {
+
+  .container{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  nav div{
+    margin: auto;
+    width: 1000px;
+    
+  transform: perspective(10px) rotateX(-1deg);
+  }
 }
