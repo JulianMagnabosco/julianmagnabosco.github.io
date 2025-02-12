@@ -49,6 +49,18 @@ scene.add(pointLight, ambientLight);
 
 // const controls = new OrbitControls(camera, renderer.domElement);
 
+//Plane
+
+const geometryPlane = new THREE.PlaneGeometry(24, 24, 20,20);
+const materialPlane = new THREE.LineBasicMaterial( { color: 0x70a4fa, linewidth: 2 } );
+
+const wireframe = new THREE.WireframeGeometry( geometryPlane );
+const line = new THREE.LineSegments( wireframe,materialPlane );
+line.material.depthTest = false;
+line.rotateX(90);
+line.position.set(0, 0, 45);
+scene.add(line);
+
 //Stars
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
