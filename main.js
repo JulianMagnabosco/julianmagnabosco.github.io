@@ -35,25 +35,16 @@ const canvas = renderer.domElement;
 
 // Lights
 
-const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(5, 5, 5);
+// const pointLight = new THREE.PointLight(0xffffff);
+// pointLight.position.set(5, 5, 5);
 
-const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(pointLight, ambientLight);
-
-// Helpers
-
-// const lightHelper = new THREE.PointLightHelper(pointLight)
-// const gridHelper = new THREE.GridHelper(200, 50);
-// scene.add(lightHelper, gridHelper)
-
-// const controls = new OrbitControls(camera, renderer.domElement);
+// const ambientLight = new THREE.AmbientLight(0xffffff);
+// scene.add(pointLight, ambientLight);
 
 //Plane
 
 const geometryPlane = new THREE.PlaneGeometry(24, 24, 20,20);
-const materialPlane = new THREE.LineBasicMaterial( { color: 0x70a4fa, linewidth: 2 } );
-
+const materialPlane = new THREE.LineBasicMaterial( { color: 0x70a4fa, linewidth: 1 } );
 const wireframe = new THREE.WireframeGeometry( geometryPlane );
 const line = new THREE.LineSegments( wireframe,materialPlane );
 line.material.depthTest = false;
