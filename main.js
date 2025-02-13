@@ -6,7 +6,6 @@ import {
   CSS3DRenderer,
   CSS3DObject,
 } from "three/examples/jsm/renderers/CSS3DRenderer.js";
-
 // Setup
 
 const scene = new THREE.Scene();
@@ -42,8 +41,21 @@ const canvas = renderer.domElement;
 // scene.add(pointLight, ambientLight);
 
 //Plane
+const segments=20
+const heigth=4
+const geometryPlane = new THREE.PlaneGeometry(24, 24, segments,segments);
+const vertices = geometryPlane.attributes.position.array;
+perlin.seed();
+// console.log(perlin.get(0.1,1))
+  console.log(vertices.length/(segments+1))
+for ( let i = 2; i < vertices.length; i += 3 ) {
+  const x1 = (i/vertices.length*segments+1)%1
+  const y1 = i/vertices.length
+  console.log(x1 + "-" + y1)
+  vertices[ i ] = perlin.get(x1*heigth,y1*heigth)
 
-const geometryPlane = new THREE.PlaneGeometry(24, 24, 20,20);
+}
+
 const materialPlane = new THREE.LineBasicMaterial( { color: 0x70a4fa, linewidth: 1 } );
 const wireframe = new THREE.WireframeGeometry( geometryPlane );
 const line = new THREE.LineSegments( wireframe,materialPlane );
@@ -123,7 +135,7 @@ function writeText(e) {
 
   if (oldTextString.length+charEndSize <= listStrings[e.getAttribute("data-id")].index) {
     e.innerHTML = e.innerHTML.replace(regexString, replaceString);
-    console.log(e.getAttribute("data-id")+ " - " +oldTextString.length + " - " +listStrings[e.getAttribute("data-id")].timing);
+    // console.log(e.getAttribute("data-id")+ " - " +oldTextString.length + " - " +listStrings[e.getAttribute("data-id")].timing);
     return;
   }
   
