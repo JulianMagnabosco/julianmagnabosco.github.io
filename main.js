@@ -1,11 +1,11 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { TextGeometry } from "three/src/geometries/TextGeometry.js";
-import { FontLoader } from "three/src/loaders/FontLoader.js";
-import {
-  CSS3DRenderer,
-  CSS3DObject,
-} from "three/examples/jsm/renderers/CSS3DRenderer.js";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+// import { TextGeometry } from "three/src/geometries/TextGeometry.js";
+// import { FontLoader } from "three/src/loaders/FontLoader.js";
+// import {
+//   CSS3DRenderer,
+//   CSS3DObject,
+// } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 // Setup
 
 const scene = new THREE.Scene();
@@ -41,28 +41,33 @@ const canvas = renderer.domElement;
 // scene.add(pointLight, ambientLight);
 
 //Plane
-const segments=20
-const heigth=4
-const geometryPlane = new THREE.PlaneGeometry(24, 24, segments,segments);
-const vertices = geometryPlane.attributes.position.array;
-perlin.seed();
-// console.log(perlin.get(0.1,1))
-  console.log(vertices.length/(segments+1))
-for ( let i = 2; i < vertices.length; i += 3 ) {
-  const x1 = (i/vertices.length*segments+1)%1
-  const y1 = i/vertices.length
-  console.log(x1 + "-" + y1)
-  vertices[ i ] = perlin.get(x1*heigth,y1*heigth)
-
-}
-
-const materialPlane = new THREE.LineBasicMaterial( { color: 0x70a4fa, linewidth: 1 } );
-const wireframe = new THREE.WireframeGeometry( geometryPlane );
-const line = new THREE.LineSegments( wireframe,materialPlane );
+const segments = 20;
+const heigth = 4;
+const geometryPlane = new THREE.PlaneGeometry(24, 24, segments, segments);
+let dist=0
+const moveDist=0.001
+const materialPlane = new THREE.LineBasicMaterial({
+  color: 0x70a4fa,
+  linewidth: 1,
+});
+const wireframe = new THREE.WireframeGeometry(geometryPlane);
+const line = new THREE.LineSegments(wireframe, materialPlane);
 line.material.depthTest = false;
 line.rotateX(90);
 line.position.set(0, 0, 45);
 scene.add(line);
+
+function renderPlane() {
+  const vertices = wireframe.attributes.position.array;
+  for (let i = 2; i < vertices.length; i += 3) {
+    const x1 = ((i / vertices.length) * (segments + 1) + dist) % 1;
+    const y1 = i / vertices.length;
+    vertices[i] = perlin.get(x1 * heigth, y1 * heigth);
+  }
+  dist+=moveDist
+  wireframe.attributes.position.needsUpdate = true;
+  console.log(dist)
+}
 
 //Stars
 function addStar() {
@@ -84,7 +89,7 @@ Array(200).fill().forEach(addStar);
 
 //Typing
 let listStrings = [];
-const timing = 2
+const timing = 2;
 const options = {
   rootMargin: "0px",
   threshold: 0.01,
@@ -102,9 +107,9 @@ let index = 0;
 for (let i = 0; i < listSections.length; i++) {
   for (let j = 0; j < listSections[i].children.length; j++) {
     listStrings.push({
-      text:listSections[i].children[j].innerHTML,
-      timing:timing/listSections[i].children[j].innerHTML.length,
-      index:0
+      text: listSections[i].children[j].innerHTML,
+      timing: timing / listSections[i].children[j].innerHTML.length,
+      index: 0,
     });
 
     listSections[i].children[j].innerHTML = "";
@@ -118,31 +123,40 @@ for (let i = 0; i < listSections.length; i++) {
 const regexString = /&lt;([^&]*)&gt;([^&]*)&lt;([^&]*)&gt;/g;
 const replaceString = "<$1>$2<$3>";
 // const charEnds = ["@#$€/(!?)¿","!?¿@#/()$€","¿)€#/!?@($"];
-const charEnds = ["8UnIMToHNt",
-"O         ",
-"HQAp      ",
-"KhWufqY8JH",
-"OjZG      ",
-"rIxpGRGaLt",
-"yJpbJjv   ",
-"yJWwi2Ov6w",
-"9gF4wMgiI ",
-"JN5HURC8Cl"
+const charEnds = [
+  "8UnIMToHNt",
+  "O         ",
+  "HQAp      ",
+  "KhWufqY8JH",
+  "OjZG      ",
+  "rIxpGRGaLt",
+  "yJpbJjv   ",
+  "yJWwi2Ov6w",
+  "9gF4wMgiI ",
+  "JN5HURC8Cl",
 ];
 const charEndSize = 10;
 function writeText(e) {
   let oldTextString = listStrings[e.getAttribute("data-id")].text;
 
-  if (oldTextString.length+charEndSize <= listStrings[e.getAttribute("data-id")].index) {
+  if (
+    oldTextString.length + charEndSize <=
+    listStrings[e.getAttribute("data-id")].index
+  ) {
     e.innerHTML = e.innerHTML.replace(regexString, replaceString);
     // console.log(e.getAttribute("data-id")+ " - " +oldTextString.length + " - " +listStrings[e.getAttribute("data-id")].timing);
     return;
   }
-  
 
-  e.innerHTML = oldTextString.substring(0,listStrings[e.getAttribute("data-id")].index);
+  e.innerHTML = oldTextString.substring(
+    0,
+    listStrings[e.getAttribute("data-id")].index
+  );
   if (oldTextString.length > listStrings[e.getAttribute("data-id")].index) {
-    e.innerHTML += "<span>"+ charEnds[Math.floor(Math.random() * charEnds.length)].substring(0,4) +"</span>";
+    e.innerHTML +=
+      "<span>" +
+      charEnds[Math.floor(Math.random() * charEnds.length)].substring(0, 4) +
+      "</span>";
   }
   listStrings[e.getAttribute("data-id")].index++;
 
@@ -150,7 +164,7 @@ function writeText(e) {
 
   setTimeout(() => {
     writeText(e);
-  }, listStrings[e.getAttribute("data-id")].timing*1000);
+  }, listStrings[e.getAttribute("data-id")].timing * 1000);
 }
 
 //Rezize
@@ -167,7 +181,7 @@ document.body.onresize = rezize;
 
 function animate() {
   requestAnimationFrame(animate);
+  renderPlane()
   renderer.render(scene, camera);
 }
-
 animate();
