@@ -7,7 +7,6 @@ import * as THREE from "three";
 //   CSS3DObject,
 // } from "three/examples/jsm/renderers/CSS3DRenderer.js";
 // Setup
-
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -64,9 +63,10 @@ function renderPlane() {
     const y1 = i / vertices.length;
     vertices[i] = perlin.get(x1 * heigth, y1 * heigth);
   }
-  dist+=moveDist
+  dist=(dist>=1)?0:dist+moveDist;
+  
   wireframe.attributes.position.needsUpdate = true;
-  console.log(dist)
+  // console.log(dist)
 }
 
 //Stars
