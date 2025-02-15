@@ -37,7 +37,7 @@ section {
   border: 5px solid var(--lite-blue-mine);
   position: relative;
   /* overflow: hidden; */
-  animation: 0.4s ease-out section-in;
+  animation: 1s ease-out section-in;
 }
 section::before {
   content: "| ? | - | X |";
@@ -48,22 +48,26 @@ section::before {
   text-align: right;
   background-color: var(--lite-blue-mine);
   outline: 5px solid var(--lite-blue-mine);
+  animation: 1s ease-out section-in;
 }
 @keyframes section-in {
   0% {
-    transform: scale(0);
+    outline: 5px solid transparent;
   }
-  90% {
-    transform: scale(1.2);
+  50% {
+    outline: 5px solid var(--lite-blue-mine);
+    background-color: transparent;
   }
   100% {
-    transform: scale(1);
+    background-color: var(--lite-blue-mine);
   }
 }
 
 nav {
   width: 100%;
-  position: sticky;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 10;
 }
 nav div {
