@@ -43,8 +43,8 @@ const canvas = renderer.domElement;
 const segments = 20;
 const heigth = 4;
 const geometryPlane = new THREE.PlaneGeometry(24, 24, segments, segments);
-let dist=0
-const moveDist=0.001
+let dist = 0;
+const moveDist = 0.001;
 const materialPlane = new THREE.LineBasicMaterial({
   color: 0x70a4fa,
   linewidth: 1,
@@ -63,8 +63,8 @@ function renderPlane() {
     const y1 = i / vertices.length;
     vertices[i] = perlin.get(x1 * heigth, y1 * heigth);
   }
-  dist=(dist>=1)?0:dist+moveDist;
-  
+  dist = dist >= 1 ? 0 : dist + moveDist;
+
   wireframe.attributes.position.needsUpdate = true;
   // console.log(dist)
 }
@@ -125,19 +125,21 @@ const replaceString = "<$1>$2<$3>";
 // const charEnds = ["@#$€/(!?)¿","!?¿@#/()$€","¿)€#/!?@($"];
 const charEnds = [
   "8UnIMToHNt",
-  "O         ",
-  "HQAp      ",
+  "O95jgla55d",
+  "HQApfksue4",
   "KhWufqY8JH",
-  "OjZG      ",
+  "OjZGkrdfbs",
   "rIxpGRGaLt",
-  "yJpbJjv   ",
+  "yJpbJjvhgh",
   "yJWwi2Ov6w",
-  "9gF4wMgiI ",
+  "9gF4wMgiId",
   "JN5HURC8Cl",
 ];
 const charEndSize = 10;
 function writeText(e) {
   let oldTextString = listStrings[e.getAttribute("data-id")].text;
+
+  const maxLen = listStrings[e.getAttribute("data-id")].text.length-listStrings[e.getAttribute("data-id")].index
 
   if (
     oldTextString.length + charEndSize <=
@@ -155,7 +157,7 @@ function writeText(e) {
   if (oldTextString.length > listStrings[e.getAttribute("data-id")].index) {
     e.innerHTML +=
       "<span>" +
-      charEnds[Math.floor(Math.random() * charEnds.length)].substring(0, 4) +
+      charEnds[Math.floor(Math.random() * charEnds.length)].substring(0, maxLen) +
       "</span>";
   }
   listStrings[e.getAttribute("data-id")].index++;
@@ -181,7 +183,7 @@ document.body.onresize = rezize;
 
 function animate() {
   requestAnimationFrame(animate);
-  renderPlane()
+  renderPlane();
   renderer.render(scene, camera);
 }
 animate();
