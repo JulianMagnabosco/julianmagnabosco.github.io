@@ -1,16 +1,9 @@
 
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-
 :root {
   --lite-blue-mine: rgb(73, 137, 233);
   --blue-mine: rgb(36, 78, 217);
   --dark-blue-mine: rgb(16, 40, 118);
+  --dark-mine: rgb(6, 15, 43);
   --yell-mine: rgb(222, 232, 29);
 
   font-family: consolas;
@@ -22,6 +15,13 @@ body {
   color: white;
   background-color: black;
 } 
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  animation: 1s ease-out backwards fade-in;
+}
 
 h1,
 h2,
@@ -33,22 +33,26 @@ h6 {
 }
 
 section {
-  background: linear-gradient(to top, var(--blue-mine), var(--dark-blue-mine));
+  background: linear-gradient(to top, var(--dark-blue-mine), var(--dark-mine));
   border: 5px solid var(--lite-blue-mine);
   position: relative;
   /* overflow: hidden; */
-  animation: 1s ease-out section-in;
+  /* animation: 1s ease-out 2s backwards section-in; */
 }
-section::before {
-  content: "| ? | - | X |";
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  width: 100%;
-  text-align: right;
+section h2 {
+  padding-left: 1rem;
   background-color: var(--lite-blue-mine);
   outline: 5px solid var(--lite-blue-mine);
-  animation: 1s ease-out section-in;
+  /* animation: 1s ease-out 2s backwards section-in; */
+}
+section h2::before {
+  content: " ? | - | X ";
+  position: absolute;
+  right: 0;
+  text-align: right;
+  padding: 0 1rem;
+  background-color: var(--lite-blue-mine);
+  /* animation: 1s ease-out 2s backwards section-in; */
 }
 @keyframes section-in {
   0% {
@@ -78,6 +82,11 @@ nav div {
   );
 }
 
+.container {
+  padding: 1.5rem;
+  animation: 0.3s ease-out 1s backwards fade-in;
+}
+
 /* Scroll */
 ::-webkit-scrollbar {
   width: 10px;
@@ -92,9 +101,18 @@ nav div {
   background: #2c62ad;
 }
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 /*------------------- Principal----------------------- */
-.container {
-  padding: 1.5rem;
+
+#photo {
+  width: 80%;
 }
 
 .m-1 {
@@ -130,14 +148,12 @@ nav div {
   font-size: 16px;
 }
 
-#photo {
-  width: 80%;
-}
 .row {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  flex-wrap: wrap;
 }
 
 @media (min-width: 578px) {
