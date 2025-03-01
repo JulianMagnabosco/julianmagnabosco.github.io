@@ -28,8 +28,8 @@ const canvas = renderer.domElement;
 
 // Background
 
-// const spaceTexture = new THREE.TextureLoader().load("space.jpg");
-// scene.background = spaceTexture;
+const spaceTexture = new THREE.TextureLoader().load("space.jpg");
+scene.background = spaceTexture;
 
 // Lights
 
@@ -41,31 +41,36 @@ const canvas = renderer.domElement;
 
 //Plane
 const segments = 20;
-const heigth = 4;
 const geometryPlane = new THREE.PlaneGeometry(24, 24, segments, segments);
-let dist = 0;
+const texturePlane = new THREE.TextureLoader().load('tileset.png' ); 
+texturePlane.wrapS  = THREE.RepeatWrapping;
+texturePlane.wrapT  = THREE.RepeatWrapping;
+texturePlane.repeat.set( segments, segments );
+const materialPlane = new THREE.MeshBasicMaterial( { map:texturePlane } );
+geometryPlane.material = materialPlane
+const plane = new THREE.Mesh( geometryPlane, materialPlane );
+
+// const wireframe = new THREE.WireframeGeometry(geometryPlane);
+// const line = new THREE.LineSegments(wireframe, materialPlane);
+
+plane.rotateX(-45);
+plane.position.set(0, 0, 45);
+scene.add(plane);
+
+const heigth = 4;
 const moveDist = 0.001;
-const materialPlane = new THREE.LineBasicMaterial({
-  color: 0x70a4fa,
-  linewidth: 1,
-});
-const wireframe = new THREE.WireframeGeometry(geometryPlane);
-const line = new THREE.LineSegments(wireframe, materialPlane);
-line.material.depthTest = false;
-line.rotateX(90);
-line.position.set(0, 0, 45);
-scene.add(line);
+let dist = 0;
 
 function renderPlane() {
-  const vertices = wireframe.attributes.position.array;
+  const vertices = geometryPlane.attributes.position.array;
   for (let i = 2; i < vertices.length; i += 3) {
-    const x1 = ((i / vertices.length) * (segments + 1) + dist) % 1;
+    const x1 = ((i / vertices.length) * (segments + 1) + dist);
     const y1 = i / vertices.length;
     vertices[i] = perlin.get(x1 * heigth, y1 * heigth);
   }
   dist = dist >= 1 ? 0 : dist + moveDist;
 
-  wireframe.attributes.position.needsUpdate = true;
+  geometryPlane.attributes.position.needsUpdate = true;
   // console.log(dist)
 }
 
