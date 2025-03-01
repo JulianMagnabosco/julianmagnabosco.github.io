@@ -1,6 +1,6 @@
 
 :root {
-  --lite-blue-mine: rgb(73, 137, 233);
+  --lite-blue-mine: #00acff;
   --blue-mine: rgb(36, 78, 217);
   --dark-blue-mine: rgb(16, 40, 118);
   --dark-mine: rgb(6, 15, 43);
@@ -13,7 +13,8 @@
 body {
   margin: 0;
   color: white;
-  background-color: black;
+  background-image: linear-gradient(to top, var(--blue-mine), var(--dark-mine));
+  background-attachment: fixed;
 } 
 canvas {
   position: fixed;
@@ -111,7 +112,7 @@ nav div {
 }
 /*------------------- Principal----------------------- */
 
-#photo {
+#photo img{
   width: 80%;
 }
 
@@ -148,22 +149,16 @@ nav div {
   font-size: 16px;
 }
 
-.row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
 
 @media (min-width: 578px) {
-  #photo {
+  #photo{
+    display: flex;
+    justify-content: center;
+  }
+  #photo img{
     width: 40%;
   }
 
-  .row {
-    flex-direction: row;
-  }
 }
 
 @media (min-width: 824px) {
