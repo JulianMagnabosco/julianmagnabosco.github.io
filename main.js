@@ -110,25 +110,23 @@ const observer = new IntersectionObserver((entries, observer) => {
 let listStrings = [];
 const timing = 5;
 const timingScale = 2;
-const listSections = document.getElementsByTagName("section");
+const listSections = document.getElementsByClassName("typing");
 let index = 0;
 for (let i = 0; i < listSections.length; i++) {
-  for (let j = 0; j < listSections[i].children.length; j++) {
-    const sectionTiming = timing / listSections[i].children[j].innerHTML.length /timingScale
-    const size = sectionTiming<=0.1?4:1
-    if(listSections[i].children[j].id=="photo") continue
-    listStrings.push({
-      text: listSections[i].children[j].innerHTML,
-      timing: sectionTiming,
-      size: size,
-      index: 0,
-    });
+  const sectionTiming = timing / listSections[i].innerHTML.length /timingScale
+  const size = sectionTiming<=0.1?4:1
+  if(listSections[i].id=="photo") continue
+  listStrings.push({
+    text: listSections[i].innerHTML,
+    timing: sectionTiming,
+    size: size,
+    index: 0,
+  });
 
-    listSections[i].children[j].innerHTML = "";
-    listSections[i].children[j].setAttribute("data-id", index);
-    observer.observe(listSections[i].children[j]);
-    index++;
-  }
+  listSections[i].innerHTML = "";
+  listSections[i].setAttribute("data-id", index);
+  observer.observe(listSections[i]);
+  index++;
 }
 
 //Write
