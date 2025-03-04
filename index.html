@@ -1,69 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Julian Magnabosco</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <canvas id="bg"></canvas>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julian Magnabosco</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <nav>
-      <div class="p-1">
-        <span>Inicio</span>
-      </div>
-    </nav>
-    <main class="container">
-      <div
-        style="
+<body>
+  <canvas id="bg"></canvas>
+
+  <nav>
+    <div class="p-1">
+      <span>Inicio</span>
+    </div>
+  </nav>
+  <main class="container">
+    <div style="
           height: 100svh;
           display: flex;
           flex-direction: column;
           justify-content: center;
-        "
-      >
-        <section >
-          <h2 class="m-1 flex-basis">Quien soy</h2>
-          <div class="row">
-            <div id="photo">
-              <img src="foto.jpg" alt=""  />
-            </div>
-  
-            <span class="px-1 m-1 typing">
-              <span>Hola soy...</span>
-              <h1 style="font-size: xx-large">Julian Magnabosco</h1>
-              <span>Programador Full-stack y Desarrollador web</span>
-            </span>
-          </div>
-        </section>
-      </div>
+        ">
+      <section>
+        <h2 class="m-1 flex-basis">Quien soy</h2>
+        <div class="row m-1">
+          <img src="foto.jpg" alt="" id="photo" />
 
-      <section class="m-5 " style="width:100%; max-width: 500px; margin: auto; margin-bottom: 5rem;">
-        <h2 class="m-1">Mi perfil</h2>
-        <div class="m-1 px-1 typing">
-          Soy un programador entusiasta que busca desarrollarse y colaborar con
-        otros en el ámbito de la informática. Deseo poder demostrar mis
-        habilidades y llegar a trabajar en proyectos de gran valor.
+          <div class="px-1 m-1 typing">
+            <div>Hola soy...</div>
+            <h1 style="font-size: xx-large">Julian Magnabosco</h1>
+            <div>Programador Full-stack y Desarrollador web</div>
+          </div>
         </div>
       </section>
+    </div>
 
-      <section class="m-5 ">
-        <h2 class="m-1">Proyectos</h2>
-        <div class="m-1 px-1 typing">
-          <h3>“COMOloHAGO” feb. 2024 - jul. 2024</h3>
+    <section class="m-5 " style="width:100%; max-width: 500px; margin: auto; margin-bottom: 5rem;">
+      <h2 class="m-1">Mi perfil</h2>
+      <div class="m-1 px-1 row">
+        <div class="typing">
+          Soy un programador entusiasta que busca desarrollarse y colaborar con
+          otros en el ámbito de la informática. Deseo poder demostrar mis
+          habilidades y llegar a trabajar en proyectos de gran valor.
+        </div>
+      </div>
+    </section>
+
+    <section class="m-5 ">
+      <h2 class="m-1">Proyectos</h2>
+      <div class="m-1 px-1 row">
+        <img style="width: 400px;" src="comolohago.png" alt="">
+        <div class="typing px-1">
+          <h3>“COMOloHAGO” <span class="blue-text">feb. 2024 - jul. 2024</span></h3>
           <div>
             Página web para publicación, compra y venta de obras y productos
             artísticos, científicos y tecnológicos
             <div>
-              <span class="bold">Tecnologias:</span> Angular, Bootstrap, Spring
-              Boot, MercadoPago
+              <span class="bold">Tecnologias:</span>
+              <span class="blue-text ">
+                Angular, Bootstrap, Spring Boot, MercadoPago</span>
             </div>
             <div>
-              <span class="bold">API y PostgreSQL Rol: </span> Desarrollador
-              unico
+              <span class="bold">API y PostgreSQL Rol: </span>
+              <span class="blue-text ">
+                Desarrollador unico
+              </span>
             </div>
 
             <a class="button-1" href="github.com/JulianMagnabosco/PS-2024">
@@ -71,82 +75,97 @@
             </a>
           </div>
         </div>
+      </div>
 
-        <div class="m-1 px-1">
-          <h3>“MafBella” ago. 2024 - nov. 2024</h3>
+      <a class="m-1 px-1 row" href="mafbella.dyndns.org">
+        <div class="px-1">
+          <h3>“MafBella” <span class="blue-text">ago. 2024 - nov. 2024</span> </h3>
           <div class="typing">
             Página web creada para un catálogo de productos de perfumería
             <div>
-              <span class="bold">Tecnologias:</span> Angular, Tailwind, Spring
-              Boot y PostgreSQL
+              <span class="bold ">Tecnologias: </span>
+              <span class="blue-text ">
+                Angular, Tailwind, Spring
+                Boot y PostgreSQL
+              </span>
             </div>
             <div>
-              <span class="bold">API y PostgreSQL Rol: </span> Desarrollador
-              unico
+              <span class="bold ">API y PostgreSQL Rol: </span>
+              <span class="blue-text ">
+                Desarrollador unico
+              </span>
             </div>
-            <a class="button-1" href="mafbella.dyndns.org"> Ver Página </a>
           </div>
         </div>
-      </section>
+        <img style="width: 400px;" src="mafbella.png" alt="">
+      </a>
+    </section>
 
-      <section class="m-5 ">
-        <h2 style="margin-bottom: 1rem">Educación</h2>
+    <section class="m-5 ">
+      <h2 style="margin-bottom: 1rem">Educación</h2>
 
+      <div class="m-1 px-1 row">
+        <img src="testchar.png" style="width: 300px;" alt="">
         <div class="m-1 px-1 typing">
-          <h3>Técnico Universitario en Programación, 2022-2024</h3>
+          <h3>Técnico Universitario en Programación, <span class="blue-text ">2022-2024</span></h3>
           <h4>Universidad Tecnológica Nacional, Córdoba Capital</h4>
           <div class="m-1 px-1">
-            Contenidos: Programación en Spring Boot (Java), Angular
-            (Typescript), .NET Core (C#), HTML, CSS, Javascript y SQL. Gestión
-            de proyectos SCRUM con Jira y Github. Matemáticas, Álgebra y
-            Estadística básica
+            <span class="blue-text bold">Contenidos:</span> 
+            <ul style="margin: 0;">
+              <li>Programación en Spring Boot (Java)</li>
+            <li>Angular (Typescript)</li>
+            <li>.NET Core (C#) </li>
+            <li>HTML, CSS y Javascript</li>
+            <li>SQL</li>
+            <li>Gestión de proyectos SCRUM con Jira y Github</li>
+            <li>Matemáticas, Álgebra y Estadística básica</li>
+            </ul>
           </div>
-        </div>
-
-        <div class="m-1 p-1 typing">
-          <h3>Bachiller en Ciencias Sociales, 2016-2021</h3>
+          <h3>Bachiller en Ciencias Sociales, <span class="blue-text ">2016-2021</span></h3>
           <h4>Instituto Inmaculada Concepción, Córdoba Capital</h4>
         </div>
-      </section>
+      </div>
 
-      <section class="m-5 ">
-        <h2>Cursos</h2>
-        <ul class="typing">
-          <li>Cursos gratuitos de Python, Unity y Arduino.</li>
-          <li>Curso gratuito de Inglés Básico.</li>
-        </ul>
-      </section>
+    </section>
 
-      <section class="m-5 ">
-        <h2>Idiomas</h2>
-        <ul class="typing">
-          <li>Español</li>
-          <li>Ingles (Básico)</li>
-        </ul>
-      </section>
+    <section class="m-5 ">
+      <h2>Cursos</h2>
+      <ul class="typing">
+        <li>Cursos gratuitos de Python, Unity y Arduino.</li>
+        <li>Curso gratuito de Inglés Básico.</li>
+      </ul>
+    </section>
 
-      <section class="m-5 ">
-        <h2>Aptitudes</h2>
-        <ul class="typing">
-          <li>Trabajo en equipo</li>
-          <li>Liderazgo</li>
-          <li>Compromiso</li>
-          <li>Organización</li>
-          <li>Conocimientos generales en informática</li>
-          <li>Conocimientos generales en electrónica</li>
-          <li>Interés continuo en capacitación</li>
-        </ul>
-      </section>
+    <section class="m-5 ">
+      <h2>Idiomas</h2>
+      <ul class="typing">
+        <li>Español</li>
+        <li>Ingles (Básico)</li>
+      </ul>
+    </section>
 
-      <section class="m-5 ">
-        <h2>Logros</h2>
-        <ul class="typing">
-          <li>Cuadro de Honor de la Bandera Nacional en Secundaria.</li>
-          <li>Puntaje Promedio de 9.06 en Secundaria.</li>
-        </ul>
-      </section>
-      <section class="m-5 " >
-        <!-- <div>
+    <section class="m-5 ">
+      <h2>Aptitudes</h2>
+      <ul class="typing">
+        <li>Trabajo en equipo</li>
+        <li>Liderazgo</li>
+        <li>Compromiso</li>
+        <li>Organización</li>
+        <li>Conocimientos generales en informática</li>
+        <li>Conocimientos generales en electrónica</li>
+        <li>Interés continuo en capacitación</li>
+      </ul>
+    </section>
+
+    <section class="m-5 ">
+      <h2>Logros</h2>
+      <ul class="typing">
+        <li>Cuadro de Honor de la Bandera Nacional en Secundaria.</li>
+        <li>Puntaje Promedio de 9.06 en Secundaria.</li>
+      </ul>
+    </section>
+    <section class="m-5 ">
+      <!-- <div>
         <form>
           <div class="mb-4">
             <input type="email" id="email-input" placeholder="Correo" aria-describedby="emailHelp" />
@@ -164,20 +183,21 @@
           </div>
         </form>
       </div> -->
-        <div>
-          <h2>Contacto</h2>
-          <ul class="typing">
-            <li>+54 9 351 547 9074</li>
-            <li>julian.magnabosco@gmail.com</li>
-            <li>www.linkedin.com/in/julianmagnabosco-675631258/</li>
-            <li>Tristán de Tejeda, 231 Córdoba Capital (5008)</li>
-          </ul>
-        </div>
-      </section>
-    </main>
+      <div>
+        <h2>Contacto</h2>
+        <ul class="typing">
+          <li>+54 9 351 547 9074</li>
+          <li>julian.magnabosco@gmail.com</li>
+          <li>www.linkedin.com/in/julianmagnabosco-675631258/</li>
+          <li>Tristán de Tejeda, 231 Córdoba Capital (5008)</li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-    <script type="text/javascript"  src='http://joeiddon.github.io/perlin/perlin.js'>
-    </script>
-    <script type="module" src="/main.js"></script>
-  </body>
+  <script type="text/javascript" src='http://joeiddon.github.io/perlin/perlin.js'>
+  </script>
+  <script type="module" src="/main.js"></script>
+</body>
+
 </html>

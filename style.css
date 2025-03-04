@@ -6,7 +6,7 @@
   --dark-mine: rgb(6, 15, 43);
   --yell-mine: rgb(222, 232, 29);
 
-  font-family: consolas;
+  font-family: bigfont;
   font-weight: 400;
   font-style: normal;
 }
@@ -83,6 +83,11 @@ nav div {
   );
 }
 
+a{
+  color: white;
+  text-decoration: none;
+}
+
 .container {
   padding: 1.5rem;
   animation: 0.3s ease-out 1s backwards fade-in;
@@ -110,15 +115,16 @@ nav div {
     opacity: 1;
   }
 }
+
+@font-face { font-family: bigfont; font-weight: bold; src: url('font-v/font-v-bold.ttf'); } 
+@font-face { font-family: bigfont; src: url('font-v/font-v-regular.ttf'); } 
+@font-face { font-family: bigfont; font-style: italic; src: url('font-v/font-v-italic.ttf'); } 
+@font-face { font-family: bigfont; font-weight: lighter; src: url('font-v/font-v-light.ttf'); } 
+
 /*------------------- Principal----------------------- */
 
 #photo{
-  display: flex;
-  justify-content: center;
-  width: auto;
-}
-#photo img{
-  width: 150px;
+  width: 100%;
 }
 
 .m-1 {
@@ -156,14 +162,16 @@ nav div {
   flex-direction: column;
 }
 
-.green-text {
-  color: yellowgreen;
-  font-size: 16px;
+.blue-text {
+  color: var(--lite-blue-mine);
+}
+.white-text {
+  color: white;
 }
 
 
 @media (min-width: 578px) {
-  #photo img{
+  #photo{
     width: 60%;
   }
   .row{
@@ -173,7 +181,7 @@ nav div {
 }
 
 @media (min-width: 824px) {
-  #photo img{
+  #photo{
     width: 40%;
   }
 
