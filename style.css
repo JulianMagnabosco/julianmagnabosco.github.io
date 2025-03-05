@@ -161,6 +161,11 @@ a{
   align-items: center;
   flex-direction: column;
 }
+.grid{
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+}
 
 .blue-text {
   color: var(--lite-blue-mine);
