@@ -6,6 +6,10 @@ import * as THREE from "three";
 //   CSS3DRenderer,
 //   CSS3DObject,
 // } from "three/examples/jsm/renderers/CSS3DRenderer.js";
+import {
+  GLTFLoader
+} from "three/examples/jsm/loaders/GLTFLoader.js";
+
 // Setup
 const scene = new THREE.Scene();
 
@@ -40,6 +44,31 @@ const canvas = renderer.domElement;
 
 // const ambientLight = new THREE.AmbientLight(0xffffff);
 // scene.add(pointLight, ambientLight);
+
+//Character
+var loader = new GLTFLoader();
+loader.load(
+   "/modelos/personaje.glb",
+   function ( gltf ) {
+    scene.add( gltf.scene );
+      // gltf.scene.children.forEach(element => {
+      //   if(element.name=="Armature") {
+      //     console.log(element)
+      //     element.name = "Armature";
+      //     element.scale.set (scale,scale,scale);
+      //     element.position.set ( 0, 0, 40 );
+      //     scene.add(element)
+      //   }
+      // });
+      
+      // bus.body = gltf.scene.children[0];
+      // bus.body.name = "char";
+      // bus.body.rotation.set ( 0, -1.5708, 0 );
+      // bus.body.scale.set (scale,scale,scale);
+      // bus.body.position.set ( 0, 3.6, 0 );
+      // bus.body.castShadow = true;
+   },
+);
 
 //Plane
 const segments = 20;
