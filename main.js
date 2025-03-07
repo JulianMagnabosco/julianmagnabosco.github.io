@@ -42,24 +42,24 @@ const canvas = renderer.domElement;
 // const pointLight = new THREE.PointLight(0xffffff);
 // pointLight.position.set(5, 5, 5);
 
-// const ambientLight = new THREE.AmbientLight(0xffffff);
-// scene.add(pointLight, ambientLight);
+const ambientLight = new THREE.AmbientLight(0xffffff);
+ambientLight.intensity = 5
+scene.add(ambientLight);
 
 //Character
 var loader = new GLTFLoader();
 loader.load(
    "/modelos/personaje.glb",
    function ( gltf ) {
-    scene.add( gltf.scene );
-      // gltf.scene.children.forEach(element => {
-      //   if(element.name=="Armature") {
-      //     console.log(element)
-      //     element.name = "Armature";
-      //     element.scale.set (scale,scale,scale);
-      //     element.position.set ( 0, 0, 40 );
-      //     scene.add(element)
-      //   }
-      // });
+    // scene.add( gltf.scene );
+      gltf.scene.children.forEach(element => {
+        if(element.name=="Armature") {
+          console.log(element)
+          element.name = "Armature";
+          element.position.set ( 0, 0, 48 );
+          scene.add(element)
+        }
+      });
       
       // bus.body = gltf.scene.children[0];
       // bus.body.name = "char";
