@@ -6,11 +6,10 @@ import * as THREE from "three";
 //   CSS3DRenderer,
 //   CSS3DObject,
 // } from "three/examples/jsm/renderers/CSS3DRenderer.js";
-import {
-  GLTFLoader
-} from "three/examples/jsm/loaders/GLTFLoader.js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 // Setup
+const scenes = [];
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -23,9 +22,9 @@ camera.position.setZ(50);
 
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#bg"),
-  alpha: true
+  alpha: true,
 });
-renderer.setClearColor( 0x000000, 0 )
+renderer.setClearColor(0x000000, 0);
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -43,43 +42,43 @@ const canvas = renderer.domElement;
 // pointLight.position.set(5, 5, 5);
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
-ambientLight.intensity = 5
+ambientLight.intensity = 5;
 scene.add(ambientLight);
 
 //Character
 var loader = new GLTFLoader();
-loader.load(
-   "/modelos/personaje.glb",
-   function ( gltf ) {
-    // scene.add( gltf.scene );
-      gltf.scene.children.forEach(element => {
-        if(element.name=="Armature") {
-          console.log(element)
-          element.name = "Armature";
-          element.position.set ( 0, 0, 48 );
-          scene.add(element)
-        }
-      });
-      
-      // bus.body = gltf.scene.children[0];
-      // bus.body.name = "char";
-      // bus.body.rotation.set ( 0, -1.5708, 0 );
-      // bus.body.scale.set (scale,scale,scale);
-      // bus.body.position.set ( 0, 3.6, 0 );
-      // bus.body.castShadow = true;
-   },
-);
+loader.load("/modelos/personaje.glb", function (gltf) {
+  // scene.add( gltf.scene );
+  gltf.scene.children.forEach((element) => {
+    if (element.name == "Armature") {
+      // console.log(element)
+      element.name = "Armature";
+      element.position.set(0, 0, 48);
+      scene.add(element);
+    }
+  });
+
+  // bus.body = gltf.scene.children[0];
+  // bus.body.name = "char";
+  // bus.body.rotation.set ( 0, -1.5708, 0 );
+  // bus.body.scale.set (scale,scale,scale);
+  // bus.body.position.set ( 0, 3.6, 0 );
+  // bus.body.castShadow = true;
+});
 
 //Plane
 const segments = 20;
 const geometryPlane = new THREE.PlaneGeometry(24, 24, segments, segments);
-// const texturePlane = new THREE.TextureLoader().load('tileset.png' ); 
+// const texturePlane = new THREE.TextureLoader().load('tileset.png' );
 // texturePlane.wrapS  = THREE.RepeatWrapping;
 // texturePlane.wrapT  = THREE.RepeatWrapping;
 // texturePlane.repeat.set( segments, segments );
-const materialPlane = new THREE.MeshBasicMaterial( { color:0x00acff, wireframe:true } );
-geometryPlane.material = materialPlane
-const plane = new THREE.Mesh( geometryPlane, materialPlane );
+const materialPlane = new THREE.MeshBasicMaterial({
+  color: 0x00acff,
+  wireframe: true,
+});
+geometryPlane.material = materialPlane;
+const plane = new THREE.Mesh(geometryPlane, materialPlane);
 
 // const wireframe = new THREE.WireframeGeometry(geometryPlane);
 // const line = new THREE.LineSegments(wireframe, materialPlane);
@@ -95,9 +94,9 @@ let dist = 0;
 function renderPlane() {
   const vertices = geometryPlane.attributes.position.array;
   for (let i = 0; i < vertices.length; i += 3) {
-    const x1 = ((i / vertices.length) * (segments + 1))%1;
+    const x1 = ((i / vertices.length) * (segments + 1)) % 1;
     const y1 = i / vertices.length;
-    vertices[i+2] = perlin.get(x1 * heigth+dist, y1 * heigth);
+    vertices[i + 2] = perlin.get(x1 * heigth + dist, y1 * heigth);
   }
   dist = dist >= 1000 ? 0 : dist + moveDist;
 
@@ -123,6 +122,31 @@ function renderPlane() {
 
 // Array(200).fill().forEach(addStar);
 
+//REnderers
+function miniRederers(id, name) {
+  const subscene = new THREE.Scene();
+  const element = document.getElementById(id);
+  const subcamera = new THREE.PerspectiveCamera(
+    75,
+    element.offsetHeight / element.offsetHeight,
+    0.1,
+    1000
+  );
+  subcamera.position.setZ(50);
+  console.log(element.offsetHeight);
+  const renderer = new THREE.WebGLRenderer({
+    canvas: element,
+    alpha: true,
+  });
+  renderer.setClearColor(0x000000, 0);
+
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(element.offsetHeight, element.offsetHeight);
+  renderer.render(subscene, subcamera);
+  subscene.userData.camera = subcamera;
+  scenes.push(subscene);
+}
+
 //Typing
 const options = {
   rootMargin: "0px",
@@ -142,9 +166,9 @@ const timingScale = 2;
 const listSections = document.getElementsByClassName("typing");
 let index = 0;
 for (let i = 0; i < listSections.length; i++) {
-  const sectionTiming = timing / listSections[i].innerHTML.length /timingScale
-  const size = sectionTiming<=0.1?4:1
-  if(listSections[i].id=="photo") continue
+  const sectionTiming = timing / listSections[i].innerHTML.length / timingScale;
+  const size = sectionTiming <= 0.1 ? 4 : 1;
+  if (listSections[i].id == "photo") continue;
   listStrings.push({
     text: listSections[i].innerHTML,
     timing: sectionTiming,
@@ -178,23 +202,35 @@ const charEndSize = 10;
 function writeText(e) {
   let oldTextString = listStrings[e.getAttribute("data-id")].text;
 
-  const maxLen = listStrings[e.getAttribute("data-id")].text.length-listStrings[e.getAttribute("data-id")].index
+  const maxLen =
+    listStrings[e.getAttribute("data-id")].text.length -
+    listStrings[e.getAttribute("data-id")].index;
 
-  if (oldTextString.length + charEndSize <=listStrings[e.getAttribute("data-id")].index) {
+  if (
+    oldTextString.length + charEndSize <=
+    listStrings[e.getAttribute("data-id")].index
+  ) {
     e.innerHTML = e.innerHTML.replace(regexString, replaceString);
     // console.log(e.getAttribute("data-id")+ " - " +oldTextString.length + " - " +listStrings[e.getAttribute("data-id")].timing);
     return;
   }
 
-  e.innerHTML = oldTextString.substring(0,listStrings[e.getAttribute("data-id")].index);
+  e.innerHTML = oldTextString.substring(
+    0,
+    listStrings[e.getAttribute("data-id")].index
+  );
 
   if (oldTextString.length > listStrings[e.getAttribute("data-id")].index) {
     e.innerHTML +=
       "<span>" +
-      charEnds[Math.floor(Math.random() * charEnds.length)].substring(0, maxLen) +
+      charEnds[Math.floor(Math.random() * charEnds.length)].substring(
+        0,
+        maxLen
+      ) +
       "</span>";
   }
-  listStrings[e.getAttribute("data-id")].index+=listStrings[e.getAttribute("data-id")].size;
+  listStrings[e.getAttribute("data-id")].index +=
+    listStrings[e.getAttribute("data-id")].size;
 
   e.innerHTML = e.innerHTML.replace(regexString, replaceString);
 
@@ -219,5 +255,9 @@ function animate() {
   requestAnimationFrame(animate);
   renderPlane();
   renderer.render(scene, camera);
+  scenes.forEach((s) => {
+    const c = s.userData.camera;
+    renderer.render(s, c);
+  });
 }
 animate();
