@@ -123,29 +123,47 @@ function renderPlane() {
 // Array(200).fill().forEach(addStar);
 
 //REnderers
-function miniRederers(id, name) {
+function newScene(id, name) {
   const subscene = new THREE.Scene();
-  const element = document.getElementById(id);
+  const subelement = document.getElementById(id);
+  const aspect = 1
   const subcamera = new THREE.PerspectiveCamera(
     75,
-    element.offsetHeight / element.offsetHeight,
+    aspect,
     0.1,
     1000
   );
   subcamera.position.setZ(50);
-  console.log(element.offsetHeight);
-  const renderer = new THREE.WebGLRenderer({
-    canvas: element,
-    alpha: true,
-  });
-  renderer.setClearColor(0x000000, 0);
+  
+  subscene.userData.element = subelement;
 
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(element.offsetHeight, element.offsetHeight);
-  renderer.render(subscene, subcamera);
   subscene.userData.camera = subcamera;
+  console.log(subscene)
+  const color = new THREE.Color().setHex( 0x333333 );
+  subscene.background = color;
+
+  loader.load("/modelos/personaje.glb", function (gltf) {
+    // scene.add( gltf.scene );
+    gltf.scene.children.forEach((e1) => {
+      if (e1.name == "Armature") {
+        // console.log(element)
+        e1.name = "Armature";
+        e1.position.set(0, 0, 48);
+        subscene.add(e1);
+      }
+    });
+  
+    // bus.body = gltf.scene.children[0];
+    // bus.body.name = "char";
+    // bus.body.rotation.set ( 0, -1.5708, 0 );
+    // bus.body.scale.set (scale,scale,scale);
+    // bus.body.position.set ( 0, 3.6, 0 );
+    // bus.body.castShadow = true;
+  });
+
   scenes.push(subscene);
 }
+newScene("canvas1","")
 
 //Typing
 const options = {
@@ -254,10 +272,44 @@ document.body.onresize = rezize;
 function animate() {
   requestAnimationFrame(animate);
   renderPlane();
+  renderer.setScissorTest( false );
   renderer.render(scene, camera);
+
+  renderer.setScissorTest( true );
+
   scenes.forEach((s) => {
+    // get the element that is a place holder for where we want to
+    // draw the scene
+    const element = s.userData.element;
+
+    // get its position relative to the page's viewport
+    const rect = element.getBoundingClientRect();
+
+    // check if it's offscreen. If so skip it
+    if ( rect.bottom < 0 || rect.top > renderer.domElement.clientHeight ||
+       rect.right < 0 || rect.left > renderer.domElement.clientWidth ) {
+
+      return; // it's off screen
+
+    }
+
+    // set the viewport
+    const width = rect.right - rect.left;
+    const height = rect.bottom - rect.top;
+    const left = rect.left;
+    const bottom = renderer.domElement.clientHeight - rect.bottom;
+
+    renderer.setViewport( left, bottom, width, height );
+    renderer.setScissor( left, bottom, width, height );
+
     const c = s.userData.camera;
-    renderer.render(s, c);
+
+    //camera.aspect = width / height; // not changing in this example
+    //camera.updateProjectionMatrix();
+
+    //scene.userData.controls.update();
+
+    renderer.render( s, c );
   });
 }
 animate();

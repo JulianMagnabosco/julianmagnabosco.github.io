@@ -17,7 +17,7 @@ body {
   background-image: linear-gradient(to top, var(--blue-mine), var(--dark-mine));
   background-attachment: fixed;
 } 
-canvas {
+#bg {
   position: fixed;
   top: 0;
   left: 0;
