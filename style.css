@@ -39,16 +39,20 @@ img, svg{
 }
 
 section {
-  background: linear-gradient(to top, var(--dark-blue-mine), var(--dark-mine));
+  /* background: linear-gradient(to top, var(--dark-blue-mine), var(--dark-mine)); */
   border: 5px solid var(--lite-blue-mine);
   position: relative;
   /* overflow: hidden; */
   /* animation: 1s ease-out 2s backwards section-in; */
 }
+section:not(.transparent) {
+  background: linear-gradient(to top, var(--dark-blue-mine), var(--dark-mine));
+}
 section h2 {
   padding-left: 1rem;
   background-color: var(--lite-blue-mine);
-  outline: 5px solid var(--lite-blue-mine);
+  outline: 5px 5px 5px 0px solid var(--lite-blue-mine);
+  border-bottom: 5px solid var(--lite-blue-mine);
   /* animation: 1s ease-out 2s backwards section-in; */
 }
 section h2::before {

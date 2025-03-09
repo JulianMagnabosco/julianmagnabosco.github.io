@@ -139,8 +139,8 @@ function newScene(id, name) {
 
   subscene.userData.camera = subcamera;
   console.log(subscene)
-  const color = new THREE.Color().setHex( 0x333333 );
-  subscene.background = color;
+  // const color = new THREE.Color().setHex( 0x333333 );
+  // subscene.background = color;
 
   loader.load("/modelos/personaje.glb", function (gltf) {
     // scene.add( gltf.scene );
@@ -148,7 +148,7 @@ function newScene(id, name) {
       if (e1.name == "Armature") {
         // console.log(element)
         e1.name = "Armature";
-        e1.position.set(0, 0, 48);
+        e1.position.set(0, 0, 0);
         subscene.add(e1);
       }
     });
@@ -272,10 +272,14 @@ document.body.onresize = rezize;
 function animate() {
   requestAnimationFrame(animate);
   renderPlane();
-  renderer.setScissorTest( false );
-  renderer.render(scene, camera);
+
+  renderer.setClearColor(0x000000, 0);
+  renderer.setViewport( 0, 0, canvas.clientWidth, canvas.clientHeight );
+  renderer.setScissor( 0, 0, canvas.clientWidth, canvas.clientHeight );
+  renderer.render( scene, camera );
 
   renderer.setScissorTest( true );
+  renderer.setClearColor(0x000000, 0);
 
   scenes.forEach((s) => {
     // get the element that is a place holder for where we want to
@@ -293,6 +297,7 @@ function animate() {
 
     }
 
+    console.log(rect)
     // set the viewport
     const width = rect.right - rect.left;
     const height = rect.bottom - rect.top;
