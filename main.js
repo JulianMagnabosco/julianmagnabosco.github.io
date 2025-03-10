@@ -31,6 +31,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.render(scene, camera);
 const canvas = renderer.domElement;
 
+// let mixer;
+const clock = new THREE.Clock();
 // Background
 
 // const spaceTexture = new THREE.TextureLoader().load("space.jpg");
@@ -41,30 +43,26 @@ const canvas = renderer.domElement;
 // const pointLight = new THREE.PointLight(0xffffff);
 // pointLight.position.set(5, 5, 5);
 
-const ambientLight = new THREE.AmbientLight(0xffffff);
-ambientLight.intensity = 5;
-scene.add(ambientLight);
-
 //Character
 var loader = new GLTFLoader();
-loader.load("/modelos/personaje.glb", function (gltf) {
-  // scene.add( gltf.scene );
-  gltf.scene.children.forEach((element) => {
-    if (element.name == "Armature") {
-      // console.log(element)
-      element.name = "Armature";
-      element.position.set(0, 0, 48);
-      scene.add(element);
-    }
-  });
+// loader.load("/modelos/personaje.glb", function (gltf) {
+//   // scene.add( gltf.scene );
+//   gltf.scene.children.forEach((element) => {
+//     if (element.name == "Armature") {
+//       // console.log(element)
+//       element.name = "Armature";
+//       element.position.set(0, 0, 48);
+//       scene.add(element);
+//     }
+//   });
 
-  // bus.body = gltf.scene.children[0];
-  // bus.body.name = "char";
-  // bus.body.rotation.set ( 0, -1.5708, 0 );
-  // bus.body.scale.set (scale,scale,scale);
-  // bus.body.position.set ( 0, 3.6, 0 );
-  // bus.body.castShadow = true;
-});
+//   // bus.body = gltf.scene.children[0];
+//   // bus.body.name = "char";
+//   // bus.body.rotation.set ( 0, -1.5708, 0 );
+//   // bus.body.scale.set (scale,scale,scale);
+//   // bus.body.position.set ( 0, 3.6, 0 );
+//   // bus.body.castShadow = true;
+// });
 
 //Plane
 const segments = 20;
@@ -126,44 +124,39 @@ function renderPlane() {
 function newScene(id, name) {
   const subscene = new THREE.Scene();
   const subelement = document.getElementById(id);
-  const aspect = 1
-  const subcamera = new THREE.PerspectiveCamera(
-    75,
-    aspect,
-    0.1,
-    1000
-  );
-  subcamera.position.setZ(50);
-  
+  const aspect = 1;
+  const subcamera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
+  subcamera.position.setZ(2);
+  subcamera.position.setY(1);
+
   subscene.userData.element = subelement;
-
   subscene.userData.camera = subcamera;
-  console.log(subscene)
-  // const color = new THREE.Color().setHex( 0x333333 );
-  // subscene.background = color;
-
+  //Character
   loader.load("/modelos/personaje.glb", function (gltf) {
     // scene.add( gltf.scene );
     gltf.scene.children.forEach((e1) => {
       if (e1.name == "Armature") {
-        // console.log(element)
         e1.name = "Armature";
         e1.position.set(0, 0, 0);
         subscene.add(e1);
+
+        const submixer = new THREE.AnimationMixer(gltf);
+        console.log(gltf)
+        const clip = gltf.animations[4];
+        submixer.clipAction(clip).play();
+        
+        subscene.userData.mixer = submixer;
       }
     });
-  
-    // bus.body = gltf.scene.children[0];
-    // bus.body.name = "char";
-    // bus.body.rotation.set ( 0, -1.5708, 0 );
-    // bus.body.scale.set (scale,scale,scale);
-    // bus.body.position.set ( 0, 3.6, 0 );
-    // bus.body.castShadow = true;
   });
+
+  const ambientLight = new THREE.AmbientLight(0xffffff);
+  ambientLight.intensity = 5;
+  subscene.add(ambientLight);
 
   scenes.push(subscene);
 }
-newScene("canvas1","")
+newScene("canvas1", "");
 
 //Typing
 const options = {
@@ -273,12 +266,14 @@ function animate() {
   requestAnimationFrame(animate);
   renderPlane();
 
-  renderer.setClearColor(0x000000, 0);
-  renderer.setViewport( 0, 0, canvas.clientWidth, canvas.clientHeight );
-  renderer.setScissor( 0, 0, canvas.clientWidth, canvas.clientHeight );
-  renderer.render( scene, camera );
+  const delta = clock.getDelta();
 
-  renderer.setScissorTest( true );
+  renderer.setClearColor(0x000000, 0);
+  renderer.setViewport(0, 0, canvas.clientWidth, canvas.clientHeight);
+  renderer.setScissor(0, 0, canvas.clientWidth, canvas.clientHeight);
+  renderer.render(scene, camera);
+
+  renderer.setScissorTest(true);
   renderer.setClearColor(0x000000, 0);
 
   scenes.forEach((s) => {
@@ -290,31 +285,34 @@ function animate() {
     const rect = element.getBoundingClientRect();
 
     // check if it's offscreen. If so skip it
-    if ( rect.bottom < 0 || rect.top > renderer.domElement.clientHeight ||
-       rect.right < 0 || rect.left > renderer.domElement.clientWidth ) {
-
+    if (
+      rect.bottom < 0 ||
+      rect.top > renderer.domElement.clientHeight ||
+      rect.right < 0 ||
+      rect.left > renderer.domElement.clientWidth
+    ) {
       return; // it's off screen
-
     }
 
-    console.log(rect)
     // set the viewport
     const width = rect.right - rect.left;
     const height = rect.bottom - rect.top;
     const left = rect.left;
     const bottom = renderer.domElement.clientHeight - rect.bottom;
 
-    renderer.setViewport( left, bottom, width, height );
-    renderer.setScissor( left, bottom, width, height );
+    renderer.setViewport(left, bottom, width, height);
+    renderer.setScissor(left, bottom, width, height);
 
     const c = s.userData.camera;
-
-    //camera.aspect = width / height; // not changing in this example
-    //camera.updateProjectionMatrix();
-
+    const m = s.userData.mixer;
+    c.aspect = width / height;
+    c.updateProjectionMatrix();
     //scene.userData.controls.update();
+    if(m){
+      m.update(delta);
+    }
 
-    renderer.render( s, c );
+    renderer.render(s, c);
   });
 }
 animate();
