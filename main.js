@@ -61,7 +61,7 @@ function renderPlane() {
 
 
 //REnderers
-function newScene(id, name) {
+function newScene(id, animationId) {
   const subscene = new THREE.Scene();
   const subelement = document.getElementById(id);
   const aspect = 1;
@@ -79,7 +79,7 @@ function newScene(id, name) {
   //Character
   loader.load("/modelos/personaje.glb", function (gltf) {
     const submixer = new THREE.AnimationMixer(gltf.scene);
-    const clip = gltf.animations[3];
+    const clip = gltf.animations[animationId];
     submixer.clipAction(clip).play();
     subscene.userData.mixer = submixer;
 
@@ -92,8 +92,8 @@ function newScene(id, name) {
 
   scenes.push(subscene);
 }
-newScene("canvas1", "");
-newScene("canvas2", "");
+newScene("canvas1", 2);
+newScene("canvas2", 3);
 
 //Rezize
 function rezize() {
