@@ -166,7 +166,7 @@ a{
 .icon{
   width: 3.5rem;
   height: 3.5em;
-  animation: 1s ease-out backwards 1s fade-in;
+  animation: 1s ease-out fade-in;
 }
 
 .button-1 {
@@ -201,6 +201,9 @@ a{
   color: white;
 }
 
+.bg-blue{
+  background-color: var(--dark-blue-mine);
+}
 
 @media (min-width: 578px) {
   #photo{

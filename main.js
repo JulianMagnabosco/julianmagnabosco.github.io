@@ -93,6 +93,7 @@ function newScene(id, name) {
   scenes.push(subscene);
 }
 newScene("canvas1", "");
+newScene("canvas2", "");
 
 //Rezize
 function rezize() {
