@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 // Setup
 const scenes = [];
@@ -68,6 +69,11 @@ function newScene(id, name) {
   subcamera.position.setZ(2);
   subcamera.position.setY(1);
 
+  const subcontrols = new OrbitControls( subcamera, renderer.domElement );
+  subcontrols.target.set(0, 1, 0);
+  subcontrols.autoRotate=true
+
+  subscene.userData.controls = subcontrols;
   subscene.userData.element = subelement;
   subscene.userData.camera = subcamera;
   //Character
@@ -110,7 +116,7 @@ function animate() {
   renderer.render(scene, camera);
 
   renderer.setScissorTest(true);
-  renderer.setClearColor(0x000000, 0);
+  renderer.setClearColor(0x102876);
 
   scenes.forEach((s) => {
     // get the element that is a place holder for where we want to
@@ -141,12 +147,14 @@ function animate() {
 
     const c = s.userData.camera;
     const m = s.userData.mixer;
+    const co = s.userData.controls;
     c.aspect = width / height;
     c.updateProjectionMatrix();
     //scene.userData.controls.update();
     if(m){
       m.update(delta);
     }
+    co.update();
 
     renderer.render(s, c);
   });

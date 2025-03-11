@@ -1,10 +1,10 @@
 
 :root {
   --lite-blue-mine: #00acff;
-  --blue-mine: rgb(36, 78, 217);
-  --dark-blue-mine: rgb(16, 40, 118);
-  --dark-mine: rgb(6, 15, 43);
-  --yell-mine: rgb(222, 232, 29);
+  --blue-mine: #244ed9;
+  --dark-blue-mine: #102876;
+  --dark-mine: #060f2b;
+  --yell-mine: #dee81d;
 
   font-family: bigfont;
   font-weight: 400;
