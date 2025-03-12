@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 // Setup
 const scenes = [];
@@ -59,7 +59,6 @@ function renderPlane() {
   geometryPlane.attributes.position.needsUpdate = true;
 }
 
-
 //REnderers
 function newScene(id, animationId) {
   const subscene = new THREE.Scene();
@@ -69,9 +68,20 @@ function newScene(id, animationId) {
   subcamera.position.setZ(2);
   subcamera.position.setY(1);
 
-  const subcontrols = new OrbitControls( subcamera, renderer.domElement );
+  const subcontrols = new OrbitControls(subcamera, subelement);
   subcontrols.target.set(0, 1, 0);
-  subcontrols.autoRotate=true
+  subcontrols.autoRotate = true;
+  subcontrols.mouseButtons = {
+    LEFT: THREE.MOUSE.ROTATE,
+    MIDDLE: THREE.MOUSE.DOLLY,
+    RIGHT: THREE.MOUSE.PAN,
+  };
+  subcontrols.listenToKeyEvents(subelement); // optional
+
+  subcontrols.enableDamping = true;
+  subcontrols.dampingFactor = 0.05;
+
+  subcontrols.maxPolarAngle = Math.PI / 2;
 
   subscene.userData.controls = subcontrols;
   subscene.userData.element = subelement;
@@ -108,7 +118,6 @@ document.body.onresize = rezize;
 function animate() {
   requestAnimationFrame(animate);
   renderPlane();
-
   const delta = clock.getDelta();
 
   renderer.setClearColor(0x000000, 0);
@@ -152,7 +161,7 @@ function animate() {
     c.aspect = width / height;
     c.updateProjectionMatrix();
     //scene.userData.controls.update();
-    if(m){
+    if (m) {
       m.update(delta);
     }
     co.update();

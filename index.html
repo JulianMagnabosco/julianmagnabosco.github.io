@@ -1,232 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julian Magnabosco</title>
-  <link rel="stylesheet" href="/style.css" />
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Julian Magnabosco</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
 
-<body>
-  <canvas id="bg"></canvas>
+  <body>
+    <canvas id="bg"></canvas>
 
-  <nav>
-    <div class="p-1">
-      <span>Quien soy</span>
-      <span>Perfil</span>
-      <span>Proyectos</span>
-      <span>Aptitudes</span>
-      <span>Educacion</span>
-      <span>Contacto</span>
-    </div>
-  </nav>
+    <nav>
+      <div class="p-1">
+        <span>Quien soy</span>
+        <span>Perfil</span>
+        <span>Proyectos</span>
+        <span>Aptitudes</span>
+        <span>Educacion</span>
+        <span>Contacto</span>
+      </div>
+    </nav>
 
-  <main class="container">
-    <div style="
+    <main class="container">
+      <div
+        style="
           height: 100svh;
           display: flex;
           flex-direction: column;
           justify-content: center;
-        ">
-      <section>
-        <h2 class="m-1 flex-basis">Quien soy</h2>
-        <div class="row m-1">
-          <img src="foto.jpg" alt="" id="photo" />
+        "
+      >
+        <section>
+          <h2 class="m-1 flex-basis">Quien soy</h2>
+          <div class="row m-1">
+            <img src="foto.jpg" alt="" id="photo" />
 
-          <div class="px-1 m-1 typing">
-            <div>Hola soy...</div>
-            <h1 style="font-size: xx-large">Julian Magnabosco</h1>
-            <div>Programador Full-stack y Desarrollador web</div>
+            <div class="px-1 m-1 typing">
+              <div>Hola soy...</div>
+              <h1 style="font-size: xx-large">Julian Magnabosco</h1>
+              <div>Programador Full-stack y Desarrollador web</div>
+            </div>
           </div>
+        </section>
+      </div>
 
-
+      <section class="m-5 transparent">
+        <h2>👨‍💼Mi perfil</h2>
+        <div class="row" style="align-items: stretch">
+          <div id="canvas1" style="min-width: 300px; height: 500px"></div>
+          <div class="row bg-blue">
+            <div class="typing p-1">
+              Soy un
+              <span class="bold">Programador y Desarrollador</span> entusiasta
+              que busca desarrollarse y colaborar con otros en el ámbito de la
+              informática. Deseo poder demostrar mis habilidades y llegar a
+              trabajar en proyectos de gran valor. <br /><br />
+              Hace poco logré terminar mi carrera Tecnico Programador en la UTN
+              y quiero demostrar mis habilidades en la Programacion Web.
+            </div>
+          </div>
         </div>
       </section>
-    </div>
 
-    <section class="m-5 transparent">
-      <h2 >👨‍💼Mi perfil</h2>
-      <div class="row" style="align-items: stretch;">
-        <div id="canvas1" style="min-width: 300px; height: 500px; "></div>
-        <div class="typing p-1 bg-blue" style="padding-top: 8rem; font-size: larger;">
-          Soy un <span class="bold">Programador y Desarrollador</span> entusiasta que busca desarrollarse y colaborar con
-          otros en el ámbito de la informática. Deseo poder demostrar mis
-          habilidades y llegar a trabajar en proyectos de gran valor.
-          <br><br>
-          Hace poco logré terminar mi carrera Tecnico Programador en la UTN y quiero demostrar mis habilidades en la Programacion Web.
+      <section class="m-5">
+        <h2 class="m-1">💼Proyectos</h2>
+        <div class="m-1 px-1 row">
+          <img style="width: 400px" src="comolohago.png" alt="" />
+          <div class="typing px-1">
+            <h3>
+              “COMOloHAGO” <span class="blue-text">feb. 2024 - jul. 2024</span>
+            </h3>
+            <div>
+              Página web para publicación, compra y venta de obras y productos
+              artísticos, científicos y tecnológicos
+              <div>
+                <span class="bold">Tecnologias:</span>
+                <span class="blue-text">
+                  Angular, Bootstrap, Spring Boot, MercadoPago</span
+                >
+              </div>
+              <div>
+                <span class="bold">Rol: </span>
+                <span class="blue-text"> Desarrollador unico </span>
+              </div>
+
+              <a class="button-1" href="github.com/JulianMagnabosco/PS-2024">
+                Ver Github
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section class="m-5 ">
-      <h2 class="m-1">💼Proyectos</h2>
-      <div class="m-1 px-1 row">
-        <img style="width: 400px;" src="comolohago.png" alt="">
-        <div class="typing px-1">
-          <h3>“COMOloHAGO” <span class="blue-text">feb. 2024 - jul. 2024</span></h3>
+        <div class="m-1 px-1 row">
+          <div class="px-1">
+            <h3>“MafBella” <span class="blue-text">ago. 2024</span></h3>
+            <div class="typing">
+              Página web creada para un catálogo de productos de perfumería
+              <div>
+                <span class="bold">Tecnologias: </span>
+                <span class="blue-text">
+                  Angular, Tailwind, Spring Boot y PostgreSQL
+                </span>
+              </div>
+              <div>
+                <span class="bold">Rol: </span>
+                <span class="blue-text"> Desarrollador unico </span>
+              </div>
+              <a class="button-1" href="mafbella.dyndns.org"> Ver Página </a>
+            </div>
+          </div>
+          <img style="width: 400px" src="mafbella.png" alt="" />
+        </div>
+      </section>
+
+      <div class="grid">
+        <section class="m-1">
+          <h2>✨Aptitudes</h2>
+          <ul class="typing">
+            <li>Trabajo en equipo</li>
+            <li>Liderazgo</li>
+            <li>Compromiso</li>
+            <li>Organización</li>
+            <li>Conocimientos generales en informática</li>
+            <li>Conocimientos generales en electrónica</li>
+            <li>Interés continuo en capacitación</li>
+          </ul>
+        </section>
+
+        <section class="m-5" style="grid-row: span 2">
+          <h2>💻Tecnologias</h2>
+          <div class="p-1">
+            <h4>Tecnologias Principales</h4>
+            <img
+              class="icon"
+              src="icons/angular.svg"
+              alt="angular"
+              title="angular"
+            />
+            <img
+              class="icon"
+              src="icons/bootstrap.svg"
+              alt="bootstrap"
+              title="bootstrap"
+            />
+            <img
+              class="icon"
+              src="icons/tailwind.svg"
+              alt="tailwind"
+              title="tailwind"
+            />
+            <img
+              class="icon"
+              src="icons/spring-boot.svg"
+              alt="spring-boot"
+              title="spring-boot"
+            />
+            <img
+              class="icon"
+              src="icons/postgresql.svg"
+              alt="postgresql"
+              title="postgresql"
+            />
+            <img class="icon" src="icons/maven.svg" alt="maven" title="maven" />
+            <img
+              class="icon"
+              src="icons/github.svg"
+              alt="github"
+              title="github"
+            />
+            <img
+              class="icon"
+              src="icons/docker.svg"
+              alt="docker"
+              title="docker"
+            />
+            <h4>Tecnologias que puedo manejar</h4>
+            <img
+              class="icon"
+              src="icons/csharp.svg"
+              alt="csharp"
+              title="csharp"
+            />
+            <img
+              class="icon"
+              src="icons/dotnet.svg"
+              alt="dotnet"
+              title="dotnet"
+            />
+            <img class="icon" src="icons/html.svg" alt="html" title="html" />
+            <img class="icon" src="icons/js.svg" alt="js" title="js" />
+            <img
+              class="icon"
+              src="icons/threejs.svg"
+              alt="threejs"
+              title="threejs"
+            />
+            <h4>Tecnologias con las que he trabajado</h4>
+            <img
+              class="icon"
+              src="icons/python.svg"
+              alt="python"
+              title="python"
+            />
+            <img
+              class="icon"
+              src="icons/arduino.svg"
+              alt="arduino"
+              title="arduino"
+            />
+            <img class="icon" src="icons/unity.svg" alt="unity" title="unity" />
+          </div>
+        </section>
+        <section class="m-5">
+          <h2>👄Idiomas</h2>
+          <ul class="typing">
+            <li><span class="bold">Español</span> (Nativo)</li>
+            <li><span class="bold">Ingles</span> (Básico)</li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="m-1 transparent">
+        <h2>🎓Educación</h2>
+
+        <div class="row" style="justify-content: start; align-items: stretch">
+          <div id="canvas2" style="min-width: 300px; min-height: 500px"></div>
+          <div class="row bg-blue">
+            <div class="typing p-1">
+              <h3>
+                Técnico Universitario en Programación,
+                <span class="blue-text">2022-2024</span>
+              </h3>
+              <h4>Universidad Tecnológica Nacional, Córdoba Capital</h4>
+              <div class="m-1 px-1">
+                <span class="blue-text bold">Contenidos:</span>
+                <ul style="margin: 0">
+                  <li>Programación en Spring Boot (Java)</li>
+                  <li>Angular (Typescript)</li>
+                  <li>.NET Core (C#)</li>
+                  <li>HTML, CSS y Javascript</li>
+                  <li>SQL</li>
+                  <li>Gestión de proyectos SCRUM con Jira y Github</li>
+                  <li>Matemáticas, Álgebra y Estadística básica</li>
+                </ul>
+              </div>
+              <h3>
+                Bachiller en Ciencias Sociales,
+                <span class="blue-text">2016-2021</span>
+              </h3>
+              <h4>Instituto Inmaculada Concepción, Córdoba Capital</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid">
+        <section class="m-5">
+          <h2>📚Cursos</h2>
+          <ul class="typing">
+            <li>
+              Cursos gratuitos de
+              <span class="bold">Python, Unity y Arduino</span>.
+            </li>
+            <li>Curso gratuito de <span class="bold">Inglés Básico</span>.</li>
+          </ul>
+        </section>
+
+        <section class="m-5">
+          <h2>🏆Logros</h2>
+          <ul class="typing">
+            <li>
+              <span class="bold">Cuadro de Honor</span> de la Bandera Nacional
+              en Secundaria.
+            </li>
+            <li>
+              Puntaje Promedio de <span class="bold">9.06</span> en Secundaria.
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="m-5">
+        <h2>Contacto</h2>
+        <div class="typing p-1">
           <div>
-            Página web para publicación, compra y venta de obras y productos
-            artísticos, científicos y tecnológicos
-            <div>
-              <span class="bold">Tecnologias:</span>
-              <span class="blue-text ">
-                Angular, Bootstrap, Spring Boot, MercadoPago</span>
-            </div>
-            <div>
-              <span class="bold">Rol: </span>
-              <span class="blue-text ">
-                Desarrollador unico
-              </span>
-            </div>
-
-            <a class="button-1" href="github.com/JulianMagnabosco/PS-2024">
-              Ver Github
-            </a>
+            <img
+              class="icon me-1"
+              src="icons/whatsapp.svg"
+              alt="whatsapp"
+              title="whatsapp"
+            />+54 9 351 547 9074
           </div>
-        </div>
-      </div>
-
-      <div class="m-1 px-1 row">
-        <div class="px-1">
-          <h3>“MafBella” <span class="blue-text">ago. 2024</span> </h3>
-          <div class="typing">
-            Página web creada para un catálogo de productos de perfumería
-            <div>
-              <span class="bold ">Tecnologias: </span>
-              <span class="blue-text ">
-                Angular, Tailwind, Spring
-                Boot y PostgreSQL
-              </span>
-            </div>
-            <div>
-              <span class="bold ">Rol: </span>
-              <span class="blue-text ">
-                Desarrollador unico
-              </span>
-            </div>
-            <a class="button-1" href="mafbella.dyndns.org">
-              Ver Página
-            </a>
+          <div>
+            <img
+              class="icon me-1"
+              src="icons/email.svg"
+              alt="email"
+              title="email"
+            />julian.magnabosco@gmail.com
           </div>
-        </div>
-        <img style="width: 400px;" src="mafbella.png" alt="">
-      </div>
-    </section>
-
-    <div class="grid">
-      <section class="m-1 ">
-        <h2>✨Aptitudes</h2>
-        <ul class="typing" style="padding-right: 1rem;">
-          <li>Trabajo en equipo</li>
-          <li>Liderazgo</li>
-          <li>Compromiso</li>
-          <li>Organización</li>
-          <li>Conocimientos generales en informática</li>
-          <li>Conocimientos generales en electrónica</li>
-          <li>Interés continuo en capacitación</li>
-        </ul>
-      </section>
-
-      <section class="m-5 " style="grid-row: span 2;">
-        <h2>💻Tecnologias</h2>
-        <div class="p-1">
-          <h4>Tecnologias Principales</h4>
-          <img class="icon" src="icons/angular.svg" alt="angular" title="angular">
-          <img class="icon" src="icons/bootstrap.svg" alt="bootstrap" title="bootstrap">
-          <img class="icon" src="icons/tailwind.svg" alt="tailwind" title="tailwind">
-          <img class="icon" src="icons/spring-boot.svg" alt="spring-boot" title="spring-boot">
-          <img class="icon" src="icons/postgresql.svg" alt="postgresql" title="postgresql">
-          <img class="icon" src="icons/maven.svg" alt="maven" title="maven">
-          <img class="icon" src="icons/github.svg" alt="github" title="github">
-          <img class="icon" src="icons/docker.svg" alt="docker" title="docker">
-          <h4>Tecnologias que puedo manejar</h4>
-          <img class="icon" src="icons/csharp.svg" alt="csharp" title="csharp">
-          <img class="icon" src="icons/dotnet.svg" alt="dotnet" title="dotnet">
-          <img class="icon" src="icons/html.svg" alt="html" title="html">
-          <img class="icon" src="icons/js.svg" alt="js" title="js">
-          <img class="icon" src="icons/threejs.svg" alt="threejs" title="threejs">
-          <h4>Tecnologias con las que he trabajado</h4>
-          <img class="icon" src="icons/python.svg" alt="python" title="python">
-          <img class="icon" src="icons/arduino.svg" alt="arduino" title="arduino">
-          <img class="icon" src="icons/unity.svg" alt="unity" title="unity">
-        </div>
-      </section>
-      <section class="m-5 ">
-        <h2>👄Idiomas</h2>
-        <ul class="typing">
-          <li><span class="bold">Español</span> (Nativo)</li>
-          <li><span class="bold">Ingles</span> (Básico)</li>
-        </ul>
-      </section>
-    </div>
-
-    <section class="m-1 transparent">
-      <h2 >🎓Educación</h2>
-
-      <div class="row" style="justify-content: start; align-items: stretch;">
-        <div id="canvas2" style="min-width: 300px; height: 500px; "></div>
-        <div class="typing p-1 bg-blue" style="margin: 0; padding-top: 5rem; width: 100%;">
-          <h3>Técnico Universitario en Programación, <span class="blue-text ">2022-2024</span></h3>
-          <h4>Universidad Tecnológica Nacional, Córdoba Capital</h4>
-          <div class="m-1 px-1">
-            <span class="blue-text bold">Contenidos:</span>
-            <ul style="margin: 0;">
-              <li>Programación en Spring Boot (Java)</li>
-              <li>Angular (Typescript)</li>
-              <li>.NET Core (C#) </li>
-              <li>HTML, CSS y Javascript</li>
-              <li>SQL</li>
-              <li>Gestión de proyectos SCRUM con Jira y Github</li>
-              <li>Matemáticas, Álgebra y Estadística básica</li>
-            </ul>
+          <div>
+            <img
+              class="icon me-1"
+              src="icons/map.svg"
+              alt="map"
+              title="map"
+            />Tristán de Tejeda, 231 Córdoba Capital (5008)
           </div>
-          <h3>Bachiller en Ciencias Sociales, <span class="blue-text ">2016-2021</span></h3>
-          <h4>Instituto Inmaculada Concepción, Córdoba Capital</h4>
+          <a href="www.linkedin.com/in/julianmagnabosco-675631258/">
+            <img
+              class="icon me-1"
+              src="icons/linkedin.svg"
+              alt="linkedin"
+              title="linkedin"
+            />Linkedin
+          </a>
         </div>
-      </div>
-
-    </section>
-
-    <div class="grid">
-      <section class="m-5 ">
-        <h2>📚Cursos</h2>
-        <ul class="typing">
-          <li>Cursos gratuitos de <span class="bold">Python, Unity y Arduino</span>.</li>
-          <li>Curso gratuito de <span class="bold">Inglés Básico</span>.</li>
-        </ul>
-      </section>
-
-
-
-
-      <section class="m-5 ">
-        <h2>🏆Logros</h2>
-        <ul class="typing">
-          <li><span class="bold">Cuadro de Honor</span> de la Bandera Nacional en Secundaria.</li>
-          <li>Puntaje Promedio de <span class="bold">9.06</span> en Secundaria.</li>
-        </ul>
-      </section>
-    </div>
-
-    <section class="m-5 ">
-      <h2>Contacto</h2>
-      <div class="typing p-1">
-        <div>
-          <img class="icon me-1" src="icons/whatsapp.svg" alt="whatsapp" title="whatsapp">+54 9 351 547 9074
-        </div>
-        <div>
-          <img class="icon me-1" src="icons/email.svg" alt="email" title="email">julian.magnabosco@gmail.com
-        </div>
-        <div>
-          <img class="icon me-1" src="icons/map.svg" alt="map" title="map">Tristán de Tejeda, 231 Córdoba Capital (5008)
-        </div>
-        <a href="www.linkedin.com/in/julianmagnabosco-675631258/">
-          <img class="icon me-1" src="icons/linkedin.svg" alt="linkedin" title="linkedin">Linkedin
-        </a>
-      </div>
-      <!-- <div>
+        <!-- <div>
         <form>
           <div class="mb-4">
             <input type="email" id="email-input" placeholder="Correo" aria-describedby="emailHelp" />
@@ -244,13 +337,14 @@
           </div>
         </form>
       </div> -->
-    </section>
-  </main>
+      </section>
+    </main>
 
-  <script type="text/javascript" src='http://joeiddon.github.io/perlin/perlin.js'>
-  </script>
-  <script type="module" src="/main.js"></script>
-  <script type="module" src="/typing.js"></script>
-</body>
-
+    <script
+      type="text/javascript"
+      src="http://joeiddon.github.io/perlin/perlin.js"
+    ></script>
+    <script type="module" src="/main.js"></script>
+    <script type="module" src="/typing.js"></script>
+  </body>
 </html>

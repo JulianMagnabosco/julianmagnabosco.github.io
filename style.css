@@ -102,6 +102,9 @@ a{
   color: white;
   text-decoration: none;
 }
+ul{
+  padding-right: 1rem
+}
 
 .container {
   padding: 1.5rem;
