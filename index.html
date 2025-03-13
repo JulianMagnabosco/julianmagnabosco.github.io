@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Julian Magnabosco</title>
@@ -14,13 +17,32 @@
     <canvas id="bg"></canvas>
 
     <nav>
-      <div class="p-1">
-        <span>Quien soy</span>
-        <span>Perfil</span>
-        <span>Proyectos</span>
-        <span>Aptitudes</span>
-        <span>Educacion</span>
-        <span>Contacto</span>
+      <div class="p-1 hidden-button">
+        <svg
+          width="30px"
+          height="30px"
+          viewBox="0 0 1200 1200"
+          enable-background="new 0 0 1200 1200"
+          xml:space="preserve"
+          fill="white"
+          style="cursor: pointer;"
+          class="nav-bar-button"
+        >
+          <path
+          fill="white"
+            id="rect3039"
+            inkscape:connector-curvature="0"
+            d="M0,0v240h1200V0H0z M0,480v240h1200V480H0z M0,960v240h1200V960H0z"
+          />
+        </svg>
+      </div>
+      <div class="p-1 nav-bar">
+        <a href="#quien">Quien soy</a>
+        <a href="#perfil">Perfil</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#aptitudes">Aptitudes</a>
+        <a href="#educacion">Educacion</a>
+        <a href="#contacto">Contacto</a>
       </div>
     </nav>
 
@@ -33,9 +55,9 @@
           justify-content: center;
         "
       >
-        <section>
-          <h2 class="m-1 flex-basis">Quien soy</h2>
-          <div class="row m-1">
+        <section id="quien">
+          <h2 class="flex-basis">Quien soy</h2>
+          <div class="row p-1">
             <img src="foto.jpg" alt="" id="photo" />
 
             <div class="px-1 m-1 typing">
@@ -47,11 +69,11 @@
         </section>
       </div>
 
-      <section class="m-5 transparent">
+      <section class="m-5 transparent" id="perfil">
         <h2>👨‍💼Mi perfil</h2>
         <div class="row" style="align-items: stretch">
           <div id="canvas1" style="min-width: 300px; min-height: 500px"></div>
-          <div class="row bg-blue" style="width: 100%;">
+          <div class="row bg-blue" style="width: 100%">
             <div class="typing p-1">
               Soy un
               <span class="bold">Programador y Desarrollador</span> entusiasta
@@ -65,7 +87,7 @@
         </div>
       </section>
 
-      <section class="m-5">
+      <section class="m-5" id="proyectos">
         <h2 class="m-1">💼Proyectos</h2>
         <div class="m-1 px-1 row">
           <img style="width: 400px" src="comolohago.png" alt="" />
@@ -117,7 +139,7 @@
       </section>
 
       <div class="grid">
-        <section class="m-1">
+        <section class="m-1" id="aptitudes">
           <h2>✨Aptitudes</h2>
           <ul class="typing">
             <li>Trabajo en equipo</li>
@@ -223,12 +245,12 @@
         </section>
       </div>
 
-      <section class="m-1 transparent">
+      <section class="m-1 transparent" id="educacion">
         <h2>🎓Educación</h2>
 
         <div class="row" style="align-items: stretch">
           <div id="canvas2" style="min-width: 300px; min-height: 500px"></div>
-          <div class="row bg-blue" style="width: 100%;">
+          <div class="row bg-blue" style="width: 100%">
             <div class="typing p-1">
               <h3>
                 Técnico Universitario en Programación,
@@ -283,7 +305,7 @@
         </section>
       </div>
 
-      <section class="m-5">
+      <section class="m-5" id="contacto">
         <h2>Contacto</h2>
         <div class="typing p-1">
           <div>

@@ -1,4 +1,6 @@
-
+html{
+  scroll-padding-top: 3.5rem;
+}
 :root {
   --lite-blue-mine: #00acff;
   --blue-mine: #244ed9;
@@ -84,7 +86,8 @@ nav {
   left: 0;
   z-index: 10;
 }
-nav div {
+.nav-bar {
+  display: none;
   text-align: center;
   background: linear-gradient(
     to bottom,
@@ -92,10 +95,20 @@ nav div {
     var(--dark-blue-mine)
   );
 }
-nav div span{
-  margin: 0rem 1rem;
+.nav-bar.open {
+  display: flex;
+  flex-direction: column;
+}
+.nav-bar a{
+  margin: 0rem 0.4rem;
   padding: 0.5rem;
-  background: var(--lite-blue-mine)
+  font-weight: bold;
+}
+.nav-bar a:hover{
+  background: var(--dark-blue-mine)
+}
+.hidden-button{
+  display: flex; justify-content: end; background-color: var(--lite-blue-mine);
 }
 
 a{
@@ -229,24 +242,24 @@ ul{
     margin-right: auto;
   }
 
-  nav div {
+  .nav-bar {
+    display: block;
     margin: auto;
     width: 700px;
     transition: all 0.2s;
   }
-  nav div:hover {
+  .nav-bar:hover {
     transform: perspective(10px) rotateX(-0.4deg);
+    background-image: linear-gradient(to top, var(--blue-mine), var(--dark-mine));
   }
-  nav div span{
+  .nav-bar a{
     margin: 0rem 0.4rem;
     padding: 0.5rem;
     background: var(--lite-blue-mine);
     transition: all 0.2s;
-    font-weight: bold;
-    cursor: pointer;
   }
-  nav div span:hover{
-    background: var(--dark-blue-mine)
+  .hidden-button{
+    display: none
   }
 }
 
@@ -257,7 +270,7 @@ ul{
     margin-right: auto;
   }
 
-  nav div {
+  .nav-bar {
     margin: auto;
     width: 1000px;
   }
