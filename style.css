@@ -232,7 +232,21 @@ ul{
   nav div {
     margin: auto;
     width: 700px;
+    transition: all 0.2s;
+  }
+  nav div:hover {
     transform: perspective(10px) rotateX(-0.4deg);
+  }
+  nav div span{
+    margin: 0rem 0.4rem;
+    padding: 0.5rem;
+    background: var(--lite-blue-mine);
+    transition: all 0.2s;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  nav div span:hover{
+    background: var(--dark-blue-mine)
   }
 }
 
@@ -246,6 +260,5 @@ ul{
   nav div {
     margin: auto;
     width: 1000px;
-    transform: perspective(10px) rotateX(-1deg);
   }
 }

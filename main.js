@@ -147,8 +147,8 @@ function animate() {
     }
 
     // set the viewport
-    const width = rect.right - rect.left;
-    const height = rect.bottom - rect.top;
+    const width = rect.right - rect.left+2;
+    const height = rect.bottom - rect.top+2;
     const left = rect.left;
     const bottom = renderer.domElement.clientHeight - rect.bottom;
 

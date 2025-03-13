@@ -66,7 +66,7 @@ function writeText(e) {
   
   e.innerHTML = e.innerHTML.replace(regexString, replaceString);
 
-  console.log(oldTextString.length+" - "+(oldTextString.length+ charEndSize)+" - "+listStrings[textId].index)
+  // console.log(oldTextString.length+" - "+(oldTextString.length+ charEndSize)+" - "+listStrings[textId].index)
   
   if (oldTextString.length > listStrings[textId].index) {
     e.innerHTML +=
