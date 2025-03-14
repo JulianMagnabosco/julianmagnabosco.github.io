@@ -25,10 +25,22 @@ for (let i = 0; i < listSections.length; i++) {
     step: step,
     index: 0,
   });
+  const oldNode = document.createElement("span");
+  oldNode.classList.add("transparent-part")
+  oldNode.innerHTML=listSections[i].innerHTML
+  listSections[i].innerHTML=""
+  listSections[i].appendChild(oldNode);
 
-  listSections[i].innerHTML = "";
-  listSections[i].setAttribute("data-id", index);
-  observer.observe(listSections[i]);
+  const node = document.createElement("span");
+  node.classList.add("visible-part")
+  listSections[i].appendChild(node);
+  listSections[i].style.position="relative"
+  node.style.left=(oldNode.getBoundingClientRect().x-node.getBoundingClientRect().x)+"px"
+  node.style.top=(oldNode.getBoundingClientRect().y-node.getBoundingClientRect().y)+"px"
+  node.style.width=(oldNode.getBoundingClientRect().width)+"px"
+  node.style.height=(oldNode.getBoundingClientRect().height)+"px"
+  node.setAttribute("data-id", index);
+  observer.observe(node);
   index++;
 }
 

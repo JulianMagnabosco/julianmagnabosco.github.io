@@ -21,6 +21,9 @@ function toggleOpen() {
   }
   toggle=!toggle
 }
+function toggleClose() {
+  element.classList.remove('open');
+}
 
 button.addEventListener('click', toggleOpen);
-otherbuttons.forEach((ob) => ob.addEventListener('click', toggleOpen));
+otherbuttons.forEach((ob) => ob.addEventListener('click', toggleClose));

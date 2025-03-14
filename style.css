@@ -197,6 +197,9 @@ ul{
 .button-1:hover{
   transform: skewX(-15deg);
 }
+.button-2:hover{
+  background-color: var(--lite-blue-mine);
+}
 
 .row{
   display: flex;
@@ -208,6 +211,15 @@ ul{
   display: grid;
   grid-template-columns: auto auto;
   gap: 10px;
+}
+
+.transparent-part{
+  opacity: 0;
+}
+.visible-part{
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .blue-text {
@@ -250,7 +262,11 @@ ul{
   }
   .nav-bar:hover {
     transform: perspective(10px) rotateX(-0.4deg);
-    background-image: linear-gradient(to top, var(--blue-mine), var(--dark-mine));
+    background: linear-gradient(
+      to bottom,
+      var(--dark-blue-mine),
+      var(--lite-blue-mine)
+    );
   }
   .nav-bar a{
     margin: 0rem 0.4rem;
