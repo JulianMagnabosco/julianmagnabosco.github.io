@@ -37,8 +37,8 @@ for (let i = 0; i < listSections.length; i++) {
   listSections[i].style.position="relative"
   node.style.left=(oldNode.getBoundingClientRect().x-node.getBoundingClientRect().x)+"px"
   node.style.top=(oldNode.getBoundingClientRect().y-node.getBoundingClientRect().y)+"px"
-  node.style.width=(oldNode.getBoundingClientRect().width)+"px"
-  node.style.height=(oldNode.getBoundingClientRect().height)+"px"
+  node.style.width=(oldNode.offsetWidth)+"px"
+  node.style.height=(oldNode.offsetHeight)+"px"
   node.setAttribute("data-id", index);
   observer.observe(node);
   index++;

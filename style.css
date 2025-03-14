@@ -200,6 +200,9 @@ ul{
 .button-2:hover{
   background-color: var(--lite-blue-mine);
 }
+.image{
+  width: 100%
+}
 
 .row{
   display: flex;
@@ -240,6 +243,18 @@ ul{
   .row{
     flex-direction: row;
   }
+  .grid-sm{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+  }
+  .image{
+    width: 300px
+  }
+
+  .order-1{
+    order: 1;
+  }
 
 }
 
@@ -276,6 +291,9 @@ ul{
   }
   .hidden-button{
     display: none
+  }
+  .image{
+    width: 400px
   }
 }
 
