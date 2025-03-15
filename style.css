@@ -98,6 +98,7 @@ nav {
 .nav-bar.open {
   display: flex;
   flex-direction: column;
+  background: var(--lite-blue-mine);
 }
 .nav-bar a{
   margin: 0rem 0.4rem;
@@ -108,7 +109,13 @@ nav {
   background: var(--dark-blue-mine)
 }
 .hidden-button{
-  display: flex; justify-content: end; background-color: var(--lite-blue-mine);
+  display: flex; 
+  justify-content: end; 
+  background: linear-gradient(
+    to top,
+    var(--lite-blue-mine),
+    var(--dark-blue-mine)
+  );
 }
 
 a{

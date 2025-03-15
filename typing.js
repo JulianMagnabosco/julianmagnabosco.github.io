@@ -96,3 +96,16 @@ function writeText(e) {
     writeText(e);
   }, listStrings[textId].timing * 1000);
 }
+const oldRezize=document.body.onresize
+function rezizeTyping() {
+  oldRezize()
+  for (let i = 0; i < listSections.length; i++) {
+    if (listSections[i].id == "photo") continue;
+    const oldNode = listSections[i].getElementsByClassName("transparent-part")[0];
+    const node = listSections[i].getElementsByClassName("visible-part")[0];
+    node.style.width=(oldNode.offsetWidth+2)+"px"
+    node.style.height=(oldNode.offsetHeight+2)+"px"
+  }
+}
+document.body.onresize = rezizeTyping;
+console.log(document.body.onresize)
