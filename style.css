@@ -165,14 +165,18 @@ ul{
   width: 100%;
 }
 
-.m-1 {
+.mb-1 {
   margin-bottom: 1rem;
 }
 .me-1 {
   margin-right: 1rem;
 }
-.m-5 {
+.mb-5 {
   margin-bottom: 5rem;
+}
+.my-1 {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 .p-1 {
   padding: 1rem;
@@ -191,7 +195,31 @@ ul{
   height: 3.5em;
   animation: 1s ease-out fade-in;
 }
-
+.icon-2{
+  width: 2rem;
+  height: 2em;
+  animation: 1s ease-out fade-in;
+}
+.input-copy{
+  border: 2px solid var(--lite-blue-mine);
+  width: auto;
+  display: inline-block;
+  margin: auto;
+}
+.input-copy div{
+  display: inline-block;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.input-copy a{
+  display: inline-block;
+  background-color: var(--lite-blue-mine);
+  outline: 2px solid var(--lite-blue-mine);
+  cursor: pointer;
+}
+.input-copy a:hover{
+  background-color: var(--blue-mine);
+}
 .button-1 {
   margin: 0.4rem;
   display: inline-block;
@@ -208,7 +236,8 @@ ul{
   background-color: var(--lite-blue-mine);
 }
 .image{
-  width: 100%
+  width: 100%;
+  align-self: center;
 }
 
 .row{
@@ -243,12 +272,14 @@ ul{
   background-color: var(--dark-blue-mine);
 }
 
+.mini-canvas{
+  min-width: 300px; 
+  min-height: 300px
+}
+
 @media (min-width: 578px) {
   #photo{
     width: 60%;
-  }
-  .row{
-    flex-direction: row;
   }
   .grid-sm{
     display: grid;
@@ -259,15 +290,15 @@ ul{
     width: 300px
   }
 
-  .order-1{
-    order: 1;
-  }
 
 }
 
 @media (min-width: 824px) {
   #photo{
     width: 40%;
+  }
+  .row{
+    flex-direction: row;
   }
 
   .container {
@@ -300,7 +331,10 @@ ul{
     display: none
   }
   .image{
-    width: 400px
+    width: 350px
+  }
+  .order-1{
+    order: 1;
   }
 }
 
