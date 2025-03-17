@@ -16,31 +16,32 @@ const timingScale = 2;
 const listSections = document.getElementsByClassName("typing");
 let index = 0;
 for (let i = 0; i < listSections.length; i++) {
+  if (listSections[i].id == "photo") continue;
   const sectionTiming = timing / listSections[i].innerHTML.length / timingScale;
   const step = sectionTiming <= 0.1 ? 4 : 1;
-  if (listSections[i].id == "photo") continue;
   listStrings.push({
     text: listSections[i].innerHTML,
     timing: sectionTiming,
     step: step,
     index: 0,
   });
-  const oldNode = document.createElement("span");
-  oldNode.classList.add("transparent-part")
-  oldNode.innerHTML=listSections[i].innerHTML
-  listSections[i].innerHTML=""
-  listSections[i].appendChild(oldNode);
 
-  const node = document.createElement("span");
-  node.classList.add("visible-part")
-  listSections[i].appendChild(node);
+  const transparentElement = document.createElement("span");
+  transparentElement.classList.add("transparent-part")
+  transparentElement.innerHTML=listSections[i].innerHTML
+  listSections[i].innerHTML=""
+  listSections[i].appendChild(transparentElement);
+
+  const visibleElement = document.createElement("span");
+  visibleElement.classList.add("visible-part")
+  listSections[i].appendChild(visibleElement);
   listSections[i].style.position="relative"
-  node.style.left=(oldNode.getBoundingClientRect().x-node.getBoundingClientRect().x)+"px"
-  node.style.top=(oldNode.getBoundingClientRect().y-node.getBoundingClientRect().y)+"px"
-  node.style.width=(oldNode.offsetWidth)+"px"
-  node.style.height=(oldNode.offsetHeight)+"px"
-  node.setAttribute("data-id", index);
-  observer.observe(node);
+  visibleElement.style.left=(transparentElement.getBoundingClientRect().x-visibleElement.getBoundingClientRect().x)+"px"
+  visibleElement.style.top=(transparentElement.getBoundingClientRect().y-visibleElement.getBoundingClientRect().y)+"px"
+  visibleElement.style.width=(transparentElement.offsetWidth+4)+"px"
+  visibleElement.style.height=(transparentElement.offsetHeight+4)+"px"
+  visibleElement.setAttribute("data-id", index);
+  observer.observe(visibleElement);
   index++;
 }
 
@@ -101,10 +102,10 @@ function rezizeTyping() {
   oldRezize()
   for (let i = 0; i < listSections.length; i++) {
     if (listSections[i].id == "photo") continue;
-    const oldNode = listSections[i].getElementsByClassName("transparent-part")[0];
-    const node = listSections[i].getElementsByClassName("visible-part")[0];
-    node.style.width=(oldNode.offsetWidth+2)+"px"
-    node.style.height=(oldNode.offsetHeight+2)+"px"
+    const transparentElement = listSections[i].getElementsByClassName("transparent-part")[0];
+    const visibleElement = listSections[i].getElementsByClassName("visible-part")[0];
+    visibleElement.style.width=(transparentElement.offsetWidth+4)+"px"
+    visibleElement.style.height=(transparentElement.offsetHeight+4)+"px"
   }
 }
 document.body.onresize = rezizeTyping;
