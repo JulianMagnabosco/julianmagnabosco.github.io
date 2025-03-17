@@ -169,7 +169,7 @@ ul{
   margin-bottom: 1rem;
 }
 .me-1 {
-  margin-right: 1rem;
+  margin-right: 0.4rem;
 }
 .mb-5 {
   margin-bottom: 5rem;
@@ -177,6 +177,10 @@ ul{
 .my-1 {
   margin-bottom: 1rem;
   margin-top: 1rem;
+}
+.mx-a{
+  margin-left: auto;
+  margin-right: auto;
 }
 .p-1 {
   padding: 1rem;
@@ -204,7 +208,9 @@ ul{
   border: 2px solid var(--lite-blue-mine);
   width: auto;
   display: inline-block;
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
+  text-wrap-mode: nowrap;
 }
 .input-copy div{
   display: inline-block;
@@ -232,6 +238,11 @@ ul{
 .button-1:hover{
   transform: skewX(-15deg);
 }
+.button-2{
+  display: inline-block;
+  height: max-content;
+  padding-right: 0.5rem;
+}
 .button-2:hover{
   background-color: var(--lite-blue-mine);
 }
@@ -240,11 +251,15 @@ ul{
   align-self: center;
 }
 
-.row{
+.row,.row-md{
   display: flex;
   justify-content: center;
   align-items: stretch;
   flex-direction: column;
+}
+
+.row-span{
+  row-gap: 0.2rem;
 }
 .grid{
   display: grid;
@@ -342,12 +357,14 @@ ul{
 @media (min-width: 1424px) {
   .container {
     width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .nav-bar {
     margin: auto;
     width: 1000px;
+  }
+  .row-md{
+    flex-direction: row;
+    align-items: center;
   }
 }

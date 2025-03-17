@@ -27,21 +27,21 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:export-bgcolor="#ffffff00"
      inkscape:zoom="1.02625"
-     inkscape:cx="307.42996"
-     inkscape:cy="285.99269"
+     inkscape:cx="306.45554"
+     inkscape:cy="372.7162"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg1" />
   <path
      id="rect1"
-     style="fill:none;stroke:#ffffff;stroke-width:1.47196;stroke-dasharray:none"
-     d="M 0.75044604,9.028065 H 15.850185 V 23.27826 H 0.75044604 Z" />
+     style="fill:none;stroke:#ffffff;stroke-width:3;stroke-dasharray:none"
+     d="M 1.5397274,8.2680163 H 16.639466 V 22.518211 H 1.5397274 Z" />
   <path
      id="rect2"
-     style="fill:none;stroke:#ffffff;stroke-width:1.46056;stroke-dasharray:none"
-     d="M 9.0682551,9.1748445 V 0.79266297 H 23.207757 V 15.131117 h -7.592085"
+     style="fill:none;stroke:#ffffff;stroke-width:3.06900018;stroke-dasharray:none"
+     d="m 8.3666717,6.8946984 0,-5.3712194 H 22.506174 v 14.338454 l -4.464192,0"
      sodipodi:nodetypes="ccccc" />
 </svg>
