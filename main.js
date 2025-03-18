@@ -3,6 +3,8 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 // Setup
+const startDelay=1
+
 const scenes = [];
 const scene = new THREE.Scene();
 
@@ -59,7 +61,7 @@ function renderPlane() {
   geometryPlane.attributes.position.needsUpdate = true;
 }
 
-//REnderers
+//Scenes
 function newScene(id, animationId) {
   const subscene = new THREE.Scene();
   const subelement = document.getElementById(id);
@@ -102,8 +104,10 @@ function newScene(id, animationId) {
 
   scenes.push(subscene);
 }
-newScene("canvas1", 2);
-newScene("canvas2", 3);
+setTimeout(() => {
+  newScene("canvas1", 2);
+  newScene("canvas2", 3);
+}, startDelay*1000);
 
 //Rezize
 function rezize() {

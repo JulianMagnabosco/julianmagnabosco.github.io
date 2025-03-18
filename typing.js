@@ -1,3 +1,4 @@
+const startDelay=1
 const options = {
   rootMargin: "0px",
   threshold: 0.01,
@@ -43,8 +44,10 @@ for (let i = 0; i < listSections.length; i++) {
   }
   visibleElement.style.width=(transparentElement.offsetWidth+4)+"px"
   visibleElement.style.height=(transparentElement.offsetHeight+4)+"px"
-  visibleElement.setAttribute("data-id", index);
-  observer.observe(visibleElement);
+  visibleElement.setAttribute("data-id", index); 
+  setTimeout(() => {
+    observer.observe(visibleElement);
+  }, startDelay*1000);
   index++;
 }
 

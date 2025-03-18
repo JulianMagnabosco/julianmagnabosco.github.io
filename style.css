@@ -2,8 +2,8 @@ html{
   scroll-padding-top: 3.5rem;
 }
 :root {
-  --lite-blue-mine: #00acff;
-  --blue-mine: #244ed9;
+  --lite-blue-mine: #00dfff;
+  --blue-mine: #17167b;
   --dark-blue-mine: #102876;
   --dark-mine: #060f2b;
   --yell-mine: #dee81d;
@@ -34,6 +34,7 @@ h4,
 h5,
 h6 {
   margin: 0;
+  text-shadow: 2px 2px black;
 }
 
 img, svg{
@@ -95,26 +96,32 @@ nav {
     var(--dark-blue-mine)
   );
 }
-.nav-bar.open {
-  display: flex;
-  flex-direction: column;
-  background: var(--lite-blue-mine);
+@media (max-width: 824px) {
+  .nav-bar.open {
+    display: flex;
+    flex-direction: column;
+    background: var(--blue-mine);
+  }
 }
 .nav-bar a{
   margin: 0rem 0.4rem;
   padding: 0.5rem;
   font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px black;
 }
 .nav-bar a:hover{
-  background: var(--dark-blue-mine)
+  background: var(--lite-blue-mine);
+  color: black;
+  text-shadow: 2px 2px white;
 }
 .hidden-button{
   display: flex; 
   justify-content: end; 
   background: linear-gradient(
     to top,
-    var(--lite-blue-mine),
-    var(--dark-blue-mine)
+    var(--dark-blue-mine),
+    var(--lite-blue-mine)
   );
 }
 
@@ -294,12 +301,15 @@ ul{
 }
 
 .mini-canvas{
-  min-height: 300px
+  min-height: 300px;
+  background-color: var(--dark-blue-mine);
+  animation: 0.1s reverse ease-out 2s both fade-in;
 }
 
 @media (min-width: 578px) {
   #photo{
     width: 60%;
+    align-self: center;
   }
   .image{
     width: 300px
@@ -320,8 +330,11 @@ ul{
     display: grid;
     grid-template-columns: auto auto;
     gap: 10px;
-  }.mini-canvas{
-    min-width: 300px; 
+  }
+  
+  .mini-canvas{
+    width: 20rem; 
+    height: 30rem; 
   }
 
   .container {
