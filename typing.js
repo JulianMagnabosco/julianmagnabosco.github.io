@@ -36,8 +36,11 @@ for (let i = 0; i < listSections.length; i++) {
   visibleElement.classList.add("visible-part")
   listSections[i].appendChild(visibleElement);
   listSections[i].style.position="relative"
-  visibleElement.style.left=(transparentElement.getBoundingClientRect().x-visibleElement.getBoundingClientRect().x)+"px"
-  visibleElement.style.top=(transparentElement.getBoundingClientRect().y-visibleElement.getBoundingClientRect().y)+"px"
+    console.log(window.getComputedStyle(listSections[i], null).getPropertyValue('padding-top'))
+    visibleElement.style.left=(transparentElement.getBoundingClientRect().x-visibleElement.getBoundingClientRect().x)+"px"
+  if(window.getComputedStyle(listSections[i], null).getPropertyValue('padding-top')!="0px"){
+    visibleElement.style.top=(transparentElement.getBoundingClientRect().y-visibleElement.getBoundingClientRect().y)+"px"
+  }
   visibleElement.style.width=(transparentElement.offsetWidth+4)+"px"
   visibleElement.style.height=(transparentElement.offsetHeight+4)+"px"
   visibleElement.setAttribute("data-id", index);
@@ -106,7 +109,7 @@ function rezizeTyping() {
     const visibleElement = listSections[i].getElementsByClassName("visible-part")[0];
     visibleElement.style.width=(transparentElement.offsetWidth+4)+"px"
     visibleElement.style.height=(transparentElement.offsetHeight+4)+"px"
+  console.log(visibleElement.getBoundingClientRect().y-transparentElement.getBoundingClientRect().y)
   }
 }
 document.body.onresize = rezizeTyping;
-console.log(document.body.onresize)

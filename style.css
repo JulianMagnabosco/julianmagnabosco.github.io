@@ -206,16 +206,22 @@ ul{
 }
 .input-copy{
   border: 2px solid var(--lite-blue-mine);
-  width: auto;
-  display: inline-block;
+  display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      width: 100%;
+      max-width: max-content;
   margin-right: auto;
   margin-left: auto;
   text-wrap-mode: nowrap;
 }
 .input-copy div{
+  flex: 1 1 auto;
+  width: 1%;
+  min-width: 1px;
   display: inline-block;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding: 0.5rem;
+    overflow: clip;
 }
 .input-copy a{
   display: inline-block;
@@ -288,7 +294,6 @@ ul{
 }
 
 .mini-canvas{
-  min-width: 300px; 
   min-height: 300px
 }
 
@@ -315,6 +320,8 @@ ul{
     display: grid;
     grid-template-columns: auto auto;
     gap: 10px;
+  }.mini-canvas{
+    min-width: 300px; 
   }
 
   .container {

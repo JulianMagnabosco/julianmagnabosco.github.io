@@ -7,12 +7,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
-console.log(window.innerWidth)
 let toggle = false
 const element = document.getElementsByClassName("nav-bar")[0]
 const button = document.getElementsByClassName("nav-bar-button")[0]
 const otherbuttons = Array.from(element.getElementsByTagName("a"))
-console.log(otherbuttons)
 
 function toggleOpen() {
   element.classList.add('open');
