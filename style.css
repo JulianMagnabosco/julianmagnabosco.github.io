@@ -173,10 +173,10 @@ ul{
   }
 }
 
-@font-face { font-family: bigfont; font-weight: bold; src: url('font-v/font-v-bold.ttf'); } 
-@font-face { font-family: bigfont; src: url('font-v/font-v-regular.ttf'); } 
-@font-face { font-family: bigfont; font-style: italic; src: url('font-v/font-v-italic.ttf'); } 
-@font-face { font-family: bigfont; font-weight: lighter; src: url('font-v/font-v-light.ttf'); } 
+@font-face { font-family: bigfont; font-weight: bold; src: url('./font-v/font-v-bold.ttf'); } 
+@font-face { font-family: bigfont; src: url('./font-v/font-v-regular.ttf'); } 
+@font-face { font-family: bigfont; font-style: italic; src: url('./font-v/font-v-italic.ttf'); } 
+@font-face { font-family: bigfont; font-weight: lighter; src: url('./font-v/font-v-light.ttf'); } 
 
 /*------------------- Principal----------------------- */
 
