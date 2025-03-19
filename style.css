@@ -46,7 +46,7 @@ section {
   border: 5px solid var(--lite-blue-mine);
   position: relative;
   /* overflow: hidden; */
-  /* animation: 1s ease-out 2s backwards section-in; */
+  animation: 1s ease-out 1s backwards fade-in;
 }
 section:not(.transparent) {
   background: linear-gradient(to top, var(--dark-blue-mine), var(--dark-mine));
@@ -63,20 +63,24 @@ section h2::before {
   position: absolute;
   right: 0;
   text-align: right;
-  padding: 0 1rem;
-  background-color: var(--lite-blue-mine);
+  padding: 0 0.5rem;
+  background-color: var(--blue-mine);
+  color: var(--lite-blue-mine);
+  text-shadow: none;
   /* animation: 1s ease-out 2s backwards section-in; */
 }
 @keyframes section-in {
   0% {
-    outline: 5px solid transparent;
+    border: 5px solid transparent;
+    background-color: transparent;
+    content-visibility: hidden;
   }
   50% {
-    outline: 5px solid var(--lite-blue-mine);
-    background-color: transparent;
+    border: 5px solid var(--lite-blue-mine);
   }
   100% {
-    background-color: var(--lite-blue-mine);
+    background-color: var(--blue-mine);
+    content-visibility:visible;
   }
 }
 
@@ -100,7 +104,15 @@ nav {
   .nav-bar.open {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background: var(--blue-mine);
+  }
+  .nav-bar.open a{
+    max-width: 100%;
+    width: 20rem;
+  }
+  .nav-bar.open a:not(:first-child){
+    border-top: 1px solid #00dfff;
   }
 }
 .nav-bar a{
@@ -135,7 +147,7 @@ ul{
 
 .container {
   padding: 1.5rem;
-  animation: 0.3s ease-out 1s backwards fade-in;
+  /* animation: 0.3s ease-out 1s backwards fade-in; */
 }
 
 /* Scroll */
@@ -208,7 +220,7 @@ ul{
 }
 .icon-2{
   width: 2rem;
-  height: 2em;
+  height: 2rem;
   animation: 1s ease-out fade-in;
 }
 .input-copy{
@@ -303,7 +315,8 @@ ul{
 .mini-canvas{
   min-height: 300px;
   background-color: var(--dark-blue-mine);
-  animation: 0.1s reverse ease-out 2s both fade-in;
+  animation: 1s reverse ease-out both fade-in;
+  animation-play-state: paused;
 }
 
 @media (min-width: 578px) {
@@ -358,7 +371,7 @@ ul{
     );
   }
   .nav-bar a{
-    margin: 0rem 0.4rem;
+    margin: 0rem 0.3rem;
     padding: 0.5rem;
     background: var(--lite-blue-mine);
     transition: all 0.2s;

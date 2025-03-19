@@ -3,7 +3,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 // Setup
-const startDelay=1
+const startDelay=2
 
 const scenes = [];
 const scene = new THREE.Scene();
@@ -133,24 +133,23 @@ function animate() {
   renderer.setClearColor(0x102876);
 
   scenes.forEach((s) => {
-    // get the element that is a place holder for where we want to
-    // draw the scene
     const element = s.userData.element;
+    const c = s.userData.camera;
+    const m = s.userData.mixer;
+    const co = s.userData.controls;
 
-    // get its position relative to the page's viewport
+
     const rect = element.getBoundingClientRect();
 
-    // check if it's offscreen. If so skip it
     if (
       rect.bottom < 0 ||
       rect.top > renderer.domElement.clientHeight ||
       rect.right < 0 ||
       rect.left > renderer.domElement.clientWidth
     ) {
-      return; // it's off screen
+      return;
     }
 
-    // set the viewport
     const width = rect.right - rect.left+2;
     const height = rect.bottom - rect.top+2;
     const left = rect.left;
@@ -159,18 +158,15 @@ function animate() {
     renderer.setViewport(left, bottom, width, height);
     renderer.setScissor(left, bottom, width, height);
 
-    const c = s.userData.camera;
-    const m = s.userData.mixer;
-    const co = s.userData.controls;
     c.aspect = width / height;
     c.updateProjectionMatrix();
-    //scene.userData.controls.update();
     if (m) {
       m.update(delta);
     }
     co.update();
 
     renderer.render(s, c);
+    element.style.animationPlayState = "running";
   });
 }
 animate();
