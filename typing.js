@@ -41,7 +41,8 @@ for (let i = 0; i < listSections.length; i++) {
   if (window.getComputedStyle(listSections[i], null).getPropertyValue('padding-top') != "0px") {
     visibleElement.style.top = (transparentElement.getBoundingClientRect().y - visibleElement.getBoundingClientRect().y) + "px"
   }
-  visibleElement.style.width = (transparentElement.offsetWidth + 4) + "px"
+  // visibleElement.style.width = (transparentElement.offsetWidth + 4) + "px"
+  visibleElement.style.width = "100%"
   visibleElement.style.height = (transparentElement.offsetHeight + 4) + "px"
   visibleElement.setAttribute("data-id", index);
   setTimeout(() => {
