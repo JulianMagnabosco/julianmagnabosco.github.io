@@ -1,4 +1,4 @@
-const startDelay=1
+const startDelay = 1
 const options = {
   rootMargin: "0px",
   threshold: 0.01,
@@ -29,25 +29,24 @@ for (let i = 0; i < listSections.length; i++) {
 
   const transparentElement = document.createElement("span");
   transparentElement.classList.add("transparent-part")
-  transparentElement.innerHTML=listSections[i].innerHTML
-  listSections[i].innerHTML=""
+  transparentElement.innerHTML = listSections[i].innerHTML
+  listSections[i].innerHTML = ""
   listSections[i].appendChild(transparentElement);
 
   const visibleElement = document.createElement("span");
   visibleElement.classList.add("visible-part")
   listSections[i].appendChild(visibleElement);
-  listSections[i].style.position="relative"
-    console.log(window.getComputedStyle(listSections[i], null).getPropertyValue('padding-top'))
-    visibleElement.style.left=(transparentElement.getBoundingClientRect().x-visibleElement.getBoundingClientRect().x)+"px"
-  if(window.getComputedStyle(listSections[i], null).getPropertyValue('padding-top')!="0px"){
-    visibleElement.style.top=(transparentElement.getBoundingClientRect().y-visibleElement.getBoundingClientRect().y)+"px"
+  listSections[i].style.position = "relative"
+  visibleElement.style.left = (transparentElement.getBoundingClientRect().x - visibleElement.getBoundingClientRect().x) + "px"
+  if (window.getComputedStyle(listSections[i], null).getPropertyValue('padding-top') != "0px") {
+    visibleElement.style.top = (transparentElement.getBoundingClientRect().y - visibleElement.getBoundingClientRect().y) + "px"
   }
-  visibleElement.style.width=(transparentElement.offsetWidth+4)+"px"
-  visibleElement.style.height=(transparentElement.offsetHeight+4)+"px"
-  visibleElement.setAttribute("data-id", index); 
+  visibleElement.style.width = (transparentElement.offsetWidth + 4) + "px"
+  visibleElement.style.height = (transparentElement.offsetHeight + 4) + "px"
+  visibleElement.setAttribute("data-id", index);
   setTimeout(() => {
     observer.observe(visibleElement);
-  }, startDelay*1000);
+  }, startDelay * 1000);
   index++;
 }
 
@@ -79,14 +78,14 @@ function writeText(e) {
   const maxLen = oldTextString.length - listStrings[textId].index;
 
 
-  e.innerHTML = oldTextString.substring(0,listStrings[textId].index);
+  e.innerHTML = oldTextString.substring(0, listStrings[textId].index);
 
   listStrings[textId].index += listStrings[textId].step;
-  
+
   e.innerHTML = e.innerHTML.replace(regexString, replaceString);
 
   // console.log(oldTextString.length+" - "+(oldTextString.length+ charEndSize)+" - "+listStrings[textId].index)
-  
+
   if (oldTextString.length > listStrings[textId].index) {
     e.innerHTML +=
       "<span>" +
@@ -95,7 +94,7 @@ function writeText(e) {
         maxLen
       ) +
       "</span>";
-  }else{
+  } else {
     return
   }
 
@@ -103,16 +102,15 @@ function writeText(e) {
     writeText(e);
   }, listStrings[textId].timing * 1000);
 }
-const oldRezize=document.body.onresize
+const oldRezize = document.body.onresize
 function rezizeTyping() {
   oldRezize()
   for (let i = 0; i < listSections.length; i++) {
     if (listSections[i].id == "photo") continue;
     const transparentElement = listSections[i].getElementsByClassName("transparent-part")[0];
     const visibleElement = listSections[i].getElementsByClassName("visible-part")[0];
-    visibleElement.style.width=(transparentElement.offsetWidth+4)+"px"
-    visibleElement.style.height=(transparentElement.offsetHeight+4)+"px"
-  console.log(visibleElement.getBoundingClientRect().y-transparentElement.getBoundingClientRect().y)
+    visibleElement.style.width = (transparentElement.offsetWidth + 4) + "px"
+    visibleElement.style.height = (transparentElement.offsetHeight + 4) + "px"
   }
 }
 document.body.onresize = rezizeTyping;
