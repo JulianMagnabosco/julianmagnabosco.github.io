@@ -7,21 +7,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
 let toggle = false
-const element = document.getElementsByClassName("nav-bar")[0]
-const button = document.getElementsByClassName("nav-bar-button")[0]
-const otherbuttons = Array.from(element.getElementsByTagName("a"))
 
-function toggleOpen() {
-  element.classList.add('open');
-  if (toggle) {
-    element.classList.remove('open');
-  }
-  toggle=!toggle
-}
-function toggleClose() {
-  element.classList.remove('open');
-}
+const element = document.querySelector(".nav-bar")
+const buttons = Array.from(element.children)
 
-button.addEventListener('click', toggleOpen);
-otherbuttons.forEach((ob) => ob.addEventListener('click', toggleClose));
+
+// button.addEventListener('click', toggleOpen);
+buttons.forEach((ob) => ob.addEventListener('click', ()=>{
+  element.classList.toggle('open')
+}));

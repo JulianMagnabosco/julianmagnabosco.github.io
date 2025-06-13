@@ -15,15 +15,19 @@
   <canvas id="bg"></canvas>
 
   <nav>
-    <div class="p-1 hidden-button">
-      <svg width="30px" height="30px" viewBox="0 0 1200 1200" enable-background="new 0 0 1200 1200" xml:space="preserve"
-        fill="white" style="cursor: pointer;" class="nav-bar-button">
-        <path fill="white" id="rect3039" inkscape:connector-curvature="0"
-          d="M0,0v240h1200V0H0z M0,480v240h1200V480H0z M0,960v240h1200V960H0z" />
-      </svg>
-    </div>
+
+
     <div class="p-1 nav-bar">
-      <a href="#quien"><img style="width: 1.5rem; height: 1.5rem; background-color: black; margin-right: 0.4rem; border-radius: 100%;" src="avatar.png" alt="">Quien soy</a>
+      <a class="p-1 hidden-button">
+        <svg width="30px" height="30px" viewBox="0 0 1200 1200" enable-background="new 0 0 1200 1200"
+          xml:space="preserve" fill="white" style="cursor: pointer;" class="nav-bar-button">
+          <path fill="white" id="rect3039" inkscape:connector-curvature="0"
+            d="M0,0v240h1200V0H0z M0,480v240h1200V480H0z M0,960v240h1200V960H0z" />
+        </svg>
+      </a>
+      <a href="#quien"><img
+          style="width: 1.5rem; height: 1.5rem; background-color: black; margin-right: 0.4rem; border-radius: 100%;"
+          src="avatar.png" alt="">Quien soy</a>
       <a href="#perfil">Perfil</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#aptitudes">Aptitudes</a>
@@ -40,7 +44,9 @@
           justify-content: center;
         ">
       <section id="quien">
-        <h2 class="flex-basis"><img style="width: 2rem; height: 2rem; background-color: black; margin-right: 0.4rem; border-radius: 100%;" src="avatar.png" alt="">Quien soy</h2>
+        <h2 class="flex-basis"><img
+            style="width: 2rem; height: 2rem; background-color: black; margin-right: 0.4rem; border-radius: 100%;"
+            src="avatar.png" alt="">Quien soy</h2>
         <div class="row p-1">
           <img src="foto.jpg" alt="" id="photo" />
 
@@ -55,18 +61,15 @@
 
     <section class="mb-5 transparent" id="perfil">
       <h2>👨‍💼Mi perfil</h2>
-      <div class="row" style="align-items: stretch">
-        <div id="canvas1" class="mini-canvas"></div>
-        <div class="row bg-blue" style="width: 100%">
-          <div class="typing p-1">
-            Soy un
-            <span class="bold">Programador y Desarrollador</span> entusiasta
-            que busca desarrollarse y colaborar con otros en el ámbito de la
-            informática. Deseo poder demostrar mis habilidades y llegar a
-            trabajar en proyectos de gran valor. <br /><br />
-            Hace poco logré terminar mi carrera Tecnico Programador en la UTN
-            y quiero demostrar mis habilidades en la Programacion Web.
-          </div>
+      <div class="row bg-blue" style="width: 100%">
+        <div class="typing p-1">
+          Soy un
+          <span class="bold">Programador y Desarrollador</span> entusiasta
+          que busca desarrollarse y colaborar con otros en el ámbito de la
+          informática. Deseo poder demostrar mis habilidades y llegar a
+          trabajar en proyectos de gran valor. <br /><br />
+          Hace poco logré terminar mi carrera Tecnico Programador en la UTN
+          y quiero demostrar mis habilidades en la Programacion Web.
         </div>
       </div>
     </section>
@@ -173,34 +176,29 @@
     <section class="mb-1 transparent" id="educacion">
       <h2>🎓Educación</h2>
 
-      <div class="row" style="align-items: stretch">
-        <div id="canvas2" class="mini-canvas"></div>
-        <div class="row bg-blue" style="width: 100%">
-          <div class="typing p-1">
-            <h3>
-              Técnico Universitario en Programación,
-              <span class="blue-text">2022-2024</span>
-            </h3>
-            <h4>Universidad Tecnológica Nacional, Córdoba Capital</h4>
-            <div class="mb-1 px-1">
-              <span class="blue-text bold">Contenidos:</span>
-              <ul style="margin: 0">
-                <li>Programación en Spring Boot (Java)</li>
-                <li>Angular (Typescript)</li>
-                <li>.NET Core (C#)</li>
-                <li>HTML, CSS y Javascript</li>
-                <li>SQL</li>
-                <li>Gestión de proyectos SCRUM con Jira y Github</li>
-                <li>Matemáticas, Álgebra y Estadística básica</li>
-              </ul>
-            </div>
-            <h3>
-              Bachiller en Ciencias Sociales,
-              <span class="blue-text">2016-2021</span>
-            </h3>
-            <h4>Instituto Inmaculada Concepción, Córdoba Capital</h4>
-          </div>
+      <div class="typing p-1">
+        <h3>
+          Técnico Universitario en Programación,
+          <span class="blue-text">2022-2024</span>
+        </h3>
+        <h4>Universidad Tecnológica Nacional, Córdoba Capital</h4>
+        <div class="mb-1 px-1">
+          <span class="blue-text bold">Contenidos:</span>
+          <ul style="margin: 0">
+            <li>Programación en Spring Boot (Java)</li>
+            <li>Angular (Typescript)</li>
+            <li>.NET Core (C#)</li>
+            <li>HTML, CSS y Javascript</li>
+            <li>SQL</li>
+            <li>Gestión de proyectos SCRUM con Jira y Github</li>
+            <li>Matemáticas, Álgebra y Estadística básica</li>
+          </ul>
         </div>
+        <h3>
+          Bachiller en Ciencias Sociales,
+          <span class="blue-text">2016-2021</span>
+        </h3>
+        <h4>Instituto Inmaculada Concepción, Córdoba Capital</h4>
       </div>
     </section>
 
@@ -233,14 +231,14 @@
     <section class="mb-5" id="contacto">
       <h2>📞Contacto</h2>
       <div class="row row-span p-1" style="flex-direction: column; align-items: center;">
-        <div class="input-copy ">
+        <div class="input-copy  mb-1">
           <div class="typing">julian.magnabosco@gmail.com</div>
           <a onclick="navigator.clipboard.writeText('julian.magnabosco@gmail.com')" style="padding: 0.5rem;">
             <img src="icons/copy.svg" alt="email" title="email" style="width: 1rem; height: 1rem;" />
           </a>
         </div>
 
-        <div class="typing">
+        <div class="typing mb-1">
           <a style="text-wrap-mode: wrap;" href="www.linkedin.com/in/julianmagnabosco-675631258/" class="button-2">
             <img class="icon-2 me-1" src="icons/linkedin.svg" alt="linkedin" title="linkedin" />Linkedin
           </a>
@@ -248,13 +246,13 @@
             <img class="icon-2 me-1" src="icons/github.svg" alt="github" title="github" />Github
           </a>
         </div>
-        <a class="typing">
+        <a class="typing mb-1">
           <img class="icon-2 me-1" src="icons/whatsapp.svg" alt="whatsapp" title="whatsapp" />+54 9 351 547 9074
         </a>
         <a class="typing">
           <img class="icon-2 me-1" src="icons/map.svg" alt="map" title="map" />Tristán de Tejeda, 231 Córdoba Capital
         </a>
-      
+
       </div>
       <!-- <div>
         <form>
