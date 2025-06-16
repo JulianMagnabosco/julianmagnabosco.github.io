@@ -226,12 +226,10 @@ ul {
 .icon {
   width: 3.5rem;
   height: 3.5em;
-  animation: 1s ease-out fade-in;
 }
 .icon-2 {
   width: 2rem;
   height: 2rem;
-  animation: 1s ease-out fade-in;
 }
 .input-copy {
   border: 2px solid var(--cyan);
@@ -306,10 +304,18 @@ ul {
   gap: 10px;
 }
 
-
-.typing span{
+.typing span,.typing-word span,.fade-list *{
   opacity: 0;
-  animation: fade 1s ease both;
+}
+.typing.start span{
+  animation: fade 0.1s ease forwards;
+}
+.typing-word.start span{
+  animation: fade 0.5s ease forwards;
+}
+
+.fade-list.start *{
+  animation: fade 1s ease forwards;
 }
 
 .blue-text {
@@ -327,6 +333,7 @@ ul {
   0% {
     opacity: 0;
   }
+  
   100% {
     opacity: 1;
   }
