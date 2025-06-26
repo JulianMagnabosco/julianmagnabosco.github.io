@@ -139,9 +139,18 @@ button{
   width: 30rem;
 }
 
+.mt-1{
+  margin-top: 1rem;
+}
+.mt-6{
+  margin-top: 6rem;
+}
 
 .p-1{
   padding: 1rem;
+}
+.p-2{
+  padding: 2rem;
 }
 
 .relative{
@@ -152,6 +161,12 @@ button{
   width: 100svw;
 }
 
+.bg-yell{
+  background-color: var(--yell);
+}
+.bg-cyan{
+  background-color: var(--cyan);
+}
 .bg-gray{
   background-color: var(--gray-dark);
 }
@@ -159,10 +174,40 @@ button{
   background-color: var(--dark);
 }
 
-.rotate-md{
+.border-sharp{
+  border-radius: 0 1rem 0 1rem;
+}
+
+.border-sharp-r{
+  border-radius: 1rem 0 1rem 0;
+}
+
+
+.rotate{
   transform-origin: center;
   transform: rotate(2deg);
   text-align: center;
+}
+
+.center-rotate{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform-origin: center;
+  transform: translate(-50%,0%) rotate(2deg);
+}
+.center-rotate-r{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform-origin: center;
+  transform: translate(-50%,0%) rotate(-2deg);
+}
+
+.max-w-50{
+  max-width: 50%;
 }
 
 .gap-0{
@@ -182,8 +227,8 @@ button{
   z-index: 1;
 }
 
-.order-0{
- order: 0;
+.order-1{
+ order: 1;
 }
 
 .bg-graffity::before{
