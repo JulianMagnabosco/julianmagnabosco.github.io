@@ -89,7 +89,7 @@ var loader = new GLTFLoader();
 //   subscene.userData.element = subelement;
 //   subscene.userData.camera = subcamera;
 //   //Character
-//   loader.load("/modelos/personaje.glb", function (gltf) {
+//   loader.load("/models/personaje.glb", function (gltf) {
 //     const submixer = new THREE.AnimationMixer(gltf.scene);
 //     const clip = gltf.animations[animationId];
 //     submixer.clipAction(clip).play();

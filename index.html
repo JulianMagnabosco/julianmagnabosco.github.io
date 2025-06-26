@@ -1,64 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="avatar.png" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="upgrade-insecure-requests"
-    />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Julian Magnabosco</title>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="avatar.png" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
-  <body>
-    <canvas id="bg"></canvas>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julian Magnabosco</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
 
-    <nav>
-      <div>
-        <a>
-          <svg
-            width="30px"
-            height="30px"
-            viewBox="0 0 1200 1200"
-            enable-background="new 0 0 1200 1200"
-            xml:space="preserve"
-            fill="white"
-          >
-            <path
-              fill="white"
-              id="rect3039"
-              inkscape:connector-curvature="0"
-              d="M0,0v240h1200V0H0z M0,480v240h1200V480H0z M0,960v240h1200V960H0z"
-            />
-          </svg>
-        </a>
-        <a href="#quien"><img src="avatar.png" alt="" />Quien soy</a>
-        <a href="#perfil">Perfil</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#aptitudes">Aptitudes</a>
-        <a href="#educacion">Educacion</a>
-        <a href="#contacto">Contacto</a>
-      </div>
-    </nav>
+<body>
+  <canvas id="bg"></canvas>
 
-    <main>
-      <div>
-        <section id="quien">
-          <h2><img src="avatar.png" alt="" />Quien soy</h2>
-          <div>
-            <img src="foto.jpg" alt="" id="photo" />
+  <nav class="bg-dark fixed">
+    <div class="flex p-1">
+      <!-- <a>
+        <svg class="size-small" viewBox="0 0 1200 1200" enable-background="new 0 0 1200 1200" xml:space="preserve"
+          fill="white">
+          <path fill="white" id="rect3039" inkscape:connector-curvature="0"
+            d="M0,0v240h1200V0H0z M0,480v240h1200V480H0z M0,960v240h1200V960H0z" />
+        </svg>
+      </a> -->
+      <a href="#quien">Quien soy</a>
+      <a href="#perfil">Perfil</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#aptitudes">Aptitudes</a>
+      <a href="#educacion">Educacion</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
 
-            <div>
-              <div>Hola soy...</div>
-              <h1>Julian Magnabosco</h1>
-              <div>Programador Full-stack y Desarrollador web</div>
-            </div>
+  <main>
+    <div class="container">
+      <section class="h-full flex flex-col gap-0" id="quien">
+        <h1 class="bg-gray rotate-md width-extend">DEVELOPER</h1>
+
+        <div class="flex relative">
+          <div class="bg-gray rotate-md width-extend center-all bg-graffity">
           </div>
-        </section>
-      </div>
+          <img class="shadow z-1" src="foto.jpg" alt="" id="photo" />
+          <div class="relative p-1 z-1 color-gray-dark">
+            <h3>Hola soy</h3>
+            <h1>JULIAN MAGNABOSCO</h1>
+            <!-- <div>Programador Full-stack y Desarrollador web</div> -->
+          </div>
+        </div>
+
+        <h1 class="bg-gray rotate-md width-extend">DEVELOPER</h1>
+      </section>
 
       <section id="perfil">
         <h2>👨‍💼Mi perfil</h2>
@@ -75,8 +66,8 @@
 
       <section id="proyectos">
         <h2>💼Proyectos</h2>
-        <div>
-          <img src="comolohago.png" alt="" />
+        <div class="flex">
+          <img class="size-large" src="comolohago.png" alt="" />
           <div>
             <h3>“COMOloHAGO” <span>feb. 2024 - jul. 2024</span></h3>
             <div>
@@ -98,9 +89,9 @@
           </div>
         </div>
 
-        <div>
-          <img src="mafbella.png" alt="" />
-          <div>
+        <div class="flex">
+          <img class="size-large" src="mafbella.png" alt="" />
+          <div class="order-0">
             <h3>“MafBella” <span>ago. 2024</span></h3>
             <div>
               <div>
@@ -120,7 +111,7 @@
         </div>
       </section>
 
-      <div>
+      <div class="flex">
         <section id="aptitudes">
           <h2>✨Aptitudes</h2>
           <ul>
@@ -138,32 +129,24 @@
           <h2>💻Tecnologias</h2>
           <div>
             <h4>Tecnologias Principales</h4>
-            <img src="icons/angular.svg" alt="angular" title="angular" />
-            <img src="icons/bootstrap.svg" alt="bootstrap" title="bootstrap" />
-            <img src="icons/tailwind.svg" alt="tailwind" title="tailwind" />
-            <img
-              src="icons/spring-boot.svg"
-              alt="spring-boot"
-              title="spring-boot"
-            />
-            <img
-              src="icons/postgresql.svg"
-              alt="postgresql"
-              title="postgresql"
-            />
-            <img src="icons/maven.svg" alt="maven" title="maven" />
-            <img src="icons/github.svg" alt="github" title="github" />
-            <img src="icons/docker.svg" alt="docker" title="docker" />
-            <h4>Tecnologias que puedo manejar</h4>
-            <img src="icons/csharp.svg" alt="csharp" title="csharp" />
-            <img src="icons/dotnet.svg" alt="dotnet" title="dotnet" />
-            <img src="icons/html.svg" alt="html" title="html" />
-            <img src="icons/js.svg" alt="js" title="js" />
-            <img src="icons/threejs.svg" alt="threejs" title="threejs" />
-            <h4>Tecnologias con las que he trabajado</h4>
-            <img src="icons/python.svg" alt="python" title="python" />
-            <img src="icons/arduino.svg" alt="arduino" title="arduino" />
-            <img src="icons/unity.svg" alt="unity" title="unity" />
+            <img class="size-small" src="icons/angular.svg" alt="angular" title="angular" />
+            <img class="size-small" src="icons/bootstrap.svg" alt="bootstrap" title="bootstrap" />
+            <img class="size-small" src="icons/tailwind.svg" alt="tailwind" title="tailwind" />
+            <img class="size-small" src="icons/spring-boot.svg" alt="spring-boot" title="spring-boot" />
+            <img class="size-small" src="icons/postgresql.svg" alt="postgresql" title="postgresql" />
+            <img class="size-small" src="icons/maven.svg" alt="maven" title="maven" />
+            <img class="size-small" src="icons/github.svg" alt="github" title="github" />
+            <img class="size-small" src="icons/docker.svg" alt="docker" title="docker" />
+            <h4> Tecnologias que puedo manejar</h4>
+            <img class="size-small" src="icons/csharp.svg" alt="csharp" title="csharp" />
+            <img class="size-small" src="icons/dotnet.svg" alt="dotnet" title="dotnet" />
+            <img class="size-small" src="icons/html.svg" alt="html" title="html" />
+            <img class="size-small" src="icons/js.svg" alt="js" title="js" />
+            <img class="size-small" src="icons/threejs.svg" alt="threejs" title="threejs" />
+            <h4> Tecnologias con las que he trabajado</h4>
+            <img class="size-small" src="icons/python.svg" alt="python" title="python" />
+            <img class="size-small" src="icons/arduino.svg" alt="arduino" title="arduino" />
+            <img class="size-small" src="icons/unity.svg" alt="unity" title="unity" />
           </div>
         </section>
         <section>
@@ -230,33 +213,27 @@
       <section id="contacto">
         <h2>📞Contacto</h2>
         <div>
-          <div>
+          <div class="flex">
             <div>julian.magnabosco@gmail.com</div>
-            <a
-              onclick="navigator.clipboard.writeText('julian.magnabosco@gmail.com')"
-            >
-              <img src="icons/copy.svg" alt="email" title="email" />
+            <a onclick="navigator.clipboard.writeText('julian.magnabosco@gmail.com')">
+              <img class="size-small" src="icons/copy.svg" alt="email" title="email" />
             </a>
           </div>
 
           <div>
             <a href="www.linkedin.com/in/julianmagnabosco-675631258/">
-              <img
-                src="icons/linkedin.svg"
-                alt="linkedin"
-                title="linkedin"
-              />Linkedin
+              <img class="size-small" src="icons/linkedin.svg" alt="linkedin" title="linkedin" />Linkedin
             </a>
             <a href="https://github.com/JulianMagnabosco">
-              <img src="icons/github.svg" alt="github" title="github" />Github
+              <img class="size-small" src="icons/github.svg" alt="github" title="github" />Github
             </a>
           </div>
           <a>
-            <img src="icons/whatsapp.svg" alt="whatsapp" title="whatsapp" />+54
+            <img class="size-small" src="icons/whatsapp.svg" alt="whatsapp" title="whatsapp" />+54
             9 351 547 9074
           </a>
           <a>
-            <img src="icons/map.svg" alt="map" title="map" />Tristán de Tejeda,
+            <img class="size-small" src="icons/map.svg" alt="map" title="map" />Tristán de Tejeda,
             231 Córdoba Capital
           </a>
         </div>
@@ -279,14 +256,14 @@
         </form>
       </div> -->
       </section>
-    </main>
+    </div>
+  </main>
 
-    <script
-      type="text/javascript"
-      src="http://joeiddon.github.io/perlin/perlin.js"
-    ></script>
-    <script type="module" src="/main.js"></script>
-    <script type="module" src="/typing.js"></script>
-    <script type="module" src="/smartnav.js"></script>
-  </body>
+
+  <script type="text/javascript" src="http://joeiddon.github.io/perlin/perlin.js"></script>
+  <script type="module" src="/main.js"></script>
+  <script type="module" src="/typing.js"></script>
+  <script type="module" src="/smartnav.js"></script>
+</body>
+
 </html>
