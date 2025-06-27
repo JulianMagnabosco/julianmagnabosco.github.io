@@ -3,6 +3,7 @@
   --yell: #dee81d;
   --dark: #17171a;
   --gray: #48484d;
+  --gray-lite: #6b6b70;
   --gray-dark: #262627;
 
   --grad-yell-cyan: linear-gradient(to top, var(--cyan), var(--yell));
@@ -15,29 +16,24 @@
   --screen-medium: 824px;
   --screen-large: 1424px;
 
-  font-family: bigfont;
+  font-family: ChakraPetch;
   font-weight: 400;
   font-style: normal;
   font-size: large;
 }
 @font-face {
-  font-family: bigfont;
+  font-family: ChakraPetch;
   font-weight: bold;
-  src: url("../font-v/font-v-bold.ttf");
+  src: url("../fonts/ChakraPetch-bold.ttf");
 }
 @font-face {
-  font-family: bigfont;
-  src: url("../font-v/font-v-regular.ttf");
+  font-family: ChakraPetch;
+  src: url("../fonts/ChakraPetch-regular.ttf");
 }
 @font-face {
-  font-family: bigfont;
+  font-family: ChakraPetch;
   font-style: italic;
-  src: url("../font-v/font-v-italic.ttf");
-}
-@font-face {
-  font-family: bigfont;
-  font-weight: lighter;
-  src: url("../font-v/font-v-light.ttf");
+  src: url("../fonts/ChakraPetch-italic.ttf");
 }
 
 * {
@@ -50,12 +46,11 @@ html {
 body {
   margin: 0;
   color: white;
-  background-image: linear-gradient(to right bottom, rgb(36 36 36 / 95%), rgb(0 0 0 / 83%)),
-   url("/texttexture.png");
+  background-image: linear-gradient(to right bottom, rgb(46 46 46 / 95%), rgb(34 33 44 / 83%)), url(/images/texttexture.png);
   background-attachment: fixed, local;
   background-size: contain, 10%;
 }
-body:not(.typing-started){
+body:not(.typing-started) {
   visibility: hidden;
 }
 
@@ -67,11 +62,11 @@ body:not(.typing-started){
   /* animation: 1s ease-out backwards fade-in; */
 }
 
-main{
+main {
   overflow-x: hidden;
 }
 
-.container{
+.container {
   max-width: 1200px;
   width: 100%;
   margin-left: auto;
@@ -80,170 +75,277 @@ main{
   padding-right: 2rem;
 }
 
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
   margin: 0;
 }
 
-h1{
-  font-size: xx-large;
+h1 {
+  font-size: 2em;
 }
 
-a,button{
+a,
+button {
+  display: inline-block;
   cursor: pointer;
 }
-a{
+a {
   color: white;
   text-decoration: none;
 }
-button{
+button {
   border: none;
 }
 
 /* classes */
 
-#photo{
+#photo {
   width: min(100svw, 15rem);
-  
 }
 
-.color-gray-dark{
+.text-center {
+  text-align: center;
+}
+
+.color-gray-dark {
   color: var(--gray-dark);
 }
+.color-gray-lite {
+  color: var(--gray-lite);
+}
+.color-yell{
+  color: var(--yell);
+}
+.color-cyan{
+  color: var(--cyan);
+}
 
-.flex{
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.inline-flex {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.1rem;
+}
+.flex {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
 
-.h-full{
+
+.h-full {
   height: 100svh;
 }
 
-.size-small{
+.size-small {
   width: 2rem;
 }
 
-.fixed{
+.size-medium {
+  width: 3rem;
+}
+
+.size-large {
+  width: 30rem;
+}
+
+.fixed {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
 }
-.flex-col{
+.flex-col {
   flex-direction: column;
 }
 
-.size-large{
-  width: 30rem;
+.align-top {
+  align-items: start !important;
 }
 
-.mt-1{
+.mt-1 {
   margin-top: 1rem;
 }
-.mt-6{
+.mt-2 {
+  margin-top: 2rem;
+}
+.mt-3 {
+  margin-top: 3rem;
+}
+.mt-6 {
   margin-top: 6rem;
 }
+.mt-9 {
+  margin-top: 9rem;
+}
 
-.p-1{
+.p-1 {
   padding: 1rem;
 }
-.p-2{
+.p-2 {
   padding: 2rem;
 }
 
-.relative{
+.relative {
   position: relative;
 }
 
-.width-extend{
-  width: 100svw;
+.width-extend {
+  width: 200svw;
 }
 
-.bg-yell{
+.scroll-limit {
+  /* display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  overflow: hidden; */
+  white-space:nowrap;
+  overflow:hidden;
+  display: flex;
+  max-height: 2.6rem;
+}
+
+.scroll{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem;
+  min-width: 100%;
+  animation: scroll 20s linear infinite;
+  justify-content: space-around;
+}
+.reverse .scroll{
+  animation-direction: reverse;
+}
+@keyframes scroll {
+  to{
+    transform: translateX(-100%);
+  }
+}
+
+.bg-yell {
   background-color: var(--yell);
 }
-.bg-cyan{
+.bg-cyan {
   background-color: var(--cyan);
 }
-.bg-gray{
+.bg-gray {
   background-color: var(--gray-dark);
 }
-.bg-dark{
+.bg-dark {
   background-color: var(--dark);
 }
 
-.border-sharp{
+.border-sharp {
   border-radius: 0 1rem 0 1rem;
 }
 
-.border-sharp-r{
+.border-sharp-r {
   border-radius: 1rem 0 1rem 0;
 }
 
-
-.rotate{
+.rotate {
   transform-origin: center;
   transform: rotate(2deg);
   text-align: center;
 }
 
-.center-rotate{
+.center-rotate {
   position: relative;
   top: 50%;
   left: 50%;
   text-align: center;
   transform-origin: center;
-  transform: translate(-50%,0%) rotate(2deg);
+  transform: translate(-50%, 0%) rotate(2deg);
 }
-.center-rotate-r{
+.center-rotate-r {
   position: relative;
   top: 50%;
   left: 50%;
   text-align: center;
   transform-origin: center;
-  transform: translate(-50%,0%) rotate(-2deg);
+  transform: translate(-50%, 0%) rotate(-2deg);
 }
 
-.max-w-50{
-  max-width: 50%;
+.abs-rotate {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  text-align: center;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(2deg);
+}
+.abs-rotate-r {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  text-align: center;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(-2deg);
 }
 
-.gap-0{
+.btn-1 {
+  text-align: center;
+  display: block;
+}
+.btn-1:hover {
+  background-color: var(--gray);
+}
+
+.gap-0 {
   gap: 0;
 }
 
-.center-all{
+.center-all {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%) rotate(2deg);
+  transform: translate(-50%, -50%) rotate(2deg);
   width: 100svw;
   height: 101%;
 }
-
-.z-1{
+.-z-1 {
+  z-index: -1;
+}
+.z-1 {
   z-index: 1;
 }
-
-.order-1{
- order: 1;
+.z-2 {
+  z-index: 2;
+}
+.z-1000 {
+  z-index: 1000;
 }
 
-.bg-graffity::before{
+.order-1 {
+  order: 1;
+}
+
+.bg-graffity::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 100svw;
   height: 40%;
-  transform: translate(-50%,-50%) rotate(-2deg);
+  transform: translate(-50%, -50%) rotate(-2deg);
   background-image: linear-gradient(to right, var(--cyan), var(--yell));
   z-index: 0;
   filter: blur(5px);
 }
- /* .bg-graffity{
+/* .bg-graffity{
   margin: auto;
   height: 40%;
   background-image: linear-gradient(to right, var(--cyan), var(--yell));
@@ -253,6 +355,15 @@ button{
   backdrop-filter: url("#wavy");
 } */
 
-.shadow{
+.shadow {
   box-shadow: 2px 2px 25px black;
+}
+
+@media (max-width: 600px) {
+  .flex{
+    flex-direction: column;
+  }
+  .nav-bar{
+    display: none;
+  }
 }

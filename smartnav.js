@@ -11,8 +11,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 let toggle = false
 
 const element = document.querySelector(".nav-bar")
-const buttons = Array.from(element.children)
+if(element) 
+{
+    const buttons = Array.from(element.children)
 
-buttons.forEach((ob) => ob.addEventListener('click', ()=>{
-  element.classList.toggle('open')
-}));
+    buttons.forEach((ob) => ob.addEventListener('click', ()=>{
+        element.classList.toggle('open')
+    }));
+}
