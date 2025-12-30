@@ -8,8 +8,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-let toggle = false
-
 const element = document.querySelector(".nav-bar")
 if(element) 
 {

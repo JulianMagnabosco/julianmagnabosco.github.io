@@ -199,6 +199,9 @@ button {
   margin-top: 12rem;
 }
 
+.p-1\/2 {
+  padding: 0.5rem;
+}
 .p-1 {
   padding: 1rem;
 }
@@ -206,9 +209,6 @@ button {
   padding: 2rem;
 }
 
-.relative {
-  position: relative;
-}
 
 .width-extend {
   width: 200svw;
@@ -263,11 +263,11 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 110svw;
-  height: 40%;
-  transform: translate(-50%, -50%) rotate(-2deg);
+  width: 150svw;
+  height: 100%;
+  transform: translate(-50%, -50%);
   background-image: linear-gradient(to right, var(--cyan), var(--yell));
-  z-index: 0;
+  z-index: -1;
   filter: blur(5px);
 }
 .text-bg {
@@ -283,45 +283,19 @@ button {
   border-radius: 1rem 0 1rem 0;
 }
 
+.relative {
+  position: relative;
+}
+
+.center{
+  transform: translateX(-50%);
+}
 .rotate {
   transform-origin: center;
   transform: rotate(2deg);
   text-align: center;
 }
 
-.center-rotate {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform-origin: center;
-  transform: translate(-50%, 0%) rotate(2deg);
-}
-.center-rotate-r {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform-origin: center;
-  transform: translate(-50%, 0%) rotate(-2deg);
-}
-
-.abs-rotate {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  text-align: center;
-  transform-origin: center;
-  transform: translate(-50%, -50%) rotate(2deg);
-}
-.abs-rotate-r {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  text-align: center;
-  transform-origin: center;
-  transform: translate(-50%, -50%) rotate(-2deg);
-}
 
 .btn-1 {
   text-align: center;
@@ -337,14 +311,7 @@ button {
   gap: 0;
 }
 
-.center-all {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(2deg);
-  width: 100svw;
-  height: 101%;
-}
+
 .-z-1 {
   z-index: -1;
 }
@@ -396,11 +363,11 @@ button {
     flex-direction: column;
   }
   .link-bar {
-    gap: 2rem;
+    gap: 1rem;
   }
   .link-bar a {
     width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: center;
   }
   .grid {

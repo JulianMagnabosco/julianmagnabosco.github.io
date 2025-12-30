@@ -16,7 +16,7 @@
 
   <nav class="bg-gray fixed z-1000 nav-bar shadow">
     <div class="hidden-bar p-1">
-      <a class="btn-a p-1">
+      <a class="btn-a p-1/2">
         <img class="size-small" src="icons/hidden-bar.svg" alt="" srcset="">
       </a>
     </div>
@@ -40,52 +40,54 @@
   <main>
     <div class="container">
       <section class="h-full flex flex-col gap-0 " id="quien">
-        <h1 class="bg-dark color-gray-lite rotate width-extend shadow">
+        <h1 class="bg-dark color-gray-lite width-extend shadow">
           <div class=" scroll-limit">_PROGRAMMER_</div>
         </h1>
 
-        <div class="flex relative">
-          <div class="bg-dark rotate width-extend center-all bg-graffity">
-          </div>
-          <img class="shadow z-1 border-sharp" src="/images/foto.jpg" alt="" id="photo" />
-          <div class="relative p-1 z-1 color-gray-dark">
-            <h3>Hola soy</h3>
-            <h1>JULIAN MAGNABOSCO</h1>
-            <!-- <div>Programador Full-stack y Desarrollador web</div> -->
+        <div class="bg-dark width-extend">
+          <div class="flex">
+            <img class="z-2 shadow border-sharp" src="/images/foto.jpg" alt="" id="photo" />
+            <div class="z-1 relative p-1 color-gray-dark bg-graffity">
+              <h3>Hola soy</h3>
+              <h1>JULIAN MAGNABOSCO</h1>
+              <!-- <div>Programador Full-stack y Desarrollador web</div> -->
+            </div>
           </div>
         </div>
 
-        <h1 class="bg-dark color-gray-lite rotate width-extend -z-1 shadow scroll-limit reverse">_WEB DEVELOPER_</h1>
+        <h1 class="bg-dark color-gray-lite width-extend -z-1 shadow scroll-limit reverse">_WEB DEVELOPER_</h1>
       </section>
 
-      <h1 class="bg-yell mt-6 width-extend center-rotate-r p-1 color-gray-dark shadow">
-        <div class=" scroll-limit">_MI PERFIL_</div>
-      </h1>
-      <div class="bg-dark border-sharp-r shadow max-w">
-        <section class="mt-1 border-sharp p-1 " id="perfil">
-          Soy un <strong class="text-bg bg-gradient">Programador y Desarrollador</strong> entusiasta que busca
-          desarrollarse y colaborar con otros en el ámbito de la informática.
-          Deseo poder demostrar mis habilidades y llegar a trabajar en proyectos
-          de gran valor. <br /><br />
-          Hace poco logré terminar mi carrera Tecnico Universitario en
-          Programación en la UTN y quiero demostrar mis habilidades en la
-          Programacion Web.
-        </section>
-      </div>
-      <div></div>
-      <h1 class="mt-1 width-extend center-rotate color-yell">
-        <div class=" scroll-limit reverse">>>>></div>
-      </h1>
+      <section class="mt-12" id="perfil">
+        <h1 class="bg-yell mt-6 width-extend center p-1 color-gray-dark shadow">
+          <div class=" scroll-limit">_MI PERFIL_</div>
+        </h1>
+        <div class="bg-dark border-sharp-r shadow max-w">
+          <section class="mt-1 border-sharp p-1 ">
+            Soy un <strong class="text-bg bg-gradient">Programador y Desarrollador</strong> entusiasta que busca
+            desarrollarse y colaborar con otros en el ámbito de la informática.
+            Deseo poder demostrar mis habilidades y llegar a trabajar en proyectos
+            de gran valor. <br /><br />
+            Hace poco logré terminar mi carrera Tecnico Universitario en
+            Programación en la UTN y quiero demostrar mis habilidades en la
+            Programacion Web.
+          </section>
+        </div>
+        <h1 class="mt-1 width-extend center color-yell">
+          <div class=" scroll-limit reverse">>>>></div>
+        </h1>
+      </section>
 
-      <section class="mt-12 " id="proyectos">
-        <h1 class="bg-cyan width-extend center-rotate-r p-1 color-gray-dark shadow">
+      <section class="mt-12" id="proyectos">
+        <h1 class="bg-cyan width-extend center p-1 color-gray-dark shadow">
           <div class="scroll-limit">_PROYECTOS_</div>
         </h1>
-        
+
         <div class="flex mt-1">
-          <img class="shadow size-large border-sharp-r" src="/images/mafbella.png" alt="" />
+          <img class="shadow size-large border-sharp-r" src="/images/turnero.png" alt="" />
           <div class="shadow p-1 border-sharp bg-dark">
-            <h3 class="text-bg bg-gradient">“Túrnero para Clinica” <span class="color-yell">abr. 2024 - presente</span></h3>
+            <h3 class="text-bg bg-gradient">“Túrnero para Clinica” <span class="color-yell">abr. 2024 - presente</span>
+            </h3>
             <div>
               <div>
                 Sistema para el manejo de turnos de una clínica, con impresión de tickets y sincronización de pantallas.
@@ -98,11 +100,12 @@
                 <strong>Rol: </strong>
                 <span> Desarrollador unico </span>
               </div>
-              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Turnero"><span class="">>>>></span> Ver Github &lt;&lt;&lt;&lt;</a>
+              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Turnero"><span class="">>>>></span> Ver
+                Github &lt;&lt;&lt;&lt;</a>
             </div>
           </div>
         </div>
-        
+
         <div class="flex mt-1">
           <img class="shadow size-large order-1 border-sharp" src="/images/mafbella.png" alt="" />
           <div class="shadow p-1 border-sharp-r bg-dark">
@@ -146,9 +149,31 @@
             </div>
           </div>
         </div>
-        
+        <h1 class="mt-1 bg-gray width-extend center p-1/2 shadow">
+          <div class="scroll-limit">_OTROS PROYECTOS_</div>
+        </h1>
+
         <div class="flex mt-1">
-          <img class="shadow size-large order-1 border-sharp" src="/images/mafbella.png" alt="" />
+          <div class="p-1 border-sharp bg-dark shadow">
+            <h3 class="text-bg bg-gradient">“Control para Zapatilla desde Internet” <span class="color-yell">abr.
+                2024</span></h3>
+            <div>
+              <div>
+                Programa de Arduino para controlar un zapatilla/grupo de enchufes mediante internet.
+              </div>
+              <div>
+                <strong>Tecnologias:</strong>
+                <span>Arduino, Ethernet Shield, Html.</span>
+              </div>
+              <div>
+                <strong>Rol: </strong>
+                <span> Desarrollador unico </span>
+              </div>
+
+              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Arduino-Relay-Server">>>>> Ver Github
+                &lt;&lt;&lt;&lt;</a>
+            </div>
+          </div>
           <div class="shadow p-1 border-sharp-r bg-dark">
             <h3 class="text-bg bg-gradient">“IP-Ping” <span class="color-yell">may. 2023</span></h3>
             <div>
@@ -163,58 +188,13 @@
                 <strong>Rol: </strong>
                 <span> Desarrollador unico </span>
               </div>
-              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Ip-Ping">>>>> Ver Github &lt;&lt;&lt;&lt;</a>
+              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Ip-Ping">>>>> Ver Github
+                &lt;&lt;&lt;&lt;</a>
             </div>
           </div>
         </div>
-        
-        <div class="flex mt-1">
-          <img class="shadow size-large border-sharp-r" src="/images/comolohago.png" alt="" />
-          <div class="p-1 border-sharp bg-dark shadow">
-            <h3 class="text-bg bg-gradient">“Control para Zapatilla desde Internet” <span class="color-yell">abr. 2024</span></h3>
-            <div>
-              <div>
-                Programa de Arduino para controlar un zapatilla/grupo de enchufes mediante internet.
-              </div>
-              <div>
-                <strong>Tecnologias:</strong>
-                <span>Arduino, Ethernet Shield, Html.</span>
-              </div>
-              <div>
-                <strong>Rol: </strong>
-                <span> Desarrollador unico </span>
-              </div>
 
-              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Arduino-Relay-Server">>>>> Ver Github &lt;&lt;&lt;&lt;</a>
-            </div>
-          </div>
-        </div>
-        
         <div class="flex mt-1">
-          <img class="shadow size-large order-1 border-sharp" src="/images/comolohago.png" alt="" />
-          <div class="p-1 border-sharp-r bg-dark shadow">
-            <h3 class="text-bg bg-gradient">Control para Porton Bluetooth” <span class="color-yell">ene. 2024</span></h3>
-            <div>
-              <div>
-                Programa de Arduino para controlar un porton mediante bluetooth.
-              </div>
-              <div>
-                <strong>Tecnologias:</strong>
-                <span>Arduino, Bluetooth HC-05, Mit App Inventor.</span>
-              </div>
-              <div>
-                <strong>Rol: </strong>
-                <span> Desarrollador unico </span>
-              </div>
-
-              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Arduino-Porton">>>>> Ver Github &lt;&lt;&lt;&lt;</a>
-            </div>
-          </div>
-        </div>
-        
-        
-        <div class="flex mt-1">
-          <img class="shadow size-large border-sharp-r" src="/images/comolohago.png" alt="" />
           <div class="p-1 border-sharp bg-dark shadow">
             <h3 class="text-bg bg-gradient">“Dulce More” <span class="color-yell">ene. 2024</span></h3>
             <div>
@@ -233,135 +213,158 @@
               <a class="btn-1 p-1" href="https://dulcemore.online">>>>> Ver Github &lt;&lt;&lt;&lt;</a>
             </div>
           </div>
+          <div class="p-1 border-sharp-r bg-dark shadow">
+            <h3 class="text-bg bg-gradient">"Control para Porton Bluetooth” <span class="color-yell">ene. 2024</span>
+            </h3>
+            <div>
+              <div>
+                Programa de Arduino para controlar un porton mediante bluetooth.
+              </div>
+              <div>
+                <strong>Tecnologias:</strong>
+                <span>Arduino, Bluetooth HC-05, Mit App Inventor.</span>
+              </div>
+              <div>
+                <strong>Rol: </strong>
+                <span> Desarrollador unico </span>
+              </div>
+
+              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Arduino-Porton">>>>> Ver Github
+                &lt;&lt;&lt;&lt;</a>
+            </div>
+          </div>
         </div>
 
-        <h1 class="mt-1 width-extend center-rotate color-cyan">
+
+
+        <h1 class="mt-1 width-extend center color-cyan">
           <div class=" scroll-limit reverse">$$$$</div>
         </h1>
       </section>
 
-      <div class="grid align-top mt-12">
-        <section class="bg-dark p-1 border-sharp-r relative z-2 shadow" id="aptitudes">
-          <h1 class="bg-yell width-extend abs-rotate-r p-1 color-gray-dark shadow">
-            <div class=" scroll-limit reverse">_APTITUDES_</div>
-          </h1>
-          <h3 class="mt-3">Mis aptitudes principales</h3>
-          <ul class="relative">
-            <li>Trabajo en equipo</li>
-            <li>Liderazgo</li>
-            <li>Compromiso</li>
-            <li>Organización</li>
-            <li>Conocimientos generales en informática</li>
-            <li>Conocimientos generales en electrónica</li>
-            <li>Interés continuo en capacitación</li>
-          </ul>
-          <h3 class="mt-1">Idiomas</h3>
-          <ul>
-            <li><span>Español</span> (Nativo)</li>
-            <li><span>Ingles</span> (Intermedio)</li>
-          </ul>
-        </section>
+      <section class="mt-12" id="aptitudes">
+        <h1 class="bg-yell p-1 color-gray-dark shadow center width-extend">
+          <div class=" scroll-limit reverse">_APTITUDES_</div>
+        </h1>
+        <div class="grid align-top">
+          <section class="bg-dark p-1 border-sharp-r relative z-2 shadow ">
+            <h3 class="mt-1">Mis aptitudes principales</h3>
+            <ul class="relative">
+              <li>Trabajo en equipo</li>
+              <li>Liderazgo</li>
+              <li>Compromiso</li>
+              <li>Organización</li>
+              <li>Conocimientos generales en informática</li>
+              <li>Conocimientos generales en electrónica</li>
+              <li>Interés continuo en capacitación</li>
+            </ul>
+            <h3 class="mt-1">Idiomas</h3>
+            <ul>
+              <li><span>Español</span> (Nativo)</li>
+              <li><span>Ingles</span> (Intermedio)</li>
+            </ul>
+          </section>
 
-        <section class="bg-dark shadow p-1 border-sharp relative mt-6 z-1">
-          <h1 class="bg-cyan width-extend abs-rotate p-1 color-gray-dark shadow">
-            <div class=" scroll-limit reverse">_TECNOLOGIAS_</div>
-          </h1>
-          <div class="mt-2">
-            <h3>Tecnologias Principales</h3>
-            <img class="size-medium" src="icons/angular.svg" alt="angular" title="angular" />
-            <img class="size-medium" src="icons/bootstrap.svg" alt="bootstrap" title="bootstrap" />
-            <img class="size-medium" src="icons/tailwind.svg" alt="tailwind" title="tailwind" />
-            <img class="size-medium" src="icons/spring-boot.svg" alt="spring-boot" title="spring-boot" />
-            <img class="size-medium" src="icons/postgresql.svg" alt="postgresql" title="postgresql" />
-            <img class="size-medium" src="icons/maven.svg" alt="maven" title="maven" />
-            <img class="size-medium" src="icons/github.svg" alt="github" title="github" />
-            <img class="size-medium" src="icons/docker.svg" alt="docker" title="docker" />
-            <h3> Tecnologias que puedo manejar</h3>
-            <img class="size-medium" src="icons/python.svg" alt="python" title="python" />
-            <img class="size-medium" src="icons/django.svg" alt="django" title="django" />
-            <img class="size-medium" src="icons/html.svg" alt="html" title="html" />
-            <img class="size-medium" src="icons/js.svg" alt="js" title="js" />
-            <img class="size-medium" src="icons/nodejs.svg" alt="python" title="python" />
-            <img class="size-medium" src="icons/threejs.svg" alt="threejs" title="threejs" />
-            <h3> Tecnologias con las que he trabajado</h3>
-            <img class="size-medium" src="icons/csharp.svg" alt="csharp" title="csharp" />
-            <img class="size-medium" src="icons/dotnet.svg" alt="dotnet" title="dotnet" />
-            <img class="size-medium" src="icons/arduino.svg" alt="arduino" title="arduino" />
-            <img class="size-medium" src="icons/unity.svg" alt="unity" title="unity" />
+          <section class="bg-dark shadow p-1 border-sharp relative z-1">
+            <div class="mt-1">
+              <h3>Tecnologias Principales</h3>
+              <img class="size-medium" src="icons/angular.svg" alt="angular" title="angular" />
+              <img class="size-medium" src="icons/bootstrap.svg" alt="bootstrap" title="bootstrap" />
+              <img class="size-medium" src="icons/tailwind.svg" alt="tailwind" title="tailwind" />
+              <img class="size-medium" src="icons/spring-boot.svg" alt="spring-boot" title="spring-boot" />
+              <img class="size-medium" src="icons/postgresql.svg" alt="postgresql" title="postgresql" />
+              <img class="size-medium" src="icons/maven.svg" alt="maven" title="maven" />
+              <img class="size-medium" src="icons/github.svg" alt="github" title="github" />
+              <img class="size-medium" src="icons/docker.svg" alt="docker" title="docker" />
+              <h3> Tecnologias que puedo manejar</h3>
+              <img class="size-medium" src="icons/python.svg" alt="python" title="python" />
+              <img class="size-medium" src="icons/django.svg" alt="django" title="django" />
+              <img class="size-medium" src="icons/html.svg" alt="html" title="html" />
+              <img class="size-medium" src="icons/js.svg" alt="js" title="js" />
+              <img class="size-medium" src="icons/nodejs.svg" alt="python" title="python" />
+              <img class="size-medium" src="icons/threejs.svg" alt="threejs" title="threejs" />
+              <h3> Tecnologias con las que he trabajado</h3>
+              <img class="size-medium" src="icons/csharp.svg" alt="csharp" title="csharp" />
+              <img class="size-medium" src="icons/dotnet.svg" alt="dotnet" title="dotnet" />
+              <img class="size-medium" src="icons/arduino.svg" alt="arduino" title="arduino" />
+              <img class="size-medium" src="icons/unity.svg" alt="unity" title="unity" />
+            </div>
+          </section>
+        </div>
+        <h1 class="mt-1 width-extend center color-yell">
+          <div class=" scroll-limit">&blacktriangleleft;&blacktriangleleft;&blacktriangleleft;&blacktriangleleft;</div>
+        </h1>
+      </section>
+
+      <section class="mt-12" id="educacion">
+        <h1 class="bg-yell width-extend center p-1 color-gray-dark shadow">
+          <div class=" scroll-limit reverse">_EDUCACION_</div>
+        </h1>
+        <div class="grid">
+          <section class="bg-dark p-1 border-sharp shadow" style="grid-area: 1 / 1 / 3 / 2;">
+
+            <div>
+              <h2 class="text-bg bg-gradient">
+                &CircleDot;Técnico Universitario en Programación <br>
+                <span class="color-yell">2022-2024</span>
+              </h2>
+              <h4>Universidad Tecnológica Nacional, Córdoba Capital</h4>
+              <div>
+                <span>Contenidos:</span>
+                <ul>
+                  <li>Programación en Spring Boot (Java)</li>
+                  <li>Angular (Typescript)</li>
+                  <li>.NET Core (C#)</li>
+                  <li>HTML, CSS y Javascript</li>
+                  <li>SQL</li>
+                  <li>Gestión de proyectos SCRUM con Jira y Github</li>
+                  <li>Matemáticas, Álgebra y Estadística básica</li>
+                </ul>
+              </div>
+              <h2 class="text-bg bg-gradient mt-1">
+                &CircleDot;Bachiller en Ciencias Sociales <br>
+                <span class="color-yell">2016-2021</span>
+              </h2>
+              <h4>Instituto Inmaculada Concepción, Córdoba Capital</h4>
+            </div>
+          </section>
+          <div>
+            <section class="p-1 shadow bg-dark border-sharp" style="grid-area: 1 / 2 / 2 / 3;">
+              <h2>Cursos</h2>
+              <ul>
+                <li>
+                  Cursos gratuitos de
+                  <span>Python, Unity y Arduino</span>.
+                </li>
+                <li>Curso gratuito de <span>Inglés Básico</span>.</li>
+              </ul>
+            </section>
           </div>
-        </section>
-      </div>
-      <h1 class="mt-1 width-extend center-rotate color-yell">
-        <div class=" scroll-limit">&blacktriangleleft;&blacktriangleleft;&blacktriangleleft;&blacktriangleleft;</div>
-      </h1>
-
-      <h1 class="bg-yell width-extend center-rotate mt-12 p-1 color-gray-dark shadow">
-        <div class=" scroll-limit reverse">_EDUCACION_</div>
-      </h1>
-      <div class="grid">
-        <section class="bg-dark p-1 border-sharp shadow" id="educacion" style="grid-area: 1 / 1 / 3 / 2;">
 
           <div>
-            <h2 class="text-bg bg-gradient">
-              &CircleDot;Técnico Universitario en Programación <br>
-              <span class="color-yell">2022-2024</span>
-            </h2>
-            <h4>Universidad Tecnológica Nacional, Córdoba Capital</h4>
-            <div>
-              <span>Contenidos:</span>
+            <section class="p-1 shadow bg-dark border-sharp-r" style="grid-area: 2 / 2 / 3 / 3;">
+              <h2>Logros</h2>
               <ul>
-                <li>Programación en Spring Boot (Java)</li>
-                <li>Angular (Typescript)</li>
-                <li>.NET Core (C#)</li>
-                <li>HTML, CSS y Javascript</li>
-                <li>SQL</li>
-                <li>Gestión de proyectos SCRUM con Jira y Github</li>
-                <li>Matemáticas, Álgebra y Estadística básica</li>
+                <li>
+                  <span>Cuadro de Honor</span> de la Bandera Nacional en Secundaria.
+                </li>
+                <li>Puntaje Promedio de <span>9.06</span> en Secundaria.</li>
               </ul>
-            </div>
-            <h2 class="text-bg bg-gradient mt-1">
-              &CircleDot;Bachiller en Ciencias Sociales <br>
-              <span class="color-yell">2016-2021</span>
-            </h2>
-            <h4>Instituto Inmaculada Concepción, Córdoba Capital</h4>
+            </section>
           </div>
-        </section>
-        <div>
-          <section class="p-1 shadow bg-dark border-sharp" style="grid-area: 1 / 2 / 2 / 3;">
-            <h2>Cursos</h2>
-            <ul>
-              <li>
-                Cursos gratuitos de
-                <span>Python, Unity y Arduino</span>.
-              </li>
-              <li>Curso gratuito de <span>Inglés Básico</span>.</li>
-            </ul>
-          </section>
         </div>
+        <h1 class="mt-1 width-extend center color-cyan">
+          <div class=" scroll-limit reverse">
+            &blacktriangleright;&blacktriangleright;&blacktriangleright;&blacktriangleright;</div>
+        </h1>
+      </section>
 
-        <div>
-          <section class="p-1 shadow bg-dark border-sharp-r" style="grid-area: 2 / 2 / 3 / 3;">
-            <h2>Logros</h2>
-            <ul>
-              <li>
-                <span>Cuadro de Honor</span> de la Bandera Nacional en Secundaria.
-              </li>
-              <li>Puntaje Promedio de <span>9.06</span> en Secundaria.</li>
-            </ul>
-          </section>
-        </div>
-      </div>
-      <h1 class="mt-1 width-extend center-rotate-r color-cyan">
-        <div class=" scroll-limit reverse">
-          &blacktriangleright;&blacktriangleright;&blacktriangleright;&blacktriangleright;</div>
-      </h1>
-
-      <h1 class="bg-cyan width-extend center-rotate mt-12 p-1 color-gray-dark shadow">
-        <div class=" scroll-limit">_CONTACTOS_</div>
-      </h1>
-      <section class="shadow bg-dark border-sharp p-1 max-w" id="contacto">
-        <div class="mt-1 text-center">
-          <div class="inline-flex p-1 shadow border-sharp">
+      <section class="mt-12" id="contacto">
+        <h1 class="bg-cyan width-extend center p-1 color-gray-dark shadow">
+          <div class=" scroll-limit">_CONTACTOS_</div>
+        </h1>
+        <div class="mt-1 text-center bg-dark p-1 border-sharp-r shadow max-w">
+          <div class="inline-flex ">
             <div>julian.magnabosco@gmail.com</div>
             <a class="btn-a" style="padding: 0.5rem;"
               onclick="navigator.clipboard.writeText('julian.magnabosco@gmail.com')">
@@ -390,24 +393,6 @@
             </a>
           </div>
         </div>
-        <!-- <div>
-        <form>
-          <div >
-            <input type="email" id="email-input" placeholder="Correo" aria-describedby="emailHelp" />
-          </div>
-          <div >
-            <input type="text" placeholder="Asunto" id="subject-input" />
-          </div>
-          <div >
-            <textarea id="message" rows="10" placeholder="Mensaje" formcontrolname="message"></textarea>
-          </div>
-          <div>
-            <button type="submit">
-              Enviar
-            </button>
-          </div>
-        </form>
-      </div> -->
       </section>
     </div>
 
