@@ -1,172 +1,152 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import "./style.css";
 
-// Setup
-const startDelay=2
+const container = document.querySelector("#scene-container");
+const canvas = document.querySelector("#hero-scene");
+const loadingLabel = document.querySelector("#scene-loading");
 
-const scenes = [];
-const scene = new THREE.Scene();
+if (container && canvas) {
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
+  camera.position.set(0, 0.08, 6.3);
 
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
-camera.position.setZ(50);
-
-const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector("#bg"),
-  alpha: true,
-});
-renderer.setClearColor(0x000000, 0);
-
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.render(scene, camera);
-const canvas = renderer.domElement;
-
-const clock = new THREE.Clock();
-
-var loader = new GLTFLoader();
-
-//Plane
-// const segments = 20;
-// const geometryPlane = new THREE.PlaneGeometry(24, 24, segments, segments);
-// const materialPlane = new THREE.MeshBasicMaterial({
-//   color: 0x00acff,
-//   wireframe: true,
-// });
-// geometryPlane.material = materialPlane;
-// const plane = new THREE.Mesh(geometryPlane, materialPlane);
-
-// plane.rotateX(-1.3);
-// plane.position.set(0, 0, 45);
-// scene.add(plane);
-
-// const heigth = 4;
-// const moveDist = 0.005;
-// let dist = 0;
-
-// function renderPlane() {
-//   const vertices = geometryPlane.attributes.position.array;
-//   for (let i = 0; i < vertices.length; i += 3) {
-//     const x1 = ((i / vertices.length) * (segments + 1)) % 1;
-//     const y1 = i / vertices.length;
-//     vertices[i + 2] = perlin.get(x1 * heigth + dist, y1 * heigth);
-//   }
-//   dist = dist >= 1000 ? 0 : dist + moveDist;
-
-//   geometryPlane.attributes.position.needsUpdate = true;
-// }
-
-//Scenes
-// function newScene(id, animationId) {
-//   const subscene = new THREE.Scene();
-//   const subelement = document.getElementById(id);
-//   const aspect = 1;
-//   const subcamera = new THREE.PerspectiveCamera(75, aspect, 0.1, 1000);
-//   subcamera.position.setZ(2);
-//   subcamera.position.setY(1);
-
-//   const subcontrols = new OrbitControls(subcamera, subelement);
-//   subcontrols.target.set(0, 1, 0);
-//   subcontrols.autoRotate = true;
-//   subcontrols.mouseButtons = {
-//     LEFT: THREE.MOUSE.ROTATE,
-//     MIDDLE: THREE.MOUSE.DOLLY,
-//     RIGHT: THREE.MOUSE.PAN,
-//   };
-//   subcontrols.listenToKeyEvents(subelement); // optional
-
-//   subcontrols.enableDamping = true;
-//   subcontrols.dampingFactor = 0.05;
-
-//   subcontrols.maxPolarAngle = Math.PI / 2;
-
-//   subscene.userData.controls = subcontrols;
-//   subscene.userData.element = subelement;
-//   subscene.userData.camera = subcamera;
-//   //Character
-//   loader.load("/models/personaje.glb", function (gltf) {
-//     const submixer = new THREE.AnimationMixer(gltf.scene);
-//     const clip = gltf.animations[animationId];
-//     submixer.clipAction(clip).play();
-//     subscene.userData.mixer = submixer;
-
-//     subscene.add(gltf.scene);
-//   });
-
-//   const ambientLight = new THREE.AmbientLight(0xffffff);
-//   ambientLight.intensity = 5;
-//   subscene.add(ambientLight);
-
-//   scenes.push(subscene);
-// }
-// setTimeout(() => {
-//   newScene("canvas1", 2);
-//   newScene("canvas2", 3);
-// }, startDelay*1000);
-
-//Rezize
-function rezize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-}
-document.body.onresize = rezize;
-
-// Animation Loop
-
-function animate() {
-  requestAnimationFrame(animate);
-  // renderPlane();
-  const delta = clock.getDelta();
-
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
   renderer.setClearColor(0x000000, 0);
-  renderer.setViewport(0, 0, canvas.clientWidth, canvas.clientHeight);
-  renderer.setScissor(0, 0, canvas.clientWidth, canvas.clientHeight);
-  renderer.render(scene, camera);
 
-  // renderer.setScissorTest(true);
-  // renderer.setClearColor(0x102876);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x536080, 2.25));
+  const keyLight = new THREE.DirectionalLight(0xffffff, 2.5);
+  keyLight.position.set(-3, 5, 6);
+  scene.add(keyLight);
+  const rimLight = new THREE.DirectionalLight(0x16d9ca, 1.2);
+  rimLight.position.set(4, 1, -3);
+  scene.add(rimLight);
 
-  // scenes.forEach((s) => {
-  //   const element = s.userData.element;
-  //   const c = s.userData.camera;
-  //   const m = s.userData.mixer;
-  //   const co = s.userData.controls;
+  const pointer = new THREE.Vector2();
+  let model;
+  let targetRotationX = 0;
+  let targetRotationY = -0.18;
 
+  const resizeScene = () => {
+    const { width, height } = container.getBoundingClientRect();
+    if (!width || !height) return;
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  };
 
-  //   const rect = element.getBoundingClientRect();
+  const resizeObserver = new ResizeObserver(resizeScene);
+  resizeObserver.observe(container);
+  resizeScene();
 
-  //   if (
-  //     rect.bottom < 0 ||
-  //     rect.top > renderer.domElement.clientHeight ||
-  //     rect.right < 0 ||
-  //     rect.left > renderer.domElement.clientWidth
-  //   ) {
-  //     return;
-  //   }
+  container.addEventListener("pointermove", (event) => {
+    const bounds = container.getBoundingClientRect();
+    pointer.x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    pointer.y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    targetRotationY = -0.18 + pointer.x * 0.65;
+    targetRotationX = pointer.y * 0.2;
+  });
+  container.addEventListener("pointerleave", () => {
+    targetRotationX = 0;
+    targetRotationY = -0.18;
+  });
+  let mixer, clips;
+  new GLTFLoader().load(
+    "/models/jules.glb",
+    (gltf) => {
+      model = new THREE.Group();
+      model.add(gltf.scene);
+      const bounds = new THREE.Box3().setFromObject(model);
+      const center = bounds.getCenter(new THREE.Vector3());
+      const size = bounds.getSize(new THREE.Vector3());
+      const largestSide = Math.max(size.x, size.y, size.z);
+      gltf.scene.position.sub(center);
+      model.scale.setScalar(3.25 / largestSide);
+      model.position.y += 0.12;
 
-  //   const width = rect.right - rect.left+2;
-  //   const height = rect.bottom - rect.top+2;
-  //   const left = rect.left;
-  //   const bottom = renderer.domElement.clientHeight - rect.bottom;
+      mixer = new THREE.AnimationMixer(gltf.scene);
+      clips = gltf.animations;
 
-  //   renderer.setViewport(left, bottom, width, height);
-  //   renderer.setScissor(left, bottom, width, height);
+      const clip = THREE.AnimationClip.findByName(clips, "IdlePose");
+      const action = mixer.clipAction(clip);
+      action.play();
 
-  //   c.aspect = width / height;
-  //   c.updateProjectionMatrix();
-  //   if (m) {
-  //     m.update(delta);
-  //   }
-  //   co.update();
+      scene.add(model);
+      loadingLabel?.remove();
+    },
+    undefined,
+    (error) => {
+      console.error("No se pudo cargar jules.glb", error);
+      if (loadingLabel) loadingLabel.textContent = "MODELO NO DISPONIBLE";
+    },
+  );
 
-  //   renderer.render(s, c);
-  //   element.style.animationPlayState = "running";
-  // });
+  const clock = new THREE.Clock();
+  let elapsed = 0;
+  const render = () => {
+    const delta = clock.getDelta();
+    elapsed += delta;
+    if (model) {
+      model.rotation.y += (targetRotationY + Math.sin(elapsed * 0.7) * 0.035 - model.rotation.y) * 0.045;
+      model.rotation.x += (targetRotationX - model.rotation.x) * 0.045;
+      model.position.y = 0.12 + Math.sin(elapsed * 1.3) * 0.055;
+    }
+    if (mixer) {
+      mixer.update(delta);
+    }
+    renderer.render(scene, camera);
+    requestAnimationFrame(render);
+  };
+  render();
 }
-animate();
+
+// Other stuff
+// const darkmodeToggle = document.querySelector('.darkmode-toggle');
+// darkmodeToggle?.addEventListener('click', () => {
+// 	const enabled = document.body.classList.toggle('darkmode-enabled');
+// 	darkmodeToggle.setAttribute('aria-pressed', String(enabled));
+
+// 	const label = darkmodeToggle.querySelector('.darkmode-label');
+// 	if (label) label.textContent = enabled ? 'Darkmode ON' : 'Darkmode OFF';
+// });
+// const mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+// console.log(mq.matches ? 'dark' : 'light');
+
+// // Escuchar cambios en vivo
+// mq.addEventListener('change', (e) => {
+//   console.log(e.matches ? 'dark' : 'light');
+// });
+
+const root = document.documentElement;
+const mq = matchMedia("(prefers-color-scheme: dark)");
+
+const saved = localStorage.getItem("theme");
+if (saved) root.dataset.theme = saved;
+
+const darkmodeToggle = document.querySelector('.darkmode-toggle');
+darkmodeToggle.onclick = () => {
+  const current = root.dataset.theme || (mq.matches ? "dark" : "light");
+  const next = current === "dark" ? "light" : "dark";
+  root.dataset.theme = next;
+  localStorage.setItem("theme", next);
+  
+	const label = darkmodeToggle.querySelector('.darkmode-label');
+	if (label) label.textContent = next === "dark" ? 'Darkmode ON' : 'Darkmode OFF';
+};
+
+const copyButton = document.querySelector(".copy-link");
+copyButton?.addEventListener("click", async () => {
+  const label = copyButton.querySelector("span");
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+    if (label) label.textContent = "COPIADO ✓";
+  } catch {
+    if (label) label.textContent = "COPIA DESDE LA BARRA";
+  }
+  window.setTimeout(() => {
+    if (label) label.textContent = "↗";
+  }, 2200);
+});

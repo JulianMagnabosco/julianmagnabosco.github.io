@@ -1,412 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#f4f0df" />
+		<meta name="description" content="Portafolio de Julian Magnabosco: desarrollo web, experiencias interactivas y proyectos creativos." />
+		<title>Julian Magnabosco — Dev &amp; creative</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	</head>
+	<body>
+		<div class="site-shell">
+			<header class="topbar">
+				<a class="brand" href="#inicio" aria-label="Inicio, Julian Magnabosco">
+					<span class="brand-mark">JM</span>
+					<span>JULIAN<br />MAGNABOSCO</span>
+				</a>
+				<nav class="main-nav" aria-label="Navegacion principal">
+					<a href="#proyectos">Proyectos</a>
+					<a href="#sobre-mi">Sobre mi</a>
+					<a href="#stack">Stack</a>
+					<a href="#contacto">Contacto</a>
+				</nav>
+				<button class="darkmode-toggle" type="button" aria-pressed="false" title="Alternar efecto darkmode">
+					<span class="darkmode-led" aria-hidden="true"></span>
+					<span class="darkmode-label">Darkmode OFF</span>
+				</button>
+			</header>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="images/avatar.png" />
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+			<main>
+				<section class="hero section-wrap" id="inicio" aria-labelledby="hero-title">
+					<div class="hero-copy">
+						<p class="eyebrow"><span class="status-dot"></span> DISPONIBLE PARA NUEVOS PROYECTOS</p>
+						<h1 id="hero-title">Hola, soy<br /><span>Julian</span><i class="cursor-block" aria-hidden="true"></i></h1>
+						<p class="hero-role">DESARROLLADOR <span>&amp;</span> CREADOR DIGITAL</p>
+						<p class="hero-intro">Diseño y construyo experiencias digitales con personalidad: de la primera idea al ultimo pixel.</p>
+						<div class="hero-actions">
+							<a class="pixel-button primary-button" href="#proyectos">VER PROYECTOS <span aria-hidden="true">↓</span></a>
+							<a class="text-link" href="#sobre-mi">CONOCEME <span aria-hidden="true">↗</span></a>
+						</div>
+						<div class="hero-footnote"><span>BUENOS AIRES, AR</span><span>34°36' S / 58°22' O</span></div>
+					</div>
+					<div class="hero-visual" aria-label="Modelo 3D interactivo de personaje pixel art">
+						<div class="visual-label"><span>OBJETO 3D / 001</span><span class="live-label"><span></span> EN VIVO</span></div>
+						<div id="scene-container" class="scene-container">
+							<canvas id="hero-scene" aria-hidden="true"></canvas>
+							<div class="scene-crosshair" aria-hidden="true">+</div>
+							<p class="scene-loading" id="scene-loading">CARGANDO MODELO...</p>
+						</div>
+						<div class="visual-caption"><span>FIG. 01 — PERSONAJE</span><span>ARRASTRA PARA ROTAR ↔</span></div>
+						<span class="visual-coordinate" aria-hidden="true">X 01 / Y 98</span>
+					</div>
+					<div class="hero-index" aria-hidden="true">PORTAFOLIO / 2026</div>
+				</section>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julian Magnabosco</title>
-  <link rel="stylesheet" href="/style.css" />
-</head>
+				<div class="ticker" aria-label="Especialidades">
+					<div class="ticker-track">
+						<span>CODIGO CON CARACTER</span><b>✳</b><span>IDEAS EN MOVIMIENTO</span><b>✳</b><span>PIXEL A PIXEL</span><b>✳</b><span>CODIGO CON CARACTER</span><b>✳</b><span>IDEAS EN MOVIMIENTO</span><b>✳</b><span>PIXEL A PIXEL</span><b>✳</b>
+					</div>
+				</div>
 
-<body>
-  <canvas id="bg"></canvas>
+				<section class="projects section-wrap" id="proyectos" aria-labelledby="projects-title">
+					<div class="section-heading">
+						<div><p class="eyebrow">01 / COSAS QUE HICE</p><h2 id="projects-title">Proyectos<span class="heading-period">.</span></h2></div>
+						<p class="section-note">Una seleccion de ideas<br />que salieron de la pantalla.</p>
+					</div>
+					<div class="project-grid">
+						<article class="project-card project-card-wide">
+							<a class="project-image" href="/images/comolohago.png" target="_blank" rel="noreferrer" aria-label="Abrir captura de Como lo hago">
+								<img src="/images/comolohago.png" alt="Interfaz de la plataforma Como lo hago" loading="lazy" />
+								<span class="project-number">01</span><span class="project-open" aria-hidden="true">↗</span>
+							</a>
+							<div class="project-meta"><div><p class="project-type">PLATAFORMA / COMUNIDAD</p><h3>Como lo hago</h3></div><span class="project-year">2023</span></div>
+							<p class="project-description">Una comunidad para compartir proyectos, ideas y el proceso detras de cada creacion.</p>
+							<div class="tag-row"><span>WEB</span><span>COMUNIDAD</span><span>DISEÑO</span></div>
+						</article>
+						<article class="project-card">
+							<a class="project-image" href="/images/mafbella.png" target="_blank" rel="noreferrer" aria-label="Abrir captura de Maf Bella">
+								<img src="/images/mafbella.png" alt="Tienda online de productos Maf Bella" loading="lazy" />
+								<span class="project-number">02</span><span class="project-open" aria-hidden="true">↗</span>
+							</a>
+							<div class="project-meta"><div><p class="project-type">ECOMMERCE / MARCA</p><h3>Maf Bella</h3></div><span class="project-year">2023</span></div>
+							<p class="project-description">Una tienda digital para una marca de perfumes y cosmetica artesanal.</p>
+							<div class="tag-row"><span>TIENDA</span><span>UX/UI</span><span>WEB</span></div>
+						</article>
+						<article class="project-card">
+							<a class="project-image image-turnero" href="/images/turnero.png" target="_blank" rel="noreferrer" aria-label="Abrir captura del sistema de turnos">
+								<img src="/images/turnero.png" alt="Panel de gestion de turnos" loading="lazy" />
+								<span class="project-number">03</span><span class="project-open" aria-hidden="true">↗</span>
+							</a>
+							<div class="project-meta"><div><p class="project-type">SISTEMA / GESTION</p><h3>Turnero</h3></div><span class="project-year">2023</span></div>
+							<p class="project-description">Un sistema claro y practico para organizar colas, turnos y atencion.</p>
+							<div class="tag-row"><span>APP WEB</span><span>GESTION</span><span>UI</span></div>
+						</article>
+					</div>
+					<div class="projects-footer"><span>FIN DE ARCHIVO — POR AHORA</span><span>03 PROYECTOS <span class="footer-arrow">↘</span></span></div>
+				</section>
 
-  <nav class="bg-gray fixed z-1000 nav-bar shadow">
-    <div class="hidden-bar p-1">
-      <a class="btn-a p-1/2">
-        <img class="size-small" src="icons/hidden-bar.svg" alt="" srcset="">
-      </a>
-    </div>
-    <div class="link-bar p-1">
-      <!-- <a>
-        <svg class="size-small" viewBox="0 0 1200 1200" enable-background="new 0 0 1200 1200" xml:space="preserve"
-          fill="white">
-          <path fill="white" id="rect3039" inkscape:connector-curvature="0"
-            d="M0,0v240h1200V0H0z M0,480v240h1200V480H0z M0,960v240h1200V960H0z" />
-        </svg>
-      </a> -->
-      <a href="#quien">Quien soy</a>
-      <a href="#perfil">Perfil</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#aptitudes">Aptitudes</a>
-      <a href="#educacion">Educacion</a>
-      <a href="#contacto">Contacto</a>
-    </div>
-  </nav>
+				<section class="about" id="sobre-mi" aria-labelledby="about-title">
+					<div class="about-inner section-wrap">
+						<div class="about-photo-wrap">
+							<div class="photo-frame"><img src="/images/foto.jpg" alt="Retrato de Julian Magnabosco" loading="lazy" /></div>
+							<span class="photo-stamp">HOLA!<br />SOY YO</span>
+							<span class="photo-caption">UN HUMANO DETRAS DEL CODIGO</span>
+						</div>
+						<div class="about-copy">
+							<p class="eyebrow">02 / UN POCO SOBRE MI</p>
+							<h2 id="about-title">Curioso por<br />naturaleza<span class="heading-period">.</span></h2>
+							<p>Me gusta entender como funcionan las cosas y despues encontrar una forma interesante de hacerlas funcionar mejor. Desarrollo web, interfaces y proyectos creativos son mi terreno de juego.</p>
+							<p>Disfruto tanto de resolver un problema dificil como de cuidar ese detalle que hace que una experiencia se sienta especial.</p>
+							<div class="about-signature">Julian <span>✳</span></div>
+						</div>
+					</div>
+				</section>
 
-  <main>
-    <div class="container">
-      <section class="h-full flex flex-col gap-0 " id="quien">
-        <h1 class="bg-dark color-gray-lite width-extend shadow">
-          <div class=" scroll-limit">_PROGRAMMER_</div>
-        </h1>
+				<section class="stack section-wrap" id="stack" aria-labelledby="stack-title">
+					<div class="section-heading">
+						<div><p class="eyebrow">03 / HERRAMIENTAS DE TRABAJO</p><h2 id="stack-title">Mi stack<span class="heading-period">.</span></h2></div>
+						<p class="section-note">Las piezas que uso<br />para darle forma a las ideas.</p>
+					</div>
+					<div class="stack-grid">
+						<div class="stack-item"><img src="/icons/html.svg" alt="" loading="lazy" /><span>HTML</span><small>01</small></div>
+						<div class="stack-item"><img src="/icons/js.svg" alt="" loading="lazy" /><span>JAVASCRIPT</span><small>02</small></div>
+						<div class="stack-item"><img src="/icons/angular.svg" alt="" loading="lazy" /><span>ANGULAR</span><small>03</small></div>
+						<div class="stack-item"><img src="/icons/threejs.svg" alt="" loading="lazy" /><span>THREE.JS</span><small>04</small></div>
+						<div class="stack-item"><img src="/icons/nodejs.svg" alt="" loading="lazy" /><span>NODE.JS</span><small>05</small></div>
+						<div class="stack-item"><img src="/icons/python.svg" alt="" loading="lazy" /><span>PYTHON</span><small>06</small></div>
+						<div class="stack-item"><img src="/icons/postgresql.svg" alt="" loading="lazy" /><span>POSTGRESQL</span><small>07</small></div>
+						<div class="stack-item"><img src="/icons/docker.svg" alt="" loading="lazy" /><span>DOCKER</span><small>08</small></div>
+						<div class="stack-item"><img src="/icons/unity.svg" alt="" loading="lazy" /><span>UNITY</span><small>09</small></div>
+						<div class="stack-item"><img src="/icons/csharp.svg" alt="" loading="lazy" /><span>C#</span><small>10</small></div>
+					</div>
+				</section>
 
-        <div class="bg-dark width-extend">
-          <div class="flex">
-            <img class="z-2 shadow border-sharp" src="/images/foto.jpg" alt="" id="photo" />
-            <div class="z-1 relative p-1 color-gray-dark bg-graffity">
-              <h3>Hola soy</h3>
-              <h1>JULIAN MAGNABOSCO</h1>
-              <!-- <div>Programador Full-stack y Desarrollador web</div> -->
-            </div>
-          </div>
-        </div>
+				<section class="contact" id="contacto" aria-labelledby="contact-title">
+					<div class="contact-inner section-wrap">
+						<p class="eyebrow">04 / TU TURNO</p>
+						<h2 id="contact-title">Estoy<br /><span>Bien LISTO</span><i class="cursor-block" aria-hidden="true"></i></h2>
+						<p class="contact-note">Tenes una idea dando vueltas? Me encantaria escucharla.</p>
+						<div class="contact-links">
+							<a href="https://github.com/" target="_blank" rel="noreferrer"><img src="/icons/github.svg" alt="" /> GITHUB <span aria-hidden="true">↗</span></a>
+							<a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><img src="/icons/linkedin.svg" alt="" /> LINKEDIN <span aria-hidden="true">↗</span></a>
+							<button class="copy-link" type="button"><img src="/icons/copy.svg" alt="" /> COPIAR LINK <span aria-hidden="true">↗</span></button>
+						</div>
+					</div>
+				</section>
+			</main>
 
-        <h1 class="bg-dark color-gray-lite width-extend -z-1 shadow scroll-limit reverse">_WEB DEVELOPER_</h1>
-      </section>
-
-      <section class="mt-12" id="perfil">
-        <h1 class="bg-yell mt-6 width-extend center p-1 color-gray-dark shadow">
-          <div class=" scroll-limit">_MI PERFIL_</div>
-        </h1>
-        <div class="bg-dark border-sharp-r shadow max-w">
-          <section class="mt-1 border-sharp p-1 ">
-            Soy un <strong class="text-bg bg-gradient">Programador y Desarrollador</strong> entusiasta que busca
-            desarrollarse y colaborar con otros en el ámbito de la informática.
-            Deseo poder demostrar mis habilidades y llegar a trabajar en proyectos
-            de gran valor. <br /><br />
-            Hace poco logré terminar mi carrera Tecnico Universitario en
-            Programación en la UTN y quiero demostrar mis habilidades en la
-            Programacion Web.
-          </section>
-        </div>
-        <h1 class="mt-1 width-extend center color-yell">
-          <div class=" scroll-limit reverse">>>>></div>
-        </h1>
-      </section>
-
-      <section class="mt-12" id="proyectos">
-        <h1 class="bg-cyan width-extend center p-1 color-gray-dark shadow">
-          <div class="scroll-limit">_PROYECTOS_</div>
-        </h1>
-
-        <div class="flex mt-1">
-          <img class="shadow size-large border-sharp-r" src="/images/turnero.png" alt="" />
-          <div class="shadow p-1 border-sharp bg-dark">
-            <h3 class="text-bg bg-gradient">“Túrnero para Clinica” <span class="color-yell">abr. 2024 - presente</span>
-            </h3>
-            <div>
-              <div>
-                Sistema para el manejo de turnos de una clínica, con impresión de tickets y sincronización de pantallas.
-              </div>
-              <div>
-                <strong>Tecnologias: </strong>
-                <span> Angular, Tailwind, Express.js, Esc-pos, Django, WebSockets y Redis. </span>
-              </div>
-              <div>
-                <strong>Rol: </strong>
-                <span> Desarrollador unico </span>
-              </div>
-              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Turnero"><span class="">>>>></span> Ver
-                Github &lt;&lt;&lt;&lt;</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex mt-1">
-          <img class="shadow size-large order-1 border-sharp" src="/images/mafbella.png" alt="" />
-          <div class="shadow p-1 border-sharp-r bg-dark">
-            <h3 class="text-bg bg-gradient">“MafBella” <span class="color-yell">ago. 2024</span></h3>
-            <div>
-              <div>
-                Página web creada para un catálogo de productos de perfumería
-              </div>
-              <div>
-                <strong>Tecnologias: </strong>
-                <span> Angular, Tailwind, Spring Boot y PostgreSQL </span>
-              </div>
-              <div>
-                <strong>Rol: </strong>
-                <span> Desarrollador unico </span>
-              </div>
-              <a class="btn-1 p-1" href="mafbella.dyndns.org"><span class="">>>>></span> Ver Github &lt;&lt;&lt;&lt;</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex mt-1">
-          <img class="shadow size-large border-sharp-r" src="/images/comolohago.png" alt="" />
-          <div class="p-1 border-sharp bg-dark shadow">
-            <h3 class="text-bg bg-gradient">“COMOloHAGO” <span class="color-yell">feb. 2024 - jul. 2024</span></h3>
-            <div>
-              <div>
-                Página web para publicación, compra y venta de obras y productos
-                artísticos, científicos y tecnológicos
-              </div>
-              <div>
-                <strong>Tecnologias:</strong>
-                <span> Angular, Bootstrap, Spring Boot, MercadoPago</span>
-              </div>
-              <div>
-                <strong>Rol: </strong>
-                <span> Desarrollador unico </span>
-              </div>
-
-              <a class="btn-1 p-1" href="github.com/JulianMagnabosco/PS-2024">>>>> Ver Github &lt;&lt;&lt;&lt;</a>
-            </div>
-          </div>
-        </div>
-        <h1 class="mt-1 bg-gray width-extend center p-1/2 shadow">
-          <div class="scroll-limit">_OTROS PROYECTOS_</div>
-        </h1>
-
-        <div class="flex mt-1">
-          <div class="p-1 border-sharp bg-dark shadow">
-            <h3 class="text-bg bg-gradient">“Control para Zapatilla desde Internet” <span class="color-yell">abr.
-                2024</span></h3>
-            <div>
-              <div>
-                Programa de Arduino para controlar un zapatilla/grupo de enchufes mediante internet.
-              </div>
-              <div>
-                <strong>Tecnologias:</strong>
-                <span>Arduino, Ethernet Shield, Html.</span>
-              </div>
-              <div>
-                <strong>Rol: </strong>
-                <span> Desarrollador unico </span>
-              </div>
-
-              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Arduino-Relay-Server">>>>> Ver Github
-                &lt;&lt;&lt;&lt;</a>
-            </div>
-          </div>
-          <div class="shadow p-1 border-sharp-r bg-dark">
-            <h3 class="text-bg bg-gradient">“IP-Ping” <span class="color-yell">may. 2023</span></h3>
-            <div>
-              <div>
-                Programa para registrar y comprobar el estado y latencia de direcciones IP de forma rápida y simple.
-              </div>
-              <div>
-                <strong>Tecnologias: </strong>
-                <span> Python y Tkinter. </span>
-              </div>
-              <div>
-                <strong>Rol: </strong>
-                <span> Desarrollador unico </span>
-              </div>
-              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Ip-Ping">>>>> Ver Github
-                &lt;&lt;&lt;&lt;</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex mt-1">
-          <div class="p-1 border-sharp bg-dark shadow">
-            <h3 class="text-bg bg-gradient">“Dulce More” <span class="color-yell">ene. 2024</span></h3>
-            <div>
-              <div>
-                Página web creada para un catálogo de productos artesanales, con opciones para manejo de productos
-              </div>
-              <div>
-                <strong>Tecnologias:</strong>
-                <span> Pagina Simple (Diseñador de “Don Web”)</span>
-              </div>
-              <div>
-                <strong>Rol: </strong>
-                <span> Desarrollador unico </span>
-              </div>
-
-              <a class="btn-1 p-1" href="https://dulcemore.online">>>>> Ver Github &lt;&lt;&lt;&lt;</a>
-            </div>
-          </div>
-          <div class="p-1 border-sharp-r bg-dark shadow">
-            <h3 class="text-bg bg-gradient">"Control para Porton Bluetooth” <span class="color-yell">ene. 2024</span>
-            </h3>
-            <div>
-              <div>
-                Programa de Arduino para controlar un porton mediante bluetooth.
-              </div>
-              <div>
-                <strong>Tecnologias:</strong>
-                <span>Arduino, Bluetooth HC-05, Mit App Inventor.</span>
-              </div>
-              <div>
-                <strong>Rol: </strong>
-                <span> Desarrollador unico </span>
-              </div>
-
-              <a class="btn-1 p-1" href="https://github.com/JulianMagnabosco/Arduino-Porton">>>>> Ver Github
-                &lt;&lt;&lt;&lt;</a>
-            </div>
-          </div>
-        </div>
-
-
-
-        <h1 class="mt-1 width-extend center color-cyan">
-          <div class=" scroll-limit reverse">$$$$</div>
-        </h1>
-      </section>
-
-      <section class="mt-12" id="aptitudes">
-        <h1 class="bg-yell p-1 color-gray-dark shadow center width-extend">
-          <div class=" scroll-limit reverse">_APTITUDES_</div>
-        </h1>
-        <div class="grid align-top">
-          <section class="bg-dark p-1 border-sharp-r relative z-2 shadow ">
-            <h3 class="mt-1">Mis aptitudes principales</h3>
-            <ul class="relative">
-              <li>Trabajo en equipo</li>
-              <li>Liderazgo</li>
-              <li>Compromiso</li>
-              <li>Organización</li>
-              <li>Conocimientos generales en informática</li>
-              <li>Conocimientos generales en electrónica</li>
-              <li>Interés continuo en capacitación</li>
-            </ul>
-            <h3 class="mt-1">Idiomas</h3>
-            <ul>
-              <li><span>Español</span> (Nativo)</li>
-              <li><span>Ingles</span> (Intermedio)</li>
-            </ul>
-          </section>
-
-          <section class="bg-dark shadow p-1 border-sharp relative z-1">
-            <div class="mt-1">
-              <h3>Tecnologias Principales</h3>
-              <img class="size-medium" src="icons/angular.svg" alt="angular" title="angular" />
-              <img class="size-medium" src="icons/bootstrap.svg" alt="bootstrap" title="bootstrap" />
-              <img class="size-medium" src="icons/tailwind.svg" alt="tailwind" title="tailwind" />
-              <img class="size-medium" src="icons/spring-boot.svg" alt="spring-boot" title="spring-boot" />
-              <img class="size-medium" src="icons/postgresql.svg" alt="postgresql" title="postgresql" />
-              <img class="size-medium" src="icons/maven.svg" alt="maven" title="maven" />
-              <img class="size-medium" src="icons/github.svg" alt="github" title="github" />
-              <img class="size-medium" src="icons/docker.svg" alt="docker" title="docker" />
-              <h3> Tecnologias que puedo manejar</h3>
-              <img class="size-medium" src="icons/python.svg" alt="python" title="python" />
-              <img class="size-medium" src="icons/django.svg" alt="django" title="django" />
-              <img class="size-medium" src="icons/html.svg" alt="html" title="html" />
-              <img class="size-medium" src="icons/js.svg" alt="js" title="js" />
-              <img class="size-medium" src="icons/nodejs.svg" alt="python" title="python" />
-              <img class="size-medium" src="icons/threejs.svg" alt="threejs" title="threejs" />
-              <h3> Tecnologias con las que he trabajado</h3>
-              <img class="size-medium" src="icons/csharp.svg" alt="csharp" title="csharp" />
-              <img class="size-medium" src="icons/dotnet.svg" alt="dotnet" title="dotnet" />
-              <img class="size-medium" src="icons/arduino.svg" alt="arduino" title="arduino" />
-              <img class="size-medium" src="icons/unity.svg" alt="unity" title="unity" />
-            </div>
-          </section>
-        </div>
-        <h1 class="mt-1 width-extend center color-yell">
-          <div class=" scroll-limit">&blacktriangleleft;&blacktriangleleft;&blacktriangleleft;&blacktriangleleft;</div>
-        </h1>
-      </section>
-
-      <section class="mt-12" id="educacion">
-        <h1 class="bg-yell width-extend center p-1 color-gray-dark shadow">
-          <div class=" scroll-limit reverse">_EDUCACION_</div>
-        </h1>
-        <div class="grid">
-          <section class="bg-dark p-1 border-sharp shadow" style="grid-area: 1 / 1 / 3 / 2;">
-
-            <div>
-              <h2 class="text-bg bg-gradient">
-                &CircleDot;Técnico Universitario en Programación <br>
-                <span class="color-yell">2022-2024</span>
-              </h2>
-              <h4>Universidad Tecnológica Nacional, Córdoba Capital</h4>
-              <div>
-                <span>Contenidos:</span>
-                <ul>
-                  <li>Programación en Spring Boot (Java)</li>
-                  <li>Angular (Typescript)</li>
-                  <li>.NET Core (C#)</li>
-                  <li>HTML, CSS y Javascript</li>
-                  <li>SQL</li>
-                  <li>Gestión de proyectos SCRUM con Jira y Github</li>
-                  <li>Matemáticas, Álgebra y Estadística básica</li>
-                </ul>
-              </div>
-              <h2 class="text-bg bg-gradient mt-1">
-                &CircleDot;Bachiller en Ciencias Sociales <br>
-                <span class="color-yell">2016-2021</span>
-              </h2>
-              <h4>Instituto Inmaculada Concepción, Córdoba Capital</h4>
-            </div>
-          </section>
-          <div>
-            <section class="p-1 shadow bg-dark border-sharp" style="grid-area: 1 / 2 / 2 / 3;">
-              <h2>Cursos</h2>
-              <ul>
-                <li>
-                  Cursos gratuitos de
-                  <span>Python, Unity y Arduino</span>.
-                </li>
-                <li>Curso gratuito de <span>Inglés Básico</span>.</li>
-              </ul>
-            </section>
-          </div>
-
-          <div>
-            <section class="p-1 shadow bg-dark border-sharp-r" style="grid-area: 2 / 2 / 3 / 3;">
-              <h2>Logros</h2>
-              <ul>
-                <li>
-                  <span>Cuadro de Honor</span> de la Bandera Nacional en Secundaria.
-                </li>
-                <li>Puntaje Promedio de <span>9.06</span> en Secundaria.</li>
-              </ul>
-            </section>
-          </div>
-        </div>
-        <h1 class="mt-1 width-extend center color-cyan">
-          <div class=" scroll-limit reverse">
-            &blacktriangleright;&blacktriangleright;&blacktriangleright;&blacktriangleright;</div>
-        </h1>
-      </section>
-
-      <section class="mt-12" id="contacto">
-        <h1 class="bg-cyan width-extend center p-1 color-gray-dark shadow">
-          <div class=" scroll-limit">_CONTACTOS_</div>
-        </h1>
-        <div class="mt-1 text-center bg-dark p-1 border-sharp-r shadow max-w">
-          <div class="inline-flex ">
-            <div>julian.magnabosco@gmail.com</div>
-            <a class="btn-a" style="padding: 0.5rem;"
-              onclick="navigator.clipboard.writeText('julian.magnabosco@gmail.com')">
-              <img class="size-small" style="margin-top: 0.5rem;" src="icons/copy.svg" alt="email" title="email" />
-            </a>
-
-          </div>
-
-          <div class="mt-1">
-            <a class="inline-flex btn-a p-1" href="www.linkedin.com/in/julianmagnabosco-675631258/">
-              <img class="size-small" src="icons/linkedin.svg" alt="linkedin" title="linkedin" /><span>Linkedin</span>
-            </a>
-            <a class="inline-flex btn-a p-1" href="https://github.com/JulianMagnabosco">
-              <img class="size-small" src="icons/github.svg" alt="github" title="github" /><span>Github</span>
-            </a>
-          </div>
-          <div class="mt-1">
-            <a class="inline-flex btn-a p-1" href="https://wa.me/5493515479074">
-              <img class="size-small" src="icons/whatsapp.svg" alt="whatsapp" title="whatsapp" />
-              <span>+54 9 351 547 9074</span>
-            </a>
-            <a class="inline-flex btn-a p-1"
-              onclick="navigator.clipboard.writeText('Tristán de Tejeda, 231 Córdoba Capital')">
-              <img class="size-small" src="icons/map.svg" alt="map" title="map" />
-              <span>Tristán de Tejeda, 231 Córdoba Capital</span>
-            </a>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <footer class="bg-dark p-2 mt-6 text-center">
-      Página hecha con Vite y Threejs.
-    </footer>
-  </main>
-
-
-  <!-- <script type="text/javascript" src="http://joeiddon.github.io/perlin/perlin.js"></script> -->
-  <!-- <script type="module" src="/main.js"></script> -->
-  <script type="module" src="/typing.js"></script>
-  <script type="module" src="/smartnav.js"></script>
-  <script type="module" src="/infinite-scroll.js"></script>
-</body>
-
+			<footer class="footer section-wrap"><a class="footer-brand" href="#inicio">JM<span>✳</span></a><span>HECHO CON CURIOSIDAD Y CAFE</span><a href="#inicio">VOLVER ARRIBA ↑</a><span>© 2026</span></footer>
+		</div>
+		<script type="module" src="/main.js"></script>
+	</body>
 </html>
