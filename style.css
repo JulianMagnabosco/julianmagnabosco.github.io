@@ -155,13 +155,109 @@ h1, h2, h3, p { margin-top: 0; }
 .about-signature span { color: var(--darkcyan); font-size: 18px; }
 
 .stack { padding-bottom: 116px; }
-.stack-grid { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--ink); }
-.stack-item { min-height: 115px; padding: 17px; display: grid; grid-template-columns: 36px 1fr; grid-template-rows: 1fr auto; gap: 8px 12px; align-items: center; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); transition: background 150ms ease; }
-.stack-item:hover { background: var(--cyan); }
-.stack-item img { width: 31px; height: 31px; object-fit: contain; grid-row: span 2; }
-.stack-item:nth-child(4) img, .stack-item:nth-child(9) img { filter: brightness(0) saturate(100%) opacity(0.62); }
-.stack-item span { align-self: end; font: 15px var(--display); }
-.stack-item small { color: var(--muted); font: 10px var(--pixel); }
+.stack-grid {
+
+  all: unset;
+  display: grid;
+  grid-template-columns: repeat(34, 1fr);
+  grid-template-rows: repeat(21, 1fr);
+  list-style: none;
+	}
+.stack-item { 
+		overflow: hidden;
+		display: grid;
+		gap: 5px;
+		justify-content: center;
+		align-items: center;
+	gap:0;
+	color:var(--paper-secondary);
+
+    aspect-ratio: 1 / 1;
+    background: var(--border);
+		border: 2px solid var(--paper-secondary);
+    grid-area: var(--ga);
+
+&:nth-of-type(1) {
+	color:#131214;
+	position: relative;
+	gap:5px;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+  --border: #f4f0df;
+  --ga: 1 / 1 / 22 / 22;
+}
+&:nth-of-type(1)::after {
+	display: block;
+	color:var(--paper-secondary);
+	background: black;
+	padding: 2px 4px;
+	content: 'STACK PRINCIPAL';
+	position: absolute;
+	top: 0; left: 0; 
+}
+
+&:nth-of-type(2) {
+	position: relative;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+  --border: #0d6063;
+  --ga: 1 / 22 / 23 / 35;
+}
+&:nth-of-type(2)::after {
+	display: block;
+	color:var(--paper-secondary);
+	background: black;
+	padding: 2px 4px;
+	content: 'OTRAS HERRAMIENTAS';
+	position: absolute;
+	font-size: small;
+	top: 0; left: 0; 
+}
+&:nth-of-type(3) {
+	display:flex;
+	flex-direction: column;
+  --border: #114547;
+  --ga: 14 / 27 / 22 / 35;
+
+	div{
+		aspect-ratio: unset;
+		flex-direction: row;
+		flex-wrap: wrap;
+		width: 100%;
+		height: 50%;
+		align-items: end;
+		justify-content: start;
+	}
+}
+&:nth-of-type(4) {
+  --border: #33294e;
+  --ga: 17 / 22 / 22 / 27;
+
+	img{
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+&:nth-of-type(5) {
+  --border: #131214;
+  --ga: 14 / 22 / 17 / 25;
+}
+&:nth-of-type(6) {
+  --border: #232125;
+  --ga: 14 / 25 / 17 / 27;
+}
+&:nth-of-type(7) {
+  --border: #38bae6 ;
+  --ga: 16 / 26 / 17 / 27;
+}
+&:nth-of-type(8) {
+  --border: #ffed26;
+  --ga: 16 / 25 / 17 / 26;
+}
+}
+.stack-item img { width: 31px; height: 31px; object-fit: contain;}
+.stack-item div {padding: 10px; border: 1px solid var(--muted); display: flex; flex-direction: column; justify-content: end; align-items:start; gap: 4px; aspect-ratio: 1 / 1; }
 
 .contact { padding-block: 100px 94px; color: var(--paper-secondary); background: #22251e; position: relative; }
 .contact::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(244, 240, 223, 0.11) 0.8px, transparent 0.8px); background-size: 8px 8px; mask-image: linear-gradient(90deg, transparent, #000); opacity: 0.5; }
@@ -194,7 +290,6 @@ h1, h2, h3, p { margin-top: 0; }
 	.hero h1 { font-size: clamp(80px, 12vw, 110px); }
 	.scene-container { height: 340px; }
 	.visual-coordinate { right: -21px; }
-	.stack-grid { grid-template-columns: repeat(3, 1fr); }
 	.about-inner { gap: 55px; }
 }
 
@@ -229,8 +324,6 @@ h1, h2, h3, p { margin-top: 0; }
 	.about-inner { padding-block: 70px; grid-template-columns: 1fr; gap: 62px; }
 	.about-photo-wrap { width: min(78%, 340px); margin-right: auto; margin-left: 8%; }
 	.about-copy h2 { margin-bottom: 23px; }
-	.stack-grid { grid-template-columns: repeat(2, 1fr); }
-	.stack-item { min-height: 100px; padding: 13px; }
 	.contact { padding-block: 75px 70px; }
 	.contact h2 { font-size: clamp(76px, 19vw, 103px); }
 	.contact-note { max-width: 310px; line-height: 1.8; }
