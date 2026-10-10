@@ -122,10 +122,8 @@ if (container && canvas) {
 
 const root = document.documentElement;
 const mq = matchMedia("(prefers-color-scheme: dark)");
-
 const saved = localStorage.getItem("theme");
 if (saved) root.dataset.theme = saved;
-
 const darkmodeToggle = document.querySelector('.darkmode-toggle');
 darkmodeToggle.onclick = () => {
   const current = root.dataset.theme || (mq.matches ? "dark" : "light");
@@ -136,6 +134,22 @@ darkmodeToggle.onclick = () => {
 	const label = darkmodeToggle.querySelector('.darkmode-label');
 	if (label) label.textContent = next === "dark" ? 'Darkmode ON' : 'Darkmode OFF';
 };
+
+document.querySelectorAll('.ticker').forEach(ticker => {
+  const track = ticker.querySelector('.ticker-track');
+  const group = track.querySelector('.ticker-group');
+  const original = group.innerHTML;
+
+  // repetir el contenido hasta que el grupo sea más ancho que el ticker
+  while (group.scrollWidth < ticker.offsetWidth) {
+    group.insertAdjacentHTML('beforeend', original);
+  }
+
+  // segunda copia idéntica para el loop
+  const clone = group.cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true');
+  track.appendChild(clone);
+});
 
 const copyButton = document.querySelector(".copy-link");
 copyButton?.addEventListener("click", async () => {
