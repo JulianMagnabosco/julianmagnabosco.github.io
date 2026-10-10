@@ -112,6 +112,7 @@ h1, h2, h3, p { margin-top: 0; }
 
 .ticker {
   overflow: hidden;
+	margin-block: 40px;
   height: 52px;
   display: flex;
   align-items: center;
@@ -185,7 +186,7 @@ h1, h2, h3, p { margin-top: 0; }
 .about-signature span { color: var(--darkcyan); font-size: 18px; }
 
 .experience{
-	padding-top: 110px;
+	padding-block: 65px;
 }
 .experience-list { position: relative; padding-left: 20px; list-style: none; }
 .experience-list::before { 
@@ -197,10 +198,34 @@ h1, h2, h3, p { margin-top: 0; }
 .experience-company { margin: 0; color: var(--paper); font: 14px var(--pixel); background: var(--ink); padding: 0 4px;  }
 .experience-description { margin: 8px 0 0; color: var(--muted); font: 13px/1.7 var(--pixel); }
 .experience-item { position: relative; padding: 0 0 40px 20px; }
+.experience-item:last-child { padding-bottom: 0; }
 .experience-item::before { 
 	content: ''; position: absolute; top: 12px; left: -6px; width: 12px; height: 12px; background: var(--darkcyan); border: 2px solid var(--ink); 
 }
+.experience-subtitle { margin: 16px 0 0; }
 .experience-tasks { margin: 8px 0 0; padding-left: 20px; list-style: disc; color: var(--muted); font: 13px/1.7 var(--pixel); }
+
+.education { padding-block: 65px; 
+
+    background: #22251e;
+    color: var(--paper-f);
+    border-block: 1px solid var(--line);}
+.education-list { position: relative; padding-left: 20px; list-style: none; }
+.education-list::before { 
+	content: ''; position: absolute; top: 0; left: 0; 
+	height: 100%; width: 3px; background: var(--darkcyan); opacity: 0.5;
+}
+.education-item { position: relative; padding: 0 0 40px 20px; }
+.education-item::before { 
+	content: ''; position: absolute; top: 12px; left: -6px; width: 12px; height: 12px; background: var(--darkcyan); border: 2px solid var(--ink); 
+}
+.education-item:last-child { padding-bottom: 0; }
+.education-title { margin: 0 0 4px;  }
+.education-year { margin-left: 8px; color: var(--muted); font: 14px var(--pixel); }
+.education-institution { margin: 0; color: var(--paper); font: 14px var(--pixel); background: var(--ink); padding: 0 4px;  }
+.education-description { margin: 8px 0 0; color: var(--muted); font: 13px/1.7 var(--pixel); }	
+.education-subtitle { margin: 16px 0 0; }
+.education-tasks { margin: 8px 0 0; padding-left: 20px; list-style: disc; color: var(--muted); font: 13px/1.7 var(--pixel); }
 
 .stack { padding-bottom: 100px; }
 .stack-item { background: var(--ink); border: 2px solid var(--ink); margin-top: 2rem }
