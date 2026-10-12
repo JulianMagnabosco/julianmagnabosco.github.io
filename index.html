@@ -15,18 +15,21 @@
 	<div class="site-shell">
 		<header class="topbar">
 			<a class="brand" href="#inicio" aria-label="Inicio, Julian Magnabosco">
-				<span class="brand-mark">JM</span>
+				<img class="brand-mark" src="/images/avatar.png">
 				<span>JULIAN<br />MAGNABOSCO</span>
 			</a>
 			<nav class="main-nav" aria-label="Navegacion principal">
-				<a href="#proyectos">Proyectos</a>
 				<a href="#sobre-mi">Sobre mi</a>
+				<a href="#experience">Experiencia</a>
+				<a href="#education">Educacion</a>
+				<a href="#proyectos">Proyectos</a>
+				<a href="#skills">Skills</a>
 				<a href="#stack">Stack</a>
 				<a href="#contacto">Contacto</a>
 			</nav>
 			<button class="darkmode-toggle" type="button" aria-pressed="false" title="Alternar efecto darkmode">
-				<span class="darkmode-led" aria-hidden="true"></span>
-				<span class="darkmode-label">Darkmode OFF</span>
+				<img class="darkmode-on" src="/icons/darkmode-on.svg" alt="darkmode-on">
+				<img class="darkmode-off" src="/icons/darkmode-off.svg" alt="darkmode-off">
 			</button>
 		</header>
 
@@ -35,7 +38,7 @@
 				<div class="hero-copy">
 					<p class="eyebrow"><span class="status-dot"></span> DISPONIBLE PARA NUEVOS PROYECTOS</p>
 					<h1 id="hero-title">Hola, soy<br /><span>Julian</span><i class="cursor-block" aria-hidden="true"></i></h1>
-					<p class="hero-role">PROGRAMADOR <span>&amp;</span> DESARROLLADOR DE SOFTWARE</p>
+					<p class="hero-role">DESARROLLADOR DE SOFTWARE <span>&amp;</span> TÉCNICO INFORMÁTICO</p>
 					<p class="hero-intro">
 						Busco nuevos desafios y oportunidades para crecer profesionalmente.
 						<br />
@@ -85,7 +88,7 @@
 						<span class="photo-caption">UN HUMANO DETRAS DEL CODIGO</span>
 					</div>
 					<div class="about-copy">
-						<p class="eyebrow">02 / UN POCO SOBRE MI</p>
+						<p class="eyebrow">01 / UN POCO SOBRE MI</p>
 						<h2 id="about-title">Con eficacia<br />y naturalidad<span class="heading-period">.</span></h2>
 						<p>
 							Soy un entusiasta de la informatica. Busco poder desarrollarme en el area de las maquinas y colaborar con
@@ -104,28 +107,29 @@
 			<section class="experience section-wrap" id="experience" aria-labelledby="experience-title">
 				<div class="section-heading">
 					<div>
-						<p class="eyebrow">03 / MI EXPERIENCIA</p>
+						<p class="eyebrow">02 / MI EXPERIENCIA</p>
 						<h2 id="experience-title">Experiencia<span class="heading-period">.</span></h2>
 					</div>
 					<p class="section-note">Mi historia profesional resumida.</p>
 				</div>
 				<ul class="experience-list">
 					<li class="experience-item">
-							<h3 class="experience-title">Soldado Voluntario Técnico <span class="experience-year">Marzo 2026 - Actualidad</span></h3>
-							<span class="experience-company">Ejercito Argentino</span>
-							<p class="experience-description">
-								Servicio militar, con orientacion a informatica, en el ejercito argentino.
-							</p>
+						<h3 class="experience-title">Soldado Voluntario Técnico <span class="experience-year">Marzo 2026 -
+								Actualidad</span></h3>
+						<span class="experience-company">Ejercito Argentino</span>
+						<p class="experience-description">
+							Servicio militar, con orientacion a informatica, en el ejercito argentino.
+						</p>
 						<div class="experience-subtitle">
 							Tareas realizadas:
 						</div>
-							<ul class="experience-tasks">
-								<li>Organización de procesos de incorporación de soldados voluntarios</li>
-								<li>Control de documentación y facturas</li>
-								<li>Control de inventario</li>
-								<li>Resolución de Problemas Técnicos e Informáticos</li>
-							</ul>
-						
+						<ul class="experience-tasks">
+							<li>Organización de procesos de incorporación de soldados voluntarios</li>
+							<li>Control de documentación y facturas</li>
+							<li>Control de inventario</li>
+							<li>Resolución de Problemas Técnicos e Informáticos</li>
+						</ul>
+
 					</li>
 				</ul>
 			</section>
@@ -133,30 +137,32 @@
 			<section class="education" id="education" aria-labelledby="education-title">
 				<div class="education-inner section-wrap">
 					<div class="section-heading">
-					<div>
-						<p class="eyebrow">04 / MI EDUCACION</p>
-						<h2 id="education-title">Educacion<span class="heading-period">.</span></h2>
-					</div>
-					<p class="section-note">Mi historia educativa resumida.</p>
-				</div>
-				<ul class="education-list">
-					<li class="education-item">
-						<h3 class="education-title">Tecnicatura en Informatica <span class="education-year">2024 - 2026</span></h3>
-						<span class="education-institution">Universidad Técnolgica Nacional, Facultad Regional Córdoba</span>
-						<p class="education-description">
-							Cursando la carrera de Tecnicatura en Informatica, donde aprendo a desarrollar software y a
-							resolver problemas informaticos.
-						</p>
-						<div class="education-subtitle">
-							Contenidos vistos:
+						<div>
+							<p class="eyebrow">03 / MI EDUCACION</p>
+							<h2 id="education-title">Educacion<span class="heading-period">.</span></h2>
 						</div>
-						<ul class="education-tasks">
-							<li>Programación en Spring Boot (Java), Angular (Typescript), .NET Core (C#), HTML, CSS, Javascript y SQL.</li>
-							<li>Gestión “Agile” de proyectos con SCRUM, Jira y Github.</li>
-							<li>Matemáticas, Álgebra y Estadística básica</li>
-						</ul>
-					</li>
-				</ul>
+						<p class="section-note">Mi historia educativa resumida.</p>
+					</div>
+					<ul class="education-list">
+						<li class="education-item">
+							<h3 class="education-title">Tecnicatura en Informatica <span class="education-year">2024 - 2026</span>
+							</h3>
+							<span class="education-institution">Universidad Técnolgica Nacional, Facultad Regional Córdoba</span>
+							<p class="education-description">
+								Cursando la carrera de Tecnicatura en Informatica, donde aprendo a desarrollar software y a
+								resolver problemas informaticos.
+							</p>
+							<div class="education-subtitle">
+								Contenidos vistos:
+							</div>
+							<ul class="education-tasks">
+								<li>Programación en Spring Boot (Java), Angular (Typescript), .NET Core (C#), HTML, CSS, Javascript y
+									SQL.</li>
+								<li>Gestión “Agile” de proyectos con SCRUM, Jira y Github.</li>
+								<li>Matemáticas, Álgebra y Estadística básica</li>
+							</ul>
+						</li>
+					</ul>
 				</div>
 
 			</section>
@@ -164,17 +170,32 @@
 			<section class="projects section-wrap" id="proyectos" aria-labelledby="projects-title">
 				<div class="section-heading">
 					<div>
-						<p class="eyebrow">01 / COSAS QUE HICE</p>
+						<p class="eyebrow">04 / COSAS QUE HICE</p>
 						<h2 id="projects-title">Proyectos<span class="heading-period">.</span></h2>
 					</div>
 					<p class="section-note">Una seleccion de ideas<br />que salieron de la pantalla.</p>
 				</div>
 				<div class="project-grid">
 					<article class="project-card project-card-wide">
+						<a class="project-image" href="/images/mafbella.png" target="_blank" rel="noreferrer"
+							aria-label="Abrir captura de Maf Bella">
+							<img src="/images/mafbella.png" alt="Tienda online de productos Maf Bella" loading="lazy" />
+							<span class="project-number">01</span><span class="project-open" aria-hidden="true">↗</span>
+						</a>
+						<div class="project-meta">
+							<div>
+								<p class="project-type">ECOMMERCE / MARCA</p>
+								<h3>Maf Bella</h3>
+							</div><span class="project-year">2023</span>
+						</div>
+						<p class="project-description">Una tienda digital para una marca de perfumes y cosmetica artesanal.</p>
+						<div class="tag-row"><span>TIENDA</span><span>UX/UI</span><span>WEB</span></div>
+					</article>
+					<article class="project-card ">
 						<a class="project-image" href="/images/comolohago.png" target="_blank" rel="noreferrer"
 							aria-label="Abrir captura de Como lo hago">
 							<img src="/images/comolohago.png" alt="Interfaz de la plataforma Como lo hago" loading="lazy" />
-							<span class="project-number">01</span><span class="project-open" aria-hidden="true">↗</span>
+							<span class="project-number">02</span><span class="project-open" aria-hidden="true">↗</span>
 						</a>
 						<div class="project-meta">
 							<div>
@@ -185,21 +206,6 @@
 						<p class="project-description">Una comunidad para compartir proyectos, ideas y el proceso detras de cada
 							creacion.</p>
 						<div class="tag-row"><span>WEB</span><span>COMUNIDAD</span><span>DISEÑO</span></div>
-					</article>
-					<article class="project-card">
-						<a class="project-image" href="/images/mafbella.png" target="_blank" rel="noreferrer"
-							aria-label="Abrir captura de Maf Bella">
-							<img src="/images/mafbella.png" alt="Tienda online de productos Maf Bella" loading="lazy" />
-							<span class="project-number">02</span><span class="project-open" aria-hidden="true">↗</span>
-						</a>
-						<div class="project-meta">
-							<div>
-								<p class="project-type">ECOMMERCE / MARCA</p>
-								<h3>Maf Bella</h3>
-							</div><span class="project-year">2023</span>
-						</div>
-						<p class="project-description">Una tienda digital para una marca de perfumes y cosmetica artesanal.</p>
-						<div class="tag-row"><span>TIENDA</span><span>UX/UI</span><span>WEB</span></div>
 					</article>
 					<article class="project-card">
 						<a class="project-image image-turnero" href="/images/turnero.png" target="_blank" rel="noreferrer"
@@ -221,11 +227,32 @@
 							class="footer-arrow">↘</span></span></div>
 			</section>
 
+			<section class="skills" id="skills" aria-labelledby="skills-title">
+				<div class="skills-inner section-wrap">
+					<div class="section-heading">
+						<div>
+							<p class="eyebrow">05 / SKILLS</p>
+							<h2 id="skills-title">Habilidades<span class="heading-period">.</span></h2>
+						</div>
+						<p class="section-note">Esto es lo que puedo ofrecer.</p>
+					</div>
+					<ul class="skills-list">
+						<li>Trabajo en equipo</li>
+						<li>Liderazgo</li>
+						<li>Compromiso</li>
+						<li>Organización</li>
+						<li>Conocimientos generales en informática</li>
+						<li>Conocimientos generales en electrónica</li>
+						<li>Interés continuo en capacitación</li>
+						<li>Ingles Avanzado (C1)</li>
+					</ul>
+				</div>
+			</section>
 
 			<section class="stack section-wrap" id="stack" aria-labelledby="stack-title">
 				<div class="section-heading">
 					<div>
-						<p class="eyebrow">03 / HERRAMIENTAS DE TRABAJO</p>
+						<p class="eyebrow">06 / HERRAMIENTAS DE TRABAJO</p>
 						<h2 id="stack-title">Mi stack<span class="heading-period">.</span></h2>
 					</div>
 					<p class="section-note">Las piezas que uso<br />para darle forma a las ideas.</p>
@@ -272,16 +299,21 @@
 
 			<section class="contact" id="contacto" aria-labelledby="contact-title">
 				<div class="contact-inner section-wrap">
-					<p class="eyebrow">04 / TU TURNO</p>
+					<p class="eyebrow">07 / TU TURNO</p>
 					<h2 id="contact-title">Estoy<br /><span>Bien LISTO</span><i class="cursor-block" aria-hidden="true"></i></h2>
 					<p class="contact-note">Tenes una idea dando vueltas? Me encantaria escucharla.</p>
 					<div class="contact-links">
-						<a href="https://github.com/" target="_blank" rel="noreferrer"><img src="/icons/github.svg" alt="" /> GITHUB
+						<a href="mailto:julian.magnabosco@gmail.com ">julian.magnabosco@gmail.com 
 							<span aria-hidden="true">↗</span></a>
-						<a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><img src="/icons/linkedin.svg"
+						<a href="https://wa.me/543515479074" target="_blank" rel="noreferrer"><img src="/icons/whatsapp.svg" alt="whattsapp"> +54 9 351 547-9074
+							<span aria-hidden="true">↗</span>
+						</a>
+						<a href="https://github.com/JulianMagnabosco" target="_blank" rel="noreferrer"><img src="/icons/github.svg" alt="" /> GITHUB
+							<span aria-hidden="true">↗</span></a>
+						<a href="https://www.linkedin.com/in/julian-magnabosco" target="_blank" rel="noreferrer"><img src="/icons/linkedin.svg"
 								alt="" /> LINKEDIN <span aria-hidden="true">↗</span></a>
-						<button class="copy-link" type="button"><img src="/icons/copy.svg" alt="" /> COPIAR LINK <span
-								aria-hidden="true">↗</span></button>
+						<button class="copy-link" type="button"><img src="/icons/copy.svg" alt="" /> COPIAR LINK CV
+							<span aria-hidden="true">↗</span></button>
 					</div>
 				</div>
 			</section>

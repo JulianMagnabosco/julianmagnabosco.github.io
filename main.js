@@ -131,8 +131,7 @@ darkmodeToggle.onclick = () => {
   root.dataset.theme = next;
   localStorage.setItem("theme", next);
   
-	const label = darkmodeToggle.querySelector('.darkmode-label');
-	if (label) label.textContent = next === "dark" ? 'Darkmode ON' : 'Darkmode OFF';
+	darkmodeToggle.classList.toggle("on")
 };
 
 document.querySelectorAll('.ticker').forEach(ticker => {
